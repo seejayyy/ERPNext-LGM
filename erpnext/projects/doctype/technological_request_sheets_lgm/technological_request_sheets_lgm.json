@@ -113,12 +113,14 @@
   {
    "fieldname": "compounding_ingredients",
    "fieldtype": "Table",
-   "options": "Compounding Ingredients LGM"
+   "options": "Compounding Ingredients LGM",
+   "reqd": 1
   },
   {
    "fieldname": "masterbatch_weight",
    "fieldtype": "Data",
-   "label": "Masterbatch Weight (gm)"
+   "label": "Masterbatch Weight (gm)",
+   "reqd": 1
   },
   {
    "fieldname": "section_mixer",
@@ -129,7 +131,8 @@
    "fieldname": "mixer_type",
    "fieldtype": "Link",
    "label": "Mixer Type",
-   "options": "Mixer Type LGM"
+   "options": "Mixer Type LGM",
+   "reqd": 1
   },
   {
    "fieldname": "mixer_fill_factor",
@@ -388,7 +391,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2023-12-26 13:30:45.929740",
+ "modified": "2023-12-26 16:11:27.774783",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",
