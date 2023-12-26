@@ -1,0 +1,52 @@
+{
+ "creation": "2023-12-22 16:01:28.783958",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ingredient",
+  "mixer_no",
+  "ingredient_weight",
+  "formulation_per_hundred"
+ ],
+ "fields": [
+  {
+   "fieldname": "ingredient",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ingredient",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mixer_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mixer No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ingredient_weight",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ingredient Weight",
+   "reqd": 1
+  },
+  {
+   "fieldname": "formulation_per_hundred",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Formulation Parts per Hundred",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2023-12-26 14:28:02.278837",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Compounding Ingredients LGM",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

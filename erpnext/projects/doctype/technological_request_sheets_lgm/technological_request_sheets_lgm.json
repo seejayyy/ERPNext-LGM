@@ -1,0 +1,417 @@
+{
+ "autoname": "field:sheet_id",
+ "creation": "2023-12-22 15:45:16.737451",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_request_sheet_info",
+  "amended_from",
+  "sheet_id",
+  "factory_reference_no",
+  "nature_of_work",
+  "col_break",
+  "reference_no",
+  "officer_name",
+  "sheet_date",
+  "section_compounding_ingredients",
+  "compounding_ingredients",
+  "masterbatch_weight",
+  "curing_ingredients",
+  "section_mb_curing",
+  "composition_weight",
+  "masterbatch_mult_factor",
+  "col_break_curing_mb",
+  "composition_mult_factor",
+  "density_masterbatch",
+  "section_mixer",
+  "mixer_type",
+  "mixer_fill_factor",
+  "mixer_starting_temperature",
+  "col_break_mixer",
+  "mixer_volume",
+  "mixer_volume_used",
+  "mixer_rpm",
+  "section_mixing_cycle",
+  "mixing_cycle",
+  "section_curing",
+  "col_break_curative",
+  "curative_two_roll",
+  "curative_mixer",
+  "col_break_rheometer",
+  "curing_machine",
+  "curing_temperature",
+  "curing_time",
+  "curing_range",
+  "col_break_mooney",
+  "mooney_vr",
+  "mooney_vb",
+  "mooney_vc",
+  "mooney_scorch_temperature",
+  "section_cure_condition",
+  "col_break_test_sample",
+  "sample_sdbs",
+  "sample_hardness",
+  "sample_akron",
+  "sample_comp_set",
+  "sample_large_comp_set",
+  "sample_din",
+  "sample_ozone",
+  "sample_hbu",
+  "sample_flex",
+  "sample_resilience",
+  "col_break_cure_text",
+  "cure_time_conditions",
+  "section_comments",
+  "comments"
+ ],
+ "fields": [
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Technological Request Sheets LGM",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_request_sheet_info",
+   "fieldtype": "Section Break",
+   "label": "Request Sheet Info"
+  },
+  {
+   "fieldname": "factory_reference_no",
+   "fieldtype": "Link",
+   "label": "Factory Reference No",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "nature_of_work",
+   "fieldtype": "Data",
+   "label": "Nature of Work"
+  },
+  {
+   "fieldname": "col_break",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "officer_name",
+   "fieldtype": "Data",
+   "label": "Officer"
+  },
+  {
+   "fieldname": "sheet_date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_compounding_ingredients",
+   "fieldtype": "Section Break",
+   "label": "Compounding Ingredients"
+  },
+  {
+   "fieldname": "compounding_ingredients",
+   "fieldtype": "Table",
+   "options": "Compounding Ingredients LGM"
+  },
+  {
+   "fieldname": "masterbatch_weight",
+   "fieldtype": "Data",
+   "label": "Masterbatch Weight (gm)"
+  },
+  {
+   "fieldname": "section_mixer",
+   "fieldtype": "Section Break",
+   "label": "Mixer Details"
+  },
+  {
+   "fieldname": "mixer_type",
+   "fieldtype": "Link",
+   "label": "Mixer Type",
+   "options": "Mixer Type LGM"
+  },
+  {
+   "fieldname": "mixer_fill_factor",
+   "fieldtype": "Data",
+   "label": "Fill Factor"
+  },
+  {
+   "fieldname": "mixer_starting_temperature",
+   "fieldtype": "Data",
+   "label": "Starting Temperature (\u00b0C)"
+  },
+  {
+   "fieldname": "col_break_mixer",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "mixer_type.mixer_volume",
+   "fieldname": "mixer_volume",
+   "fieldtype": "Data",
+   "label": "Volume Internal Mixer (ml)"
+  },
+  {
+   "fieldname": "mixer_volume_used",
+   "fieldtype": "Data",
+   "label": "Volume Used (ml)"
+  },
+  {
+   "fieldname": "mixer_rpm",
+   "fieldtype": "Data",
+   "label": "Rotor Speed (RPM)"
+  },
+  {
+   "fieldname": "section_mixing_cycle",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "mixing_cycle",
+   "fieldtype": "Table",
+   "options": "Mixing Cycle LGM"
+  },
+  {
+   "fieldname": "section_curing",
+   "fieldtype": "Section Break",
+   "label": "Curing Sections"
+  },
+  {
+   "fieldname": "col_break_rheometer",
+   "fieldtype": "Column Break",
+   "label": "Rheometer Lab"
+  },
+  {
+   "bold": 1,
+   "fieldname": "curing_machine",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Machine",
+   "no_copy": 1,
+   "options": "Rheometer Machines LGM",
+   "search_index": 1
+  },
+  {
+   "fieldname": "curing_temperature",
+   "fieldtype": "Data",
+   "label": "Temperature (\u00b0C)"
+  },
+  {
+   "fieldname": "curing_time",
+   "fieldtype": "Data",
+   "label": "Time"
+  },
+  {
+   "fieldname": "curing_range",
+   "fieldtype": "Data",
+   "label": "Range"
+  },
+  {
+   "fieldname": "col_break_mooney",
+   "fieldtype": "Column Break",
+   "label": "Mooney Viscosity"
+  },
+  {
+   "default": "0",
+   "fieldname": "mooney_vr",
+   "fieldtype": "Check",
+   "label": "Vr"
+  },
+  {
+   "default": "0",
+   "fieldname": "mooney_vb",
+   "fieldtype": "Check",
+   "label": "Vb"
+  },
+  {
+   "default": "0",
+   "fieldname": "mooney_vc",
+   "fieldtype": "Check",
+   "label": "Vc"
+  },
+  {
+   "fieldname": "mooney_scorch_temperature",
+   "fieldtype": "Data",
+   "label": "Scorch Temperature (\u00b0C)"
+  },
+  {
+   "fieldname": "cure_time_conditions",
+   "fieldtype": "Text",
+   "label": "Cure Time and Conditions"
+  },
+  {
+   "fieldname": "section_cure_condition",
+   "fieldtype": "Section Break",
+   "label": "Cure Condition"
+  },
+  {
+   "fieldname": "col_break_test_sample",
+   "fieldtype": "Column Break",
+   "label": "Test Samples Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_sdbs",
+   "fieldtype": "Check",
+   "label": "SDBS"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_hardness",
+   "fieldtype": "Check",
+   "label": "Hardness"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_akron",
+   "fieldtype": "Check",
+   "label": "Akron Abrasion"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_comp_set",
+   "fieldtype": "Check",
+   "label": "Comp. Set"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_large_comp_set",
+   "fieldtype": "Check",
+   "label": "Large Comp. Set"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_din",
+   "fieldtype": "Check",
+   "label": "Din Abrasion"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_ozone",
+   "fieldtype": "Check",
+   "label": "Ozone"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_hbu",
+   "fieldtype": "Check",
+   "label": "HBU"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_flex",
+   "fieldtype": "Check",
+   "label": "Flex"
+  },
+  {
+   "default": "0",
+   "fieldname": "sample_resilience",
+   "fieldtype": "Check",
+   "label": "Resilience"
+  },
+  {
+   "fieldname": "col_break_cure_text",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "curative_two_roll",
+   "fieldtype": "Check",
+   "label": "Two Roll Mill"
+  },
+  {
+   "default": "0",
+   "fieldname": "curative_mixer",
+   "fieldtype": "Check",
+   "label": "Internal Mixer"
+  },
+  {
+   "fieldname": "col_break_curative",
+   "fieldtype": "Column Break",
+   "label": "Curing on"
+  },
+  {
+   "fieldname": "curing_ingredients",
+   "fieldtype": "Table",
+   "options": "Curing Ingredients LGM"
+  },
+  {
+   "fieldname": "composition_weight",
+   "fieldtype": "Data",
+   "label": "Comp. Weight (gm)"
+  },
+  {
+   "fieldname": "masterbatch_mult_factor",
+   "fieldtype": "Data",
+   "label": "MB multp. factor"
+  },
+  {
+   "fieldname": "col_break_curing_mb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "composition_mult_factor",
+   "fieldtype": "Data",
+   "label": "Comp. multp. factor"
+  },
+  {
+   "fieldname": "density_masterbatch",
+   "fieldtype": "Data",
+   "label": "Density MB"
+  },
+  {
+   "fieldname": "section_mb_curing",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reference_no",
+   "fieldtype": "Data",
+   "label": "Reference No"
+  },
+  {
+   "bold": 1,
+   "fieldname": "sheet_id",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Sheet Id",
+   "unique": 1
+  },
+  {
+   "fieldname": "section_comments",
+   "fieldtype": "Section Break",
+   "label": "Alterations, Operator comment or notes:"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Text"
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2023-12-26 13:30:45.929740",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Technological Request Sheets LGM",
+ "name_case": "Title Case",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "sheet_id",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "sheet_id",
+ "track_changes": 1,
+ "track_seen": 1
+}

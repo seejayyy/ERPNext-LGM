@@ -1,0 +1,61 @@
+{
+ "creation": "2023-12-26 10:33:22.808272",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ingredient",
+  "mixer_no",
+  "batch_no",
+  "ingredient_weight",
+  "formulation_per_hundred"
+ ],
+ "fields": [
+  {
+   "fieldname": "ingredient",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ingredient",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mixer_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mixer No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ingredient_weight",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ingredient Weight",
+   "reqd": 1
+  },
+  {
+   "fieldname": "formulation_per_hundred",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Formulation Parts per Hundred",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Batch No",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2023-12-26 13:24:23.693114",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Curing Ingredients LGM",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
