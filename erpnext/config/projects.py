@@ -44,11 +44,6 @@ def get_data():
 					"description": _("Project Update."),
 					"dependencies": ["Project"],
 				},
-				{
-					"type": "doctype",
-					"name": "Technological Request Sheets LGM",
-					"description": _("Technological Request Sheets LGM."),
-				},
 			]
 		},
 		{
@@ -102,5 +97,28 @@ def get_data():
 				},
 			]
 		},
-		
+		{
+			"label": _("Lembaga Getah Malaysia"),
+			"icon": "fa fa-list",
+			"items": [
+				{
+					"type": "doctype",
+					"name": "Technological Request Sheets LGM",
+					"description": _("Technological Request Sheets LGM."),
+					"onboard": 1,
+				},
+				{
+					"type": "doctype",
+					"name": "Mixer Type LGM",
+					"description": _("Mixer Type LGM."),
+					"onboard": 1,
+				},
+				{
+					"type": "doctype",
+					"name": "Rheometer Machines LGM",
+					"description": _("Rheometer Machines LGM."),
+					"onboard": 1,
+				},
+			]
+		},
 	]

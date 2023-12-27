@@ -1,16 +1,16 @@
 {
- "autoname": "field:sheet_id",
+ "autoname": "naming_series:",
  "creation": "2023-12-22 15:45:16.737451",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "section_request_sheet_info",
-  "amended_from",
-  "sheet_id",
+  "naming_series",
   "factory_reference_no",
   "nature_of_work",
   "col_break",
+  "amended_from",
   "reference_no",
   "officer_name",
   "sheet_date",
@@ -47,6 +47,7 @@
   "mooney_vr",
   "mooney_vb",
   "mooney_vc",
+  "check_scorch",
   "mooney_scorch_temperature",
   "section_cure_condition",
   "col_break_test_sample",
@@ -84,7 +85,8 @@
    "fieldname": "factory_reference_no",
    "fieldtype": "Link",
    "label": "Factory Reference No",
-   "options": "Workstation"
+   "options": "Workstation",
+   "reqd": 1
   },
   {
    "fieldname": "nature_of_work",
@@ -233,6 +235,7 @@
    "label": "Vc"
   },
   {
+   "depends_on": "check_scorch",
    "fieldname": "mooney_scorch_temperature",
    "fieldtype": "Data",
    "label": "Scorch Temperature (\u00b0C)"
@@ -341,12 +344,14 @@
   {
    "fieldname": "composition_weight",
    "fieldtype": "Data",
-   "label": "Comp. Weight (gm)"
+   "label": "Comp. Weight (gm)",
+   "reqd": 1
   },
   {
    "fieldname": "masterbatch_mult_factor",
    "fieldtype": "Data",
-   "label": "MB multp. factor"
+   "label": "MB multp. factor",
+   "reqd": 1
   },
   {
    "fieldname": "col_break_curing_mb",
@@ -355,12 +360,14 @@
   {
    "fieldname": "composition_mult_factor",
    "fieldtype": "Data",
-   "label": "Comp. multp. factor"
+   "label": "Comp. multp. factor",
+   "reqd": 1
   },
   {
    "fieldname": "density_masterbatch",
    "fieldtype": "Data",
-   "label": "Density MB"
+   "label": "Density MB",
+   "reqd": 1
   },
   {
    "fieldname": "section_mb_curing",
@@ -369,16 +376,8 @@
   {
    "fieldname": "reference_no",
    "fieldtype": "Data",
-   "label": "Reference No"
-  },
-  {
-   "bold": 1,
-   "fieldname": "sheet_id",
-   "fieldtype": "Data",
-   "in_global_search": 1,
-   "in_list_view": 1,
-   "label": "Sheet Id",
-   "unique": 1
+   "label": "Reference No",
+   "reqd": 1
   },
   {
    "fieldname": "section_comments",
@@ -388,10 +387,28 @@
   {
    "fieldname": "comments",
    "fieldtype": "Text"
+  },
+  {
+   "bold": 1,
+   "default": "RS-.##",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Sheet Id",
+   "options": "RS-.##",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "check_scorch",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Scorch "
   }
  ],
  "is_submittable": 1,
- "modified": "2023-12-26 16:11:27.774783",
+ "modified": "2023-12-27 16:14:57.715420",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",
@@ -411,10 +428,8 @@
    "write": 1
   }
  ],
- "search_fields": "sheet_id",
  "sort_field": "modified",
  "sort_order": "DESC",
- "title_field": "sheet_id",
  "track_changes": 1,
  "track_seen": 1
 }
