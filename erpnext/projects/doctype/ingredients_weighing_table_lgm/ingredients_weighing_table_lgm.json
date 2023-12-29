@@ -1,0 +1,51 @@
+{
+ "creation": "2023-12-28 15:13:14.865574",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ingredient",
+  "ingredient_weight",
+  "mixer_no",
+  "verify"
+ ],
+ "fields": [
+  {
+   "fieldname": "ingredient",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Ingredient",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "verify",
+   "fieldtype": "Button",
+   "label": "Verify"
+  },
+  {
+   "fieldname": "mixer_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Mixer No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ingredient_weight",
+   "fieldtype": "Data",
+   "label": "Weight",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2023-12-28 15:49:17.057551",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Ingredients Weighing Table LGM",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
