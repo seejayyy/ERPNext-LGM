@@ -25,7 +25,7 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 						return;
 					},
 				});
-			}, __('Create'));
+			});
 
 			
 		}

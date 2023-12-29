@@ -22,6 +22,8 @@
   "total_weight_table",
   "section_break_waste",
   "mb_waste",
+  "col_break_waste",
+  "production_waste",
   "section_mixer",
   "mixer_type",
   "mixer_fill_factor",
@@ -392,10 +394,20 @@
    "fieldname": "mb_waste",
    "fieldtype": "Data",
    "label": "Total Masterbatch Waste"
+  },
+  {
+   "fieldname": "col_break_waste",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "production_waste",
+   "fieldtype": "Data",
+   "label": "Total Production Waste"
   }
  ],
  "is_submittable": 1,
- "modified": "2023-12-28 16:21:07.526143",
+ "modified": "2023-12-29 10:08:19.912310",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",

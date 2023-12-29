@@ -19,26 +19,27 @@
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "verify",
-   "fieldtype": "Button",
+   "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Verify"
   },
   {
    "fieldname": "mixer_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Mixer No",
-   "read_only": 1
+   "label": "Mixer No"
   },
   {
    "fieldname": "ingredient_weight",
    "fieldtype": "Data",
-   "label": "Weight",
-   "read_only": 1
+   "in_list_view": 1,
+   "label": "Weight"
   }
  ],
  "istable": 1,
- "modified": "2023-12-28 15:49:17.057551",
+ "modified": "2023-12-29 10:55:30.723523",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Ingredients Weighing Table LGM",

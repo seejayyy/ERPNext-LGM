@@ -3,8 +3,15 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
-# import frappe
+import frappe, json
 from frappe.model.document import Document
 
 class WorkOrderLGM(Document):
 	pass
+
+
+@frappe.whitelist(allow_guest=True)
+def post_test():
+	print(frappe.request.data)
+	data = frappe.request.data
+	return "data received"
