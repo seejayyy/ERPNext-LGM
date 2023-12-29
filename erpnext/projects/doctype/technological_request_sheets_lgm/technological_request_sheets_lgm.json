@@ -16,14 +16,12 @@
   "sheet_date",
   "section_compounding_ingredients",
   "compounding_ingredients",
-  "masterbatch_weight",
+  "section_break_curing",
   "curing_ingredients",
-  "section_mb_curing",
-  "composition_weight",
-  "masterbatch_mult_factor",
-  "col_break_curing_mb",
-  "composition_mult_factor",
-  "density_masterbatch",
+  "section_break_total_weight",
+  "total_weight_table",
+  "section_break_waste",
+  "mb_waste",
   "section_mixer",
   "mixer_type",
   "mixer_fill_factor",
@@ -116,12 +114,6 @@
    "fieldname": "compounding_ingredients",
    "fieldtype": "Table",
    "options": "Compounding Ingredients LGM",
-   "reqd": 1
-  },
-  {
-   "fieldname": "masterbatch_weight",
-   "fieldtype": "Data",
-   "label": "Masterbatch Weight (gm)",
    "reqd": 1
   },
   {
@@ -339,39 +331,8 @@
   {
    "fieldname": "curing_ingredients",
    "fieldtype": "Table",
-   "options": "Curing Ingredients LGM"
-  },
-  {
-   "fieldname": "composition_weight",
-   "fieldtype": "Data",
-   "label": "Comp. Weight (gm)",
+   "options": "Curing Ingredients LGM",
    "reqd": 1
-  },
-  {
-   "fieldname": "masterbatch_mult_factor",
-   "fieldtype": "Data",
-   "label": "MB multp. factor",
-   "reqd": 1
-  },
-  {
-   "fieldname": "col_break_curing_mb",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "composition_mult_factor",
-   "fieldtype": "Data",
-   "label": "Comp. multp. factor",
-   "reqd": 1
-  },
-  {
-   "fieldname": "density_masterbatch",
-   "fieldtype": "Data",
-   "label": "Density MB",
-   "reqd": 1
-  },
-  {
-   "fieldname": "section_mb_curing",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "reference_no",
@@ -405,10 +366,36 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Scorch "
+  },
+  {
+   "fieldname": "total_weight_table",
+   "fieldtype": "Table",
+   "options": "Total Weight Table LGM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_curing",
+   "fieldtype": "Section Break",
+   "label": "Curing Ingredients"
+  },
+  {
+   "fieldname": "section_break_total_weight",
+   "fieldtype": "Section Break",
+   "label": "Total Weight"
+  },
+  {
+   "fieldname": "section_break_waste",
+   "fieldtype": "Section Break",
+   "label": "Waste"
+  },
+  {
+   "fieldname": "mb_waste",
+   "fieldtype": "Data",
+   "label": "Total Masterbatch Waste"
   }
  ],
  "is_submittable": 1,
- "modified": "2023-12-27 16:14:57.715420",
+ "modified": "2023-12-28 16:21:07.526143",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",

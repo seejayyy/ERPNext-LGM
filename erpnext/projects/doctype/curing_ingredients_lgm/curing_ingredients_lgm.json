@@ -42,9 +42,10 @@
  "fields": [
   {
    "fieldname": "ingredient",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Ingredient",
+   "options": "Item",
    "reqd": 1
   },
   {
@@ -236,6 +237,7 @@
    "label": "Formulation Parts per Hundred Mixer 15"
   },
   {
+   "default": "1",
    "fieldname": "select_mixer_no",
    "fieldtype": "Select",
    "label": "Number of Mixer",
@@ -243,7 +245,7 @@
   }
  ],
  "istable": 1,
- "modified": "2023-12-27 16:10:23.656158",
+ "modified": "2023-12-28 10:18:00.521571",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Curing Ingredients LGM",

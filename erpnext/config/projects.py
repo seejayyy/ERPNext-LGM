@@ -109,6 +109,12 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Work Order LGM",
+					"description": _("Work Order LGM."),
+					"onboard": 1,
+				},
+				{
+					"type": "doctype",
 					"name": "Mixer Type LGM",
 					"description": _("Mixer Type LGM."),
 					"onboard": 1,
