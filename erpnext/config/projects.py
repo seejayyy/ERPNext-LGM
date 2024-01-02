@@ -115,6 +115,12 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Job Card LGM",
+					"description": _("Job Card LGM."),
+					"onboard": 1,
+				},
+				{
+					"type": "doctype",
 					"name": "Mixer Type LGM",
 					"description": _("Mixer Type LGM."),
 					"onboard": 1,
