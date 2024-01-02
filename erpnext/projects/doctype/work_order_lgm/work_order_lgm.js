@@ -6,21 +6,43 @@ frappe.ui.form.on('Work Order LGM', {
 		var ingredients_list = frm.doc["weighing_table_lgm"];
 		var no_of_ingredients = frm.doc["weighing_table_lgm"].length;
 		for (var i = 0; i < no_of_ingredients; i++){
-			if (ingredients_list[i]["verify"] != 1){
+			console.log(ingredients_list[i]["weighed"])
+			if (ingredients_list[i]["weighed"] == undefined){
 				frappe.throw({
 					message: __(`Ingredient ${i+1} weight is not measured yet.`),
 					indicator: 'red'
 				})
-				return false;
 			}
+			frm.refresh();
 		}
-	}
+	},
+
+	refresh: function(frm) {
+		if (frm.doc.docstatus === 1) {
+			frm.add_custom_button(__('Create Job Card LGM'), function() {
+				frm.call({
+					method:"create_job_card_lgm",
+					args:{
+						doc:frm.doc
+					},
+					callback:function(r){
+						frappe.msgprint({
+							message: __('Job Card is created'),
+							indicator: 'green'
+						})
+						return;
+					},
+				});
+			});
+
+			
+		}
+	},
 });
 
 
-// // child table 
-// frappe.ui.form.on('Ingredients Weighing Table LGM', {
-//     // cdt is Child DocType name i.e Quotation Item
-//     // cdn is the row name for e.g bbfcb8da6a
-    
-// })
+// child table 
+frappe.ui.form.on('Ingredients Weighing Table LGM', {
+    // cdt is Child DocType name i.e Quotation Item
+    // cdn is the row name for e.g bbfcb8da6a
+})

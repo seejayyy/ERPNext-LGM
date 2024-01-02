@@ -32,7 +32,6 @@ def calculate_waste(doc):
 
 @frappe.whitelist()
 def create_work_order_lgm(doc):
-	print("creating work order")
 	# parse to json object
 	doc = json.loads(doc)
 

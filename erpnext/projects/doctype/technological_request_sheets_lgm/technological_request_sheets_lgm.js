@@ -11,7 +11,7 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 	refresh: function(frm) {
 		console.log(frm.doc.docstatus);
 		if (frm.doc.docstatus === 1) {
-			frm.add_custom_button(__('Work Order LGM'), function() {
+			frm.add_custom_button(__('Create Work Order LGM'), function() {
 				frm.call({
 					method:"create_work_order_lgm",
 					args:{
