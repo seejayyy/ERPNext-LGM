@@ -34,10 +34,20 @@ frappe.ui.form.on('Work Order LGM', {
 					},
 				});
 			});
-
-			
 		}
 	},
+
+	before_save: function(frm){
+		frm.call({
+			method: "validate_request_sheet",
+			args: {
+				doc: frm.doc
+			},
+			callback:function(r){
+				return frappe.throw(("Work Order for current request sheet already exists."));
+			},
+		});
+	}
 });
 
 
