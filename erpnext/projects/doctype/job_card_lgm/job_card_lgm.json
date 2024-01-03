@@ -20,10 +20,10 @@
   "item_name",
   "for_quantity",
   "wip_warehouse",
+  "status",
   "column_break_12",
   "employee",
   "employee_name",
-  "status",
   "project",
   "timing_detail",
   "time_logs",
@@ -32,7 +32,7 @@
   "total_time_in_mins",
   "column_break_15",
   "section_break_8",
-  "items",
+  "ingredients",
   "more_information",
   "operation_id",
   "transferred_qty",
@@ -46,11 +46,11 @@
  ],
  "fields": [
   {
-   "default": "PO-JOB.#####",
+   "default": "PO-JOB-.#####",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Naming Series",
-   "options": "PO-JOB.#####",
+   "options": "PO-JOB-.#####",
    "reqd": 1
   },
   {
@@ -58,7 +58,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Work Order",
+   "label": "Work Order LGM",
    "options": "Work Order LGM",
    "reqd": 1,
    "search_index": 1
@@ -74,14 +74,15 @@
   {
    "fieldname": "operation",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Operation",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "operation_row_number",
    "fieldtype": "Select",
+   "hidden": 1,
    "label": "Operation Row Number"
   },
   {
@@ -112,15 +113,15 @@
    "label": "Production"
   },
   {
-   "fetch_from": "work_order.production_item",
    "fieldname": "production_item",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
+   "hidden": 1,
    "label": "Production Item"
   },
   {
-   "fetch_from": "work_order.item_name",
    "fieldname": "item_name",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
+   "hidden": 1,
    "label": "Item Name"
   },
   {
@@ -132,9 +133,9 @@
   {
    "fieldname": "wip_warehouse",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "WIP Warehouse",
-   "options": "Warehouse",
-   "reqd": 1
+   "options": "Warehouse"
   },
   {
    "fieldname": "column_break_12",
@@ -165,6 +166,7 @@
   {
    "fieldname": "project",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Project",
    "options": "Project"
   },
@@ -203,19 +205,13 @@
   {
    "fieldname": "section_break_8",
    "fieldtype": "Section Break",
-   "label": "Raw Materials"
-  },
-  {
-   "fieldname": "items",
-   "fieldtype": "Table",
-   "label": "Items",
-   "options": "Job Card Item",
-   "read_only": 1
+   "label": "Ingredients"
   },
   {
    "collapsible": 1,
    "fieldname": "more_information",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "More Information"
   },
   {
@@ -229,6 +225,7 @@
    "default": "0",
    "fieldname": "transferred_qty",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Transferred Qty",
    "read_only": 1
   },
@@ -236,6 +233,7 @@
    "default": "0",
    "fieldname": "requested_qty",
    "fieldtype": "Float",
+   "hidden": 1,
    "label": "Requested Qty",
    "read_only": 1
   },
@@ -300,12 +298,18 @@
    "fieldname": "request_sheet",
    "fieldtype": "Link",
    "label": "Request Sheet",
-   "options": "BOM",
+   "options": "Technological Request Sheets LGM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ingredients",
+   "fieldtype": "Table",
+   "options": "Job Card Ingredients LGM",
    "read_only": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-02 16:54:14.952522",
+ "modified": "2024-01-03 14:21:51.222866",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Job Card LGM",

@@ -1,0 +1,44 @@
+{
+ "creation": "2024-01-03 11:05:17.078520",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ingredient",
+  "mixer_no",
+  "weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "ingredient",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Ingredient",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mixer_no",
+   "fieldtype": "Data",
+   "label": "Mixer No"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Weight",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2024-01-03 14:12:36.224387",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Job Card Ingredients LGM",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
