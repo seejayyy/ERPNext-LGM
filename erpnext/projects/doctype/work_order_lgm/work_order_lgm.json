@@ -26,7 +26,9 @@
   {
    "fieldname": "weighing_table_lgm",
    "fieldtype": "Table",
-   "options": "Ingredients Weighing Table LGM"
+   "label": "Weighing Table",
+   "options": "Ingredients Weighing Table LGM",
+   "read_only": 1
   },
   {
    "default": "Work-Order-.##",
@@ -49,7 +51,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-03 14:48:29.558135",
+ "modified": "2024-01-04 12:31:40.350378",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Work Order LGM",

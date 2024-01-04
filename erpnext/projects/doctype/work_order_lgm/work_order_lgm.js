@@ -2,19 +2,36 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Work Order LGM', {
-	before_submit(frm){
-		var ingredients_list = frm.doc["weighing_table_lgm"];
-		var no_of_ingredients = frm.doc["weighing_table_lgm"].length;
-		for (var i = 0; i < no_of_ingredients; i++){
-			console.log(ingredients_list[i]["weighed"])
-			if (ingredients_list[i]["weighed"] == undefined){
-				frappe.throw({
-					message: __(`Ingredient ${i+1} weight is not measured yet.`),
-					indicator: 'red'
+	setup: function(frm){
+		frm.call({
+			method: "get_all_work_order",
+			callback:function(r){
+				var sheet_name = r.message;
+				// prevent duplicate work order of the same request sheet
+				frm.set_query("request_sheet_link", function(){
+					return {
+						filters: {
+							"name": ["not in", sheet_name]
+						}
+					};
 				})
 			}
-			frm.refresh();
+		});
+	},
+
+	before_save: function(frm){
+		if (frm.doc["weighing_table_lgm"] == undefined){
+			frm.call({
+				method: "create_work_order_lgm",
+				args:{
+					doc:frm.doc
+				},
+				callback:function(r){
+					return frm.doc = r.message;
+				}
+			});
 		}
+		
 	},
 
 	refresh: function(frm) {
@@ -37,17 +54,20 @@ frappe.ui.form.on('Work Order LGM', {
 		}
 	},
 
-	before_save: function(frm){
-		frm.call({
-			method: "validate_request_sheet",
-			args: {
-				doc: frm.doc
-			},
-			callback:function(r){
-				return frappe.throw(("Work Order for current request sheet already exists."));
-			},
-		});
-	}
+	before_submit(frm){
+		var ingredients_list = frm.doc["weighing_table_lgm"];
+		var no_of_ingredients = frm.doc["weighing_table_lgm"].length;
+		for (var i = 0; i < no_of_ingredients; i++){
+			console.log(ingredients_list[i]["weighed"])
+			if (ingredients_list[i]["weighed"] == undefined){
+				frm.reload_doc();
+				frappe.throw({
+					message: __(`Ingredient ${i+1} weight is not measured yet.`),
+					indicator: 'red'
+				});
+			}
+		}
+	},
 });
 
 

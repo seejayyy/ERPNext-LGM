@@ -42,9 +42,10 @@ def create_job_card_lgm(doc):
 		# get ingredients
 		ingredients_lists = get_ingredients(doc)
 
+		workstation_request_sheet = frappe.get_doc("Technological Request Sheets LGM", doc["request_sheet_link"]).factory_reference_no
+		mixing_instruction = frappe.get_doc("Technological Request Sheets LGM", doc["request_sheet_link"]).mixing_cycle
 		# populate child table 
 		for mixer in ingredients_lists:
-			workstation_request_sheet = frappe.get_doc("Technological Request Sheets LGM", doc["request_sheet_link"]).factory_reference_no
 			# insert record
 			job_card_lgm = frappe.get_doc(dict(
 				doctype='Job Card LGM',
@@ -53,6 +54,7 @@ def create_job_card_lgm(doc):
 				workstation = workstation_request_sheet,
 				for_quantity=1,
 				ingredients=mixer,
+				mixing_cycle=mixing_instruction
 			)).insert()
 
 			job_card_lgm.save()
@@ -77,19 +79,72 @@ def get_ingredients(doc):
 	for data in obj:
 		output[int(data["mixer_no"])-1].append({
 			"ingredient": data["ingredient"],
+			"ingredient_weight": data["weighed"],
 			"mixer_no": data["mixer_no"],
-			"weight": data["weighed"],
+			"weighed": data["weighed"],
 		})
 	return output
 
 
 @frappe.whitelist()
-def validate_request_sheet(doc):
+def create_work_order_lgm(doc):
 	# parse to json object
 	doc = json.loads(doc)
-	# check if work order that is linked to the current request sheet already exists
-	if len(frappe.db.get_all('Work Order LGM', fields="request_sheet_link", filters={"request_sheet_link": doc["request_sheet_link"]})) > 0:
-		frappe.throw(_("Work Order for current request sheet already exists."))
-		return False
-	else:
-		return True
+
+	request_sheet_doc = frappe.get_doc("Technological Request Sheets LGM", doc["request_sheet_link"])
+	# get ingredients
+	ingredients_lists = get_ingredients_from_request_sheet(request_sheet_doc)
+
+	# populate child table 
+	table_list = []
+	for ingredient in ingredients_lists:
+		for ingredient_details in ingredient:
+			table_list.append(
+				{
+					"ingredient": ingredient_details[0],
+					"ingredient_weight": ingredient_details[1],
+					"mixer_no": ingredient_details[2]
+				}
+			)
+
+	# insert record
+	doc["weighing_table_lgm"] = table_list
+	return doc
+
+def get_ingredients_from_request_sheet(doc):
+	# get ingredients from commpounding ingredients child table
+	ingredient_list = []
+	compounding_list_object = doc.compounding_ingredients
+	for list_object in compounding_list_object:
+		mixer_no = int(list_object.select_mixer_no)
+		ingredient_name = list_object.ingredient
+		if ingredient_name != "Masterbatch":
+			ingredient = []
+			for i in range (1, mixer_no+1):
+				if getattr(list_object,"mixer_" + str(i)) is not None:
+					ingredient_weight = getattr(list_object,"mixer_" + str(i))
+					ingredient.append((ingredient_name, ingredient_weight, i))
+			ingredient_list.append(ingredient)
+
+	# get ingredients from curing ingredients child table
+	curing_list_object = doc.curing_ingredients
+	for list_object in curing_list_object:
+		mixer_no = int(list_object.select_mixer_no)
+		ingredient_name = list_object.ingredient
+		if ingredient_name != "Masterbatch":
+			ingredient = []
+			for i in range (1, mixer_no+1):
+				if getattr(list_object,"mixer_" + str(i)) is not None:
+					ingredient_weight = getattr(list_object,"mixer_" + str(i))
+					ingredient.append((ingredient_name, ingredient_weight, i))
+			ingredient_list.append(ingredient)
+	return ingredient_list
+
+@frappe.whitelist()
+def get_all_work_order():
+	data = frappe.get_all("Work Order LGM", fields="request_sheet_link")
+	output = []
+	for forms in data:
+		if forms.request_sheet_link not in output:
+			output.append(forms.request_sheet_link)
+	return output
