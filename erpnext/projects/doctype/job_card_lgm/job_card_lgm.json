@@ -33,6 +33,8 @@
   "column_break_15",
   "section_break_8",
   "ingredients",
+  "section_break_instruction",
+  "mixing_cycle",
   "more_information",
   "operation_id",
   "transferred_qty",
@@ -304,12 +306,23 @@
   {
    "fieldname": "ingredients",
    "fieldtype": "Table",
-   "options": "Job Card Ingredients LGM",
+   "options": "Ingredients Weighing Table LGM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_instruction",
+   "fieldtype": "Section Break",
+   "label": "Instruction"
+  },
+  {
+   "fieldname": "mixing_cycle",
+   "fieldtype": "Table",
+   "options": "Mixing Cycle LGM",
    "read_only": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-03 14:21:51.222866",
+ "modified": "2024-01-04 14:13:30.238162",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Job Card LGM",

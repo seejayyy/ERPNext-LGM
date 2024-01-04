@@ -2,12 +2,30 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Job Card LGM', {
+	setup: function(frm){
+		frm.call({
+			method: "get_all_job_card",
+			callback:function(r){
+				var sheet_name = r.message;
+				// prevent duplicate work order of the same request sheet
+				frm.set_query("work_order", function(){
+					return {
+						filters: {
+							"name": ["not in", sheet_name]
+						}
+					};
+				})
+			}
+		});
+	},
+
 	refresh: function(frm) {
 		frappe.flags.pause_job = 0;
 		frappe.flags.resume_job = 0;
 
 		if (frm.doc.work_order){
 			frm.trigger("for_quantity");
+			frm.trigger("fetch_instructions");
 		}
 
 		if (frm.doc.docstatus == 0 && (frm.doc.for_quantity > frm.doc.total_completed_qty || !frm.doc.for_quantity)
@@ -176,7 +194,6 @@ frappe.ui.form.on('Job Card LGM', {
 	},
 
 	for_quantity: function(frm) {
-		console.log(frm.doc);
 		frm.doc.ingredients = [];
 		frm.call({
 			method: "get_ingredients",
@@ -184,10 +201,23 @@ frappe.ui.form.on('Job Card LGM', {
 				doc:frm.doc
 			},
 			callback: function(r) {
-				console.log(r.message);
 				frm.doc.ingredients = r.message;
 				
 				refresh_field("ingredients");
+			}
+		})
+	},
+
+	fetch_instructions: function(frm) {
+		frm.doc.mixing_cycle = [];
+		frm.call({
+			method: "get_instructions",
+			args:{
+				doc:frm.doc
+			},
+			callback: function(r) {
+				frm.doc.mixing_cycle = r.message;
+				refresh_field("mixing_cycle");
 			}
 		})
 	},

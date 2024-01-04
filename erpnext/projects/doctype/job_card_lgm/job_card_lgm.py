@@ -112,9 +112,9 @@ class JobCardLGM(Document):
 		if self.time_logs:
 			self.status = 'Work In Progress'
 
-		if (self.docstatus == 1 and
-			(self.for_quantity == self.transferred_qty or not self.items)):
-			self.status = 'Completed'
+		# if (self.docstatus == 1 and
+		# 	(self.for_quantity == self.transferred_qty or not self.items)):
+		# 	self.status = 'Completed'
 
 		# if self.status != 'Completed':
 		# 	if self.for_quantity == self.transferred_qty:
@@ -146,3 +146,27 @@ def get_ingredients(doc):
 				'mixer_no': d.mixer_no
 				})
 	return ingredient_list
+
+@frappe.whitelist()
+def get_instructions(doc):
+	doc = json.loads(doc)
+	if not doc['work_order']:
+		return
+	
+	instruction_list = frappe.get_doc('Technological Request Sheets LGM', doc['request_sheet']).mixing_cycle
+	output = []
+	for instruction in instruction_list:
+		output.append({
+			"mixing_time": instruction.mixing_time,
+			"mixing_process": instruction.mixing_process
+		})
+	return output
+
+@frappe.whitelist()
+def get_all_job_card():
+	data = frappe.get_all("Job Card LGM", fields="work_order")
+	output = []
+	for forms in data:
+		if forms.work_order not in output:
+			output.append(forms.work_order)
+	return output
