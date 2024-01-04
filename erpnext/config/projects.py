@@ -131,6 +131,11 @@ def get_data():
 					"description": _("Rheometer Machines LGM."),
 					"onboard": 1,
 				},
+				{
+					"type": "doctype",
+					"name": "Workstation",
+					"description": _("Where manufacturing operations are carried."),
+				},
 			]
 		},
 	]
