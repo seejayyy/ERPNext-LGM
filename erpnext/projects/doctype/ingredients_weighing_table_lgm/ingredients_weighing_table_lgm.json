@@ -36,11 +36,12 @@
    "fieldname": "weighed",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Weighed"
+   "label": "Weighed",
+   "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2024-01-07 15:26:01.326166",
+ "modified": "2024-01-07 16:18:04.413027",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Ingredients Weighing Table LGM",
