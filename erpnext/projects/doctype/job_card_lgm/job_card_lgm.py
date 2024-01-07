@@ -81,12 +81,12 @@ class JobCardLGM(Document):
 
 	def on_submit(self):
 		self.validate_job_card()
-		self.update_work_order()
-		self.set_transferred_qty()
+		# self.update_work_order()
+		# self.set_transferred_qty()
 
-	def on_cancel(self):
-		self.update_work_order()
-		self.set_transferred_qty()
+	# def on_cancel(self):
+	# 	self.update_work_order()
+	# 	self.set_transferred_qty()
 
 	def validate_job_card(self):
 		if not self.time_logs:
