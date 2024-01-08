@@ -400,12 +400,12 @@
   {
    "allow_on_submit": 1,
    "fieldname": "production_waste",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Total Production Waste"
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-04 15:24:11.420057",
+ "modified": "2024-01-08 10:34:18.148202",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",
