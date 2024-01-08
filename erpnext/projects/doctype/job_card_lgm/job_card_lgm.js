@@ -34,6 +34,13 @@ frappe.ui.form.on('Job Card LGM', {
 		}
 	},
 
+	onload: function(frm){
+		if (frm.doc.work_order){
+			frm.trigger("for_quantity");
+			frm.trigger("fetch_instructions");
+		}
+	},
+
 	before_save: function(frm){
 		frm.trigger("for_quantity");
 	},

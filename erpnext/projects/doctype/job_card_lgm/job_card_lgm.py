@@ -136,15 +136,15 @@ def get_ingredients(doc):
 		return
 	ingredient_list = []
 	for d in work_order_doc.weighing_table_lgm:
-		# if not d.operation:
-		# 	frappe.throw(_("Row {0} : Operation is required against the raw material item {1}")
-		# 		.format(d.idx, d.item_code))
-		if doc['for_quantity'] == int(d.mixer_no):
+		print(d.mixer_no)
+		if doc['mixer_no_job_card'] == d.mixer_no:
 			ingredient_list.append({
 				'ingredient': d.ingredient,
-				'weight': d.weighed,
-				'mixer_no': d.mixer_no
+				'ingredient_weight': d.weighed,
+				'mixer_no': d.mixer_no,
+				'weighed': d.weighed
 				})
+		print(ingredient_list)
 	return ingredient_list
 
 @frappe.whitelist()

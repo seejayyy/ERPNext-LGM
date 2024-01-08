@@ -44,6 +44,7 @@ def create_job_card_lgm(doc):
 
 		workstation_request_sheet = frappe.get_doc("Technological Request Sheets LGM", doc["request_sheet_link"]).factory_reference_no
 		mixing_instruction = frappe.get_doc("Technological Request Sheets LGM", doc["request_sheet_link"]).mixing_cycle
+		counter = 1
 		# populate child table 
 		for mixer in ingredients_lists:
 			# insert record
@@ -53,11 +54,13 @@ def create_job_card_lgm(doc):
 				request_sheet=doc["request_sheet_link"],
 				workstation = workstation_request_sheet,
 				for_quantity=1,
+				mixer_no_job_card=counter,
 				ingredients=mixer,
 				mixing_cycle=mixing_instruction
 			)).insert()
 
 			job_card_lgm.save()
+			counter += 1
 
 	return True
 
