@@ -9,8 +9,9 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 	},
 
 	refresh: function(frm) {
-		console.log(frm.doc.docstatus);
+		// console.log(frm.doc.docstatus);
 		if (frm.doc.docstatus === 1) {
+			// adds the button to create work order
 			frm.add_custom_button(__('Create Work Order LGM'), function() {
 				frm.call({
 					method:"create_work_order_lgm",
@@ -26,8 +27,11 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 					},
 				});
 			});
+		}
 
-			
+		// make the dashboard
+		if (frm.doc.docstatus===1) {
+			frm.trigger('show_dashboard');
 		}
 	},
 
@@ -40,6 +44,78 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 			callback:function(r){
 				frm.set_value("mb_waste", r.message);
 			},
+		});
+	},
+
+	show_dashboard: function(frm) {
+		frm.call({
+			method: "query_dashboard_info",
+			args: {
+				doc:frm.doc
+			},
+			callback: function (r){
+				var dashboard_info = r.message;
+				var bars = [];
+				var message = '';
+				var no_of_job_card = frm.doc.compounding_ingredients[0].select_mixer_no;
+				var total_work = 1 + parseInt(no_of_job_card) + 2;
+
+				// work order
+				var title = __('Completed: Created Technological Request Sheet.\n Pending: Create Work Order.');
+				bars.push({
+					'title': title,
+					'width': (1 / total_work * 100 ) + '%',
+					'progress_class': 'progress-bar-success'
+				});
+				message = title;
+
+				
+				if (dashboard_info[0][0].docstatus === 1){
+					title = __("Completed: Created Work Order. Pending: Create Job Cards.");
+					bars.push({
+						'title': title,
+						'width': (1 / total_work * 100 ) + '%',
+						'progress_class': 'progress-bar-success'
+					});
+					message = title;
+				}
+
+				if (dashboard_info[1].length > 0){
+
+					title = __("Completed: Created Job Cards.\n Pending: Submit Job Cards.");
+					bars.push({
+						'title': title,
+						'width': (1 / total_work * 100 ) + '%',
+						'progress_class': 'progress-bar-success'
+					});
+					message = title;
+
+					var completed_job = 0;
+					for (var i = 0; i < dashboard_info[1].length; i++){
+						if (dashboard_info[1][i].docstatus === 1){
+							completed_job += 1;
+							// not all jobs are completed
+							title = __("Completed: Submitted Job {0}. Pending: Job {1}.", [completed_job, completed_job+1]);
+							bars.push({
+								'title': title,
+								'width': (1 / total_work * 100 ) + '%',
+								'progress_class': 'progress-bar-success'
+							});
+							message = title;
+						}
+					}
+					if (completed_job == dashboard_info[1].length){
+						// all jobs are completed
+						title = __("Completed: Submitted Job {0}. Pending: None.", [completed_job]);
+						bars[bars.length - 1]. title = title;
+						message = title;
+					}
+					
+				}
+				
+				console.log(frm);
+				return frm.dashboard.add_progress(__('Status'), bars, message);
+			}
 		});
 	},
 });

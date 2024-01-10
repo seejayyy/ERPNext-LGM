@@ -94,3 +94,11 @@ def get_ingredients(doc):
 			ingredient_list.append(ingredient)
 	print(ingredient_list)
 	return ingredient_list
+
+# simple gets the available doctypes
+@frappe.whitelist()
+def query_dashboard_info(doc):
+	doc = json.loads(doc)
+	work_order = frappe.db.get_list('Work Order LGM', fields="*", filters={'request_sheet_link': doc["name"]})
+	job_card = frappe.db.get_list('Job Card LGM', fields="*", filters={'request_sheet': doc["name"]})
+	return [work_order] + [job_card]
