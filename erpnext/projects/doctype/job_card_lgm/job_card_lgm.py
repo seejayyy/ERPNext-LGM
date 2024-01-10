@@ -63,14 +63,8 @@ class JobCardLGM(Document):
 			return
 
 		doc = frappe.get_doc('Work Order LGM', self.get('work_order'))
-		# if doc.transfer_material_against == 'Work Order' or doc.skip_transfer:
-		# 	return
 
 		for d in doc.weighing_table_lgm:
-			# if not d.operation:
-			# 	frappe.throw(_("Row {0} : Operation is required against the raw material item {1}")
-			# 		.format(d.idx, d.item_code))
-
 			if self.get('for_quantity') == d.mixer_no:
 				self.append('ingredients', {
 					'ingredient': d.ingredient,
@@ -81,12 +75,6 @@ class JobCardLGM(Document):
 
 	def on_submit(self):
 		self.validate_job_card()
-		# self.update_work_order()
-		# self.set_transferred_qty()
-
-	# def on_cancel(self):
-	# 	self.update_work_order()
-	# 	self.set_transferred_qty()
 
 	def validate_job_card(self):
 		if not self.time_logs:
@@ -112,14 +100,6 @@ class JobCardLGM(Document):
 		if self.time_logs:
 			self.status = 'Work In Progress'
 
-		# if (self.docstatus == 1 and
-		# 	(self.for_quantity == self.transferred_qty or not self.items)):
-		# 	self.status = 'Completed'
-
-		# if self.status != 'Completed':
-		# 	if self.for_quantity == self.transferred_qty:
-		# 		self.status = 'Material Transferred'
-
 		if update_status:
 			self.db_set('status', self.status)
 
@@ -129,9 +109,7 @@ def get_ingredients(doc):
 	if not doc['work_order']:
 		return
 	work_order_doc = frappe.get_doc('Work Order LGM', doc['work_order'])
-	# print(doc)
-	# if doc.transfer_material_against == 'Work Order' or doc.skip_transfer:
-	# 	return
+
 	if doc['for_quantity'] == 0:
 		return
 	ingredient_list = []
