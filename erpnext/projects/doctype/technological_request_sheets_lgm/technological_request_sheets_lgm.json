@@ -163,7 +163,8 @@
   },
   {
    "fieldname": "section_mixing_cycle",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Mixing Instructions"
   },
   {
    "fieldname": "mixing_cycle",
@@ -406,7 +407,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-10 15:00:12.465354",
+ "modified": "2024-01-10 15:55:26.672595",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",
