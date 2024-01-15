@@ -133,6 +133,11 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Item",
+					"description": _("All Products or Services."),
+				},
+				{
+					"type": "doctype",
 					"name": "Workstation",
 					"description": _("Where manufacturing operations are carried."),
 				},
