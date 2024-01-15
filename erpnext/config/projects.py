@@ -135,11 +135,13 @@ def get_data():
 					"type": "doctype",
 					"name": "Item",
 					"description": _("All Products or Services."),
+					"onboard": 1,
 				},
 				{
 					"type": "doctype",
 					"name": "Workstation",
 					"description": _("Where manufacturing operations are carried."),
+					"onboard": 1,
 				},
 			]
 		},
