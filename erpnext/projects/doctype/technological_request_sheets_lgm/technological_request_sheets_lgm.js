@@ -69,7 +69,7 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 				});
 				message = title;
 
-				if (dashboard_info[0][0].length > 0){
+				if (dashboard_info[0].length > 0){
 					if (dashboard_info[0][0].docstatus === 1){
 						title = __("Completed: Created Work Order. Pending: Create Job Cards.");
 						bars.push({
