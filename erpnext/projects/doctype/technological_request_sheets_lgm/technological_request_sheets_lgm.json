@@ -83,10 +83,8 @@
   },
   {
    "fieldname": "factory_reference_no",
-   "fieldtype": "Link",
-   "label": "Factory Reference No",
-   "options": "Workstation",
-   "reqd": 1
+   "fieldtype": "Data",
+   "label": "Factory Reference No"
   },
   {
    "fieldname": "nature_of_work",
@@ -99,9 +97,8 @@
   },
   {
    "fieldname": "officer_name",
-   "fieldtype": "Link",
-   "label": "Officer",
-   "options": "Employee"
+   "fieldtype": "Data",
+   "label": "Officer"
   },
   {
    "fieldname": "sheet_date",
@@ -407,7 +404,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-10 15:55:26.672595",
+ "modified": "2024-01-16 16:15:49.050162",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",
