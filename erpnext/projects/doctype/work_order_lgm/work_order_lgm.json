@@ -8,6 +8,7 @@
   "naming_series",
   "amended_from",
   "request_sheet_link",
+  "weighing_station",
   "section_break_2",
   "weighing_table_lgm"
  ],
@@ -48,16 +49,23 @@
    "options": "Work Order LGM",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "weighing_station",
+   "fieldtype": "Link",
+   "label": "Weighing Station",
+   "options": "Workstation"
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-08 16:23:28.411728",
+ "modified": "2024-01-16 15:17:30.828700",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Work Order LGM",
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -67,6 +75,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
