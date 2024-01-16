@@ -69,10 +69,10 @@
   {
    "fieldname": "workstation",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Workstation",
-   "options": "Workstation",
-   "reqd": 1
+   "options": "Workstation"
   },
   {
    "fieldname": "operation",
@@ -319,7 +319,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-08 10:23:23.171165",
+ "modified": "2024-01-16 21:59:43.449565",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Job Card LGM",
