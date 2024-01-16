@@ -69,51 +69,52 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 				});
 				message = title;
 
-				
-				if (dashboard_info[0][0].docstatus === 1){
-					title = __("Completed: Created Work Order. Pending: Create Job Cards.");
-					bars.push({
-						'title': title,
-						'width': (1 / total_work * 100 ) + '%',
-						'progress_class': 'progress-bar-success'
-					});
-					message = title;
-				}
-
-				if (dashboard_info[1].length > 0){
-
-					title = __("Completed: Created Job Cards.\n Pending: Submit Job Cards.");
-					bars.push({
-						'title': title,
-						'width': (1 / total_work * 100 ) + '%',
-						'progress_class': 'progress-bar-success'
-					});
-					message = title;
-
-					var completed_job = 0;
-					for (var i = 0; i < dashboard_info[1].length; i++){
-						if (dashboard_info[1][i].docstatus === 1){
-							completed_job += 1;
-							// not all jobs are completed
-							title = __("Completed: Submitted Job {0}. Pending: Job {1}.", [completed_job, completed_job+1]);
-							bars.push({
-								'title': title,
-								'width': (1 / total_work * 100 ) + '%',
-								'progress_class': 'progress-bar-success'
-							});
-							message = title;
-						}
-					}
-					if (completed_job == dashboard_info[1].length){
-						// all jobs are completed
-						title = __("Completed: Submitted Job {0}. Pending: None.", [completed_job]);
-						bars[bars.length - 1]. title = title;
+				if (dashboard_info[0][0].length > 0){
+					if (dashboard_info[0][0].docstatus === 1){
+						title = __("Completed: Created Work Order. Pending: Create Job Cards.");
+						bars.push({
+							'title': title,
+							'width': (1 / total_work * 100 ) + '%',
+							'progress_class': 'progress-bar-success'
+						});
 						message = title;
 					}
-					
+	
+					if (dashboard_info[1].length > 0){
+	
+						title = __("Completed: Created Job Cards.\n Pending: Submit Job Cards.");
+						bars.push({
+							'title': title,
+							'width': (1 / total_work * 100 ) + '%',
+							'progress_class': 'progress-bar-success'
+						});
+						message = title;
+	
+						var completed_job = 0;
+						for (var i = 0; i < dashboard_info[1].length; i++){
+							if (dashboard_info[1][i].docstatus === 1){
+								completed_job += 1;
+								// not all jobs are completed
+								title = __("Completed: Submitted Job {0}. Pending: Job {1}.", [completed_job, completed_job+1]);
+								bars.push({
+									'title': title,
+									'width': (1 / total_work * 100 ) + '%',
+									'progress_class': 'progress-bar-success'
+								});
+								message = title;
+							}
+						}
+						if (completed_job == dashboard_info[1].length){
+							// all jobs are completed
+							title = __("Completed: Submitted Job {0}. Pending: None.", [completed_job]);
+							bars[bars.length - 1]. title = title;
+							message = title;
+						}
+						
+					}
 				}
 				
-				console.log(frm);
+				// console.log(frm);
 				return frm.dashboard.add_progress(__('Status'), bars, message);
 			}
 		});
