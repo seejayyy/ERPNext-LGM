@@ -14,30 +14,31 @@
   "reference_no",
   "officer_name",
   "sheet_date",
-  "section_compounding_ingredients",
+  "section_stage_1",
+  "col_break_curative",
+  "mixer_internal_mixer",
+  "mixer_two_roll_mill",
+  "col_break_1",
+  "mixer_type",
+  "mixer_fill_factor",
+  "mixer_starting_temperature",
+  "col_break_2",
+  "mixer_volume",
+  "mixer_rpm",
+  "mixer_volume_used",
+  "section_break_stage_1_mixer",
   "compounding_ingredients",
-  "section_break_curing",
-  "curing_ingredients",
-  "section_break_total_weight",
   "total_weight_table",
+  "curing_ingredients",
+  "mixing_cycle",
+  "section_stage_2",
+  "section_stage_3",
+  "section_stage_4",
   "section_break_waste",
   "mb_waste",
   "col_break_waste",
   "production_waste",
-  "section_mixer",
-  "mixer_type",
-  "mixer_fill_factor",
-  "mixer_starting_temperature",
-  "col_break_mixer",
-  "mixer_volume",
-  "mixer_volume_used",
-  "mixer_rpm",
-  "section_mixing_cycle",
-  "mixing_cycle",
   "section_curing",
-  "col_break_curative",
-  "curative_two_roll",
-  "curative_mixer",
   "col_break_rheometer",
   "curing_machine",
   "curing_temperature",
@@ -106,20 +107,12 @@
    "label": "Date"
   },
   {
-   "fieldname": "section_compounding_ingredients",
-   "fieldtype": "Section Break",
-   "label": "Compounding Ingredients"
-  },
-  {
+   "depends_on": "eval:doc.mixer_internal_mixer==1",
    "fieldname": "compounding_ingredients",
    "fieldtype": "Table",
+   "label": "Compounding Ingredients",
    "options": "Compounding Ingredients LGM",
    "reqd": 1
-  },
-  {
-   "fieldname": "section_mixer",
-   "fieldtype": "Section Break",
-   "label": "Mixer Details"
   },
   {
    "fieldname": "mixer_type",
@@ -139,10 +132,6 @@
    "label": "Starting Temperature (\u00b0C)"
   },
   {
-   "fieldname": "col_break_mixer",
-   "fieldtype": "Column Break"
-  },
-  {
    "fetch_from": "mixer_type.mixer_volume",
    "fieldname": "mixer_volume",
    "fieldtype": "Data",
@@ -159,13 +148,9 @@
    "label": "Rotor Speed (RPM)"
   },
   {
-   "fieldname": "section_mixing_cycle",
-   "fieldtype": "Section Break",
-   "label": "Mixing Instructions"
-  },
-  {
    "fieldname": "mixing_cycle",
    "fieldtype": "Table",
+   "label": "Mixing Instructions",
    "options": "Mixing Cycle LGM"
   },
   {
@@ -313,25 +298,15 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "0",
-   "fieldname": "curative_two_roll",
-   "fieldtype": "Check",
-   "label": "Two Roll Mill"
-  },
-  {
-   "default": "0",
-   "fieldname": "curative_mixer",
-   "fieldtype": "Check",
-   "label": "Internal Mixer"
-  },
-  {
    "fieldname": "col_break_curative",
    "fieldtype": "Column Break",
-   "label": "Curing on"
+   "label": "Mixer Details"
   },
   {
+   "depends_on": "eval:doc.mixer_two_roll_mill==1",
    "fieldname": "curing_ingredients",
    "fieldtype": "Table",
+   "label": "Curing Ingredients",
    "options": "Curing Ingredients LGM",
    "reqd": 1
   },
@@ -367,20 +342,12 @@
    "label": "Scorch "
   },
   {
+   "depends_on": "eval:doc.mixer_internal_mixer==1",
    "fieldname": "total_weight_table",
    "fieldtype": "Table",
+   "label": "Total Weight",
    "options": "Total Weight Table LGM",
    "reqd": 1
-  },
-  {
-   "fieldname": "section_break_curing",
-   "fieldtype": "Section Break",
-   "label": "Curing Ingredients"
-  },
-  {
-   "fieldname": "section_break_total_weight",
-   "fieldtype": "Section Break",
-   "label": "Total Weight"
   },
   {
    "fieldname": "section_break_waste",
@@ -401,10 +368,54 @@
    "fieldname": "production_waste",
    "fieldtype": "Data",
    "label": "Total Production Waste"
+  },
+  {
+   "fieldname": "section_stage_1",
+   "fieldtype": "Section Break",
+   "label": "Stage 1"
+  },
+  {
+   "fieldname": "section_stage_2",
+   "fieldtype": "Section Break",
+   "label": "Stage 2"
+  },
+  {
+   "fieldname": "section_stage_3",
+   "fieldtype": "Section Break",
+   "label": "Stage 3"
+  },
+  {
+   "fieldname": "section_stage_4",
+   "fieldtype": "Section Break",
+   "label": "Stage 4"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_stage_1_mixer",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "mixer_internal_mixer",
+   "fieldtype": "Check",
+   "label": "Internal Mixer"
+  },
+  {
+   "default": "0",
+   "fieldname": "mixer_two_roll_mill",
+   "fieldtype": "Check",
+   "label": "Two Roll Mill"
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-16 16:20:58.172838",
+ "modified": "2024-01-17 15:02:07.240815",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",

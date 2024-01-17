@@ -5,9 +5,9 @@
  "engine": "InnoDB",
  "field_order": [
   "ingredient",
+  "select_mixer_no",
   "col_break_ingredient",
   "ingredient_density",
-  "select_mixer_no",
   "section_break",
   "mixer_1",
   "mixer_2",
@@ -24,7 +24,6 @@
   "mixer_13",
   "mixer_14",
   "mixer_15",
-  "col_break_mixer",
   "formulation_mixer_1",
   "formulation_mixer_2",
   "formulation_mixer_3",
@@ -45,14 +44,15 @@
   {
    "fieldname": "ingredient",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Ingredient",
-   "options": "Item",
-   "reqd": 1
+   "options": "Item"
   },
   {
    "fieldname": "mixer_1",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Ingredient Weight Mixer 1"
   },
@@ -60,89 +60,99 @@
    "depends_on": "eval:doc.select_mixer_no>=2;",
    "fieldname": "mixer_2",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=3;",
    "fieldname": "mixer_3",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 3"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=4;",
    "fieldname": "mixer_4",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 4"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=5;",
    "fieldname": "mixer_5",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 5"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=6;",
    "fieldname": "mixer_6",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 6"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=7;",
    "fieldname": "mixer_7",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 7"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=8;",
    "fieldname": "mixer_8",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 8"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=9;",
    "fieldname": "mixer_9",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 9"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=10;",
    "fieldname": "mixer_10",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 10"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=11;",
    "fieldname": "mixer_11",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 11"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=12;",
    "fieldname": "mixer_12",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 12"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=13;",
    "fieldname": "mixer_13",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 13"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=14;",
    "fieldname": "mixer_14",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 14"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=15;",
    "fieldname": "mixer_15",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Ingredient Weight Mixer 15"
-  },
-  {
-   "fieldname": "col_break_mixer",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "section_break",
@@ -155,9 +165,9 @@
   {
    "fieldname": "ingredient_density",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_list_view": 1,
-   "label": "Ingredient Density",
-   "reqd": 1
+   "label": "Ingredient Density"
   },
   {
    "fieldname": "formulation_mixer_1",
@@ -258,7 +268,7 @@
   }
  ],
  "istable": 1,
- "modified": "2023-12-27 15:50:01.236794",
+ "modified": "2024-01-17 16:27:46.246027",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Compounding Ingredients LGM",

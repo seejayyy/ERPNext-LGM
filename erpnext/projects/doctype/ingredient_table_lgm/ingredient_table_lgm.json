@@ -1,0 +1,33 @@
+{
+ "creation": "2024-01-17 16:31:39.792080",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ingredient",
+  "ingredient_density"
+ ],
+ "fields": [
+  {
+   "fieldname": "ingredient",
+   "fieldtype": "Data",
+   "label": "Ingredient Name"
+  },
+  {
+   "fieldname": "ingredient_density",
+   "fieldtype": "Data",
+   "label": "Ingredient Density"
+  }
+ ],
+ "istable": 1,
+ "modified": "2024-01-17 16:31:39.792080",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Ingredient Table LGM",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
