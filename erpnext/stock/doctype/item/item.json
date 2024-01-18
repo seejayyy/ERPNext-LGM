@@ -17,6 +17,7 @@
   "item_name",
   "item_group",
   "is_item_from_hub",
+  "item_density",
   "stock_uom",
   "column_break0",
   "disabled",
@@ -345,8 +346,7 @@
   {
    "fieldname": "shelf_life_in_days",
    "fieldtype": "Int",
-   "label": "Shelf Life In Days",
-   "mandatory_depends_on": "eval:doc.has_batch_no && doc.has_expiry_date"
+   "label": "Shelf Life In Days"
   },
   {
    "default": "2099-12-31",
@@ -1059,16 +1059,20 @@
    "fieldname": "website_image_alt",
    "fieldtype": "Data",
    "label": "Image Description"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "item_density",
+   "fieldtype": "Data",
+   "label": "Item Density"
   }
  ],
  "has_web_view": 1,
  "icon": "fa fa-tag",
  "idx": 2,
  "image_field": "image",
- "index_web_pages_for_search": 1,
- "links": [],
  "max_attachments": 1,
- "modified": "2021-03-18 11:24:58.384992",
+ "modified": "2024-01-18 14:49:28.742605",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

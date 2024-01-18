@@ -11,16 +11,21 @@
   {
    "fieldname": "ingredient",
    "fieldtype": "Data",
-   "label": "Ingredient Name"
+   "in_list_view": 1,
+   "label": "Ingredient Name",
+   "reqd": 1
   },
   {
+   "fetch_from": "ingredient.item_density",
    "fieldname": "ingredient_density",
    "fieldtype": "Data",
-   "label": "Ingredient Density"
+   "in_list_view": 1,
+   "label": "Ingredient Density",
+   "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2024-01-17 16:31:39.792080",
+ "modified": "2024-01-18 15:09:23.387232",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Ingredient Table LGM",
