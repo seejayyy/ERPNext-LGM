@@ -119,4 +119,28 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 			}
 		});
 	},
+
+	mixer_fill_factor_1: function(frm){
+		frm.set_value("mixer_volume_used_1",frm.doc.mixer_fill_factor_1 * frm.doc.mixer_volume_1);
+	},
+
+	mixer_fill_factor_2: function(frm){
+		console.log("hi")
+		frm.set_value("mixer_volume_used_2",frm.doc.mixer_fill_factor_2 * frm.doc.mixer_volume_2);
+	},
+
+	mixer_fill_factor_3: function(frm){
+		console.log("hi")
+		frm.set_value("mixer_volume_used_3",frm.doc.mixer_fill_factor_3 * frm.doc.mixer_volume_3);
+	},
+
+	mixer_fill_factor_4: function(frm){
+		console.log("hi")
+		frm.set_value("mixer_volume_used_4",frm.doc.mixer_fill_factor_4 * frm.doc.mixer_volume_4);
+	},
+
+	mixer_fill_factor_5: function(frm){
+		console.log("hi")
+		frm.set_value("mixer_volume_used_5",frm.doc.mixer_fill_factor_5 * frm.doc.mixer_volume_5);
+	},
 });
