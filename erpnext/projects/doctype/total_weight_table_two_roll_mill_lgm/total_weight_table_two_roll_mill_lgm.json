@@ -71,91 +71,106 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Comp. Weight Mixer 1 (gm)",
+   "precision": "2",
    "reqd": 1
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=2;",
    "fieldname": "composition_weight_mixer_2",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 2 (gm)"
+   "label": "Comp. Weight Mixer 2 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=3;",
    "fieldname": "composition_weight_mixer_3",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 3 (gm)"
+   "label": "Comp. Weight Mixer 3 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=4;",
    "fieldname": "composition_weight_mixer_4",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 4 (gm)"
+   "label": "Comp. Weight Mixer 4 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=5;",
    "fieldname": "composition_weight_mixer_5",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 5 (gm)"
+   "label": "Comp. Weight Mixer 5 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=6;",
    "fieldname": "composition_weight_mixer_6",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 6 (gm)"
+   "label": "Comp. Weight Mixer 6 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=7;",
    "fieldname": "composition_weight_mixer_7",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 7 (gm)"
+   "label": "Comp. Weight Mixer 7 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=8;",
    "fieldname": "composition_weight_mixer_8",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 8 (gm)"
+   "label": "Comp. Weight Mixer 8 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=9;",
    "fieldname": "composition_weight_mixer_9",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 9 (gm)"
+   "label": "Comp. Weight Mixer 9 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=10;",
    "fieldname": "composition_weight_mixer_10",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 10 (gm)"
+   "label": "Comp. Weight Mixer 10 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=11;",
    "fieldname": "composition_weight_mixer_11",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 11 (gm)"
+   "label": "Comp. Weight Mixer 11 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=12;",
    "fieldname": "composition_weight_mixer_12",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 12 (gm)"
+   "label": "Comp. Weight Mixer 12 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=13;",
    "fieldname": "composition_weight_mixer_13",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 13 (gm)"
+   "label": "Comp. Weight Mixer 13 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=14;",
    "fieldname": "composition_weight_mixer_14",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 14 (gm)"
+   "label": "Comp. Weight Mixer 14 (gm)",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=15;",
    "fieldname": "composition_weight_mixer_15",
    "fieldtype": "Data",
-   "label": "Comp. Weight Mixer 15 (gm)"
+   "label": "Comp. Weight Mixer 15 (gm)",
+   "precision": "2"
   },
   {
    "fieldname": "col_break_1",
@@ -166,91 +181,106 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Formulation Parts per Hundred Mixer 1",
+   "precision": "2",
    "reqd": 1
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=2;",
    "fieldname": "formulation_mixer_2",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 2"
+   "label": "Formulation Parts per Hundred Mixer 2",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=3;",
    "fieldname": "formulation_mixer_3",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 3"
+   "label": "Formulation Parts per Hundred Mixer 3",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=4;",
    "fieldname": "formulation_mixer_4",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 4"
+   "label": "Formulation Parts per Hundred Mixer 4",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=5;",
    "fieldname": "formulation_mixer_5",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 5"
+   "label": "Formulation Parts per Hundred Mixer 5",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=6;",
    "fieldname": "formulation_mixer_6",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 6"
+   "label": "Formulation Parts per Hundred Mixer 6",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=7;",
    "fieldname": "formulation_mixer_7",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 7"
+   "label": "Formulation Parts per Hundred Mixer 7",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=8;",
    "fieldname": "formulation_mixer_8",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 8"
+   "label": "Formulation Parts per Hundred Mixer 8",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=9;",
    "fieldname": "formulation_mixer_9",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 9"
+   "label": "Formulation Parts per Hundred Mixer 9",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=10;",
    "fieldname": "formulation_mixer_10",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 10"
+   "label": "Formulation Parts per Hundred Mixer 10",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=11;",
    "fieldname": "formulation_mixer_11",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 11"
+   "label": "Formulation Parts per Hundred Mixer 11",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=12;",
    "fieldname": "formulation_mixer_12",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 12"
+   "label": "Formulation Parts per Hundred Mixer 12",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=13;",
    "fieldname": "formulation_mixer_13",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 13"
+   "label": "Formulation Parts per Hundred Mixer 13",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=14;",
    "fieldname": "formulation_mixer_14",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 14"
+   "label": "Formulation Parts per Hundred Mixer 14",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=15;",
    "fieldname": "formulation_mixer_15",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 15"
+   "label": "Formulation Parts per Hundred Mixer 15",
+   "precision": "2"
   },
   {
    "fieldname": "col_break_2",
@@ -261,95 +291,110 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Comp. Multp. Factor Mixer 1",
+   "precision": "2",
    "reqd": 1
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=2;",
    "fieldname": "composition_mult_factor_mixer_2",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 2"
+   "label": "Comp. Multp. Factor Mixer 2",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=3;",
    "fieldname": "composition_mult_factor_mixer_3",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 3"
+   "label": "Comp. Multp. Factor Mixer 3",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=4;",
    "fieldname": "composition_mult_factor_mixer_4",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 4"
+   "label": "Comp. Multp. Factor Mixer 4",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=5;",
    "fieldname": "composition_mult_factor_mixer_5",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 5"
+   "label": "Comp. Multp. Factor Mixer 5",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=6;",
    "fieldname": "composition_mult_factor_mixer_6",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 6"
+   "label": "Comp. Multp. Factor Mixer 6",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=7;",
    "fieldname": "composition_mult_factor_mixer_7",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 7"
+   "label": "Comp. Multp. Factor Mixer 7",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=8;",
    "fieldname": "composition_mult_factor_mixer_8",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 8"
+   "label": "Comp. Multp. Factor Mixer 8",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=9;",
    "fieldname": "composition_mult_factor_mixer_9",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 9"
+   "label": "Comp. Multp. Factor Mixer 9",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=10;",
    "fieldname": "composition_mult_factor_mixer_10",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 10"
+   "label": "Comp. Multp. Factor Mixer 10",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=11;",
    "fieldname": "composition_mult_factor_mixer_11",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 11"
+   "label": "Comp. Multp. Factor Mixer 11",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=12;",
    "fieldname": "composition_mult_factor_mixer_12",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 12"
+   "label": "Comp. Multp. Factor Mixer 12",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=13;",
    "fieldname": "composition_mult_factor_mixer_13",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 13"
+   "label": "Comp. Multp. Factor Mixer 13",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=14;",
    "fieldname": "composition_mult_factor_mixer_14",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 14"
+   "label": "Comp. Multp. Factor Mixer 14",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=15;",
    "fieldname": "composition_mult_factor_mixer_15",
    "fieldtype": "Data",
-   "label": "Comp. Multp. Factor Mixer 15"
+   "label": "Comp. Multp. Factor Mixer 15",
+   "precision": "2"
   }
  ],
  "istable": 1,
- "modified": "2024-01-18 15:21:28.458725",
+ "modified": "2024-01-22 14:35:12.523266",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Total Weight Table Two Roll Mill LGM",

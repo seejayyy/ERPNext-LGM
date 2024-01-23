@@ -35,7 +35,7 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 		}
 	},
 
-	before_save: function(frm){
+	on_submit: function(frm){
 		frm.call({
 			method:"calculate_waste",
 			args:{
@@ -43,6 +43,32 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 			},
 			callback:function(r){
 				frm.set_value("mb_waste", r.message);
+			},
+		});
+	},
+
+	after_save: function(frm){
+		console.log(frm)
+		frm.call({
+			method:"calculate_total_weight",
+			args:{
+				doc:frm.doc
+			},
+			callback:function(r){
+					console.log(r.message);
+					var output = r.message;
+					var stages = output.length;
+					for (var i = 1; i < stages+1; i++){
+						var batch_name = "batch_weight_lgm_" + i;
+						var total_weight_name = "mixer_internal_mixer_" + i; 
+						if (frm.doc[total_weight_name] != 1){
+							var total_weight_name = "mixer_two_roll_mill_" + i;
+						}
+						frm.doc[batch_name] = output[i-1]
+					}
+					// frm.doc.
+					// frm.set_value("mb_waste", r.message);
+				
 			},
 		});
 	},

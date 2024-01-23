@@ -27,10 +27,11 @@
   "mixer_volume_used_1",
   "mixer_rpm_1",
   "section_break_stage_1_mixer",
-  "compounding_ingredients_1",
+  "formulation_parts_1",
   "col_break_1_3",
   "ingredient_table_1",
   "section_total_weight_1",
+  "batch_weight_lgm_1",
   "total_weight_table_1",
   "total_weight_table_two_roll_mill_1",
   "mixing_cycle_1",
@@ -47,10 +48,11 @@
   "mixer_volume_used_2",
   "mixer_rpm_2",
   "section_break_stage_2_mixer",
-  "compounding_ingredients_2",
+  "formulation_parts_2",
   "col_break_2_3",
   "ingredient_table_2",
   "section_total_weight_2",
+  "batch_weight_lgm_2",
   "total_weight_table_2",
   "total_weight_table_two_roll_mill_2",
   "mixing_cycle_2",
@@ -67,53 +69,14 @@
   "mixer_volume_used_3",
   "mixer_rpm_3",
   "section_break_stage_3_mixer",
-  "compounding_ingredients_3",
+  "formulation_parts_3",
   "col_break_3_3",
   "ingredient_table_3",
   "section_total_weight_3",
+  "batch_weight_lgm_3",
   "total_weight_table_3",
   "total_weight_table_two_roll_mill_3",
   "mixing_cycle_3",
-  "section_stage_4",
-  "data_71",
-  "data_72",
-  "data_73",
-  "data_74",
-  "data_75",
-  "data_76",
-  "data_77",
-  "data_78",
-  "data_79",
-  "data_80",
-  "data_81",
-  "data_82",
-  "data_83",
-  "data_84",
-  "data_85",
-  "data_86",
-  "data_87",
-  "data_88",
-  "data_89",
-  "section_stage_5",
-  "data_91",
-  "data_92",
-  "data_93",
-  "data_94",
-  "data_95",
-  "data_96",
-  "data_97",
-  "data_98",
-  "data_99",
-  "data_100",
-  "data_101",
-  "data_102",
-  "data_103",
-  "data_104",
-  "data_105",
-  "data_106",
-  "data_107",
-  "data_108",
-  "data_109",
   "section_break_waste",
   "mb_waste",
   "col_break_waste",
@@ -397,11 +360,6 @@
    "label": "Stage 3"
   },
   {
-   "fieldname": "section_stage_4",
-   "fieldtype": "Section Break",
-   "label": "Stage 4"
-  },
-  {
    "fieldname": "section_break_stage_1_mixer",
    "fieldtype": "Section Break"
   },
@@ -432,8 +390,9 @@
   {
    "depends_on": "mixer_internal_mixer_1",
    "fieldname": "mixer_fill_factor_1",
-   "fieldtype": "Data",
-   "label": "Fill Factor"
+   "fieldtype": "Float",
+   "label": "Fill Factor",
+   "length": 2
   },
   {
    "depends_on": "mixer_internal_mixer_1",
@@ -468,13 +427,6 @@
   {
    "fieldname": "col_break_1_2",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "compounding_ingredients_1",
-   "fieldtype": "Table",
-   "label": "Compounding Ingredients",
-   "options": "Compounding Ingredients LGM",
-   "reqd": 1
   },
   {
    "fieldname": "col_break_1_3",
@@ -542,7 +494,8 @@
    "depends_on": "mixer_internal_mixer_2",
    "fieldname": "mixer_fill_factor_2",
    "fieldtype": "Data",
-   "label": "Fill Factor"
+   "label": "Fill Factor",
+   "length": 2
   },
   {
    "depends_on": "mixer_internal_mixer_2",
@@ -579,12 +532,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "compounding_ingredients_2",
-   "fieldtype": "Table",
-   "label": "Compounding Ingredients",
-   "options": "Compounding Ingredients LGM"
-  },
-  {
    "fieldname": "col_break_2_3",
    "fieldtype": "Column Break"
   },
@@ -619,163 +566,6 @@
    "options": "Mixing Cycle LGM"
   },
   {
-   "fieldname": "data_71",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_72",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_73",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_74",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_75",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_76",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_77",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_78",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_79",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_80",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_81",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_82",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_83",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_84",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_85",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_86",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_87",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_88",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_89",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "section_stage_5",
-   "fieldtype": "Section Break",
-   "label": "Stage 5"
-  },
-  {
-   "fieldname": "data_91",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_92",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_93",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_94",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_95",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_96",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_97",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_98",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_99",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_100",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_101",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_102",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_103",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_104",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_105",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_106",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_107",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_108",
-   "fieldtype": "Data"
-  },
-  {
-   "fieldname": "data_109",
-   "fieldtype": "Data"
-  },
-  {
    "fieldname": "col_break_curative_3",
    "fieldtype": "Column Break",
    "label": "Mixer Details"
@@ -807,7 +597,8 @@
    "depends_on": "mixer_internal_mixer_3",
    "fieldname": "mixer_fill_factor_3",
    "fieldtype": "Data",
-   "label": "Fill Factor"
+   "label": "Fill Factor",
+   "length": 2
   },
   {
    "depends_on": "mixer_internal_mixer_3",
@@ -844,12 +635,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "compounding_ingredients_3",
-   "fieldtype": "Table",
-   "label": "Compounding Ingredients",
-   "options": "Compounding Ingredients LGM"
-  },
-  {
    "fieldname": "col_break_3_3",
    "fieldtype": "Column Break"
   },
@@ -882,10 +667,46 @@
    "fieldtype": "Table",
    "label": "Mixing Instructions",
    "options": "Mixing Cycle LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_1",
+   "fieldtype": "Table",
+   "label": "Batch Weight Table",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_2",
+   "fieldtype": "Table",
+   "label": "Batch Weight Table",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_3",
+   "fieldtype": "Table",
+   "label": "Batch Weight Table ",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "formulation_parts_1",
+   "fieldtype": "Table",
+   "label": "Formulation Parts Table",
+   "options": "Compounding Ingredients LGM"
+  },
+  {
+   "fieldname": "formulation_parts_2",
+   "fieldtype": "Table",
+   "label": "Compounding Ingredients",
+   "options": "Compounding Ingredients LGM"
+  },
+  {
+   "fieldname": "formulation_parts_3",
+   "fieldtype": "Table",
+   "label": "Compounding Ingredients",
+   "options": "Compounding Ingredients LGM"
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-19 16:45:44.829376",
+ "modified": "2024-01-23 11:23:12.420166",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",

@@ -71,6 +71,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "MB Multp. Factor Mixer 1",
+   "precision": "2",
    "reqd": 1
   },
   {
@@ -82,266 +83,310 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Density MB Mixer 1",
+   "precision": "2",
    "reqd": 1
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=2;",
    "fieldname": "masterbatch_mult_factor_mixer_2",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 2"
+   "label": "MB Multp. Factor Mixer 2",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=3;",
    "fieldname": "masterbatch_mult_factor_mixer_3",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 3"
+   "label": "MB Multp. Factor Mixer 3",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=4;",
    "fieldname": "masterbatch_mult_factor_mixer_4",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 4"
+   "label": "MB Multp. Factor Mixer 4",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=5;",
    "fieldname": "masterbatch_mult_factor_mixer_5",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 5"
+   "label": "MB Multp. Factor Mixer 5",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=6;",
    "fieldname": "masterbatch_mult_factor_mixer_6",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 6"
+   "label": "MB Multp. Factor Mixer 6",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=7;",
    "fieldname": "masterbatch_mult_factor_mixer_7",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 7"
+   "label": "MB Multp. Factor Mixer 7",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=8;",
    "fieldname": "masterbatch_mult_factor_mixer_8",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 8"
+   "label": "MB Multp. Factor Mixer 8",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=9;",
    "fieldname": "masterbatch_mult_factor_mixer_9",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 9"
+   "label": "MB Multp. Factor Mixer 9",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=10;",
    "fieldname": "masterbatch_mult_factor_mixer_10",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 10"
+   "label": "MB Multp. Factor Mixer 10",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=11;",
    "fieldname": "masterbatch_mult_factor_mixer_11",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 11"
+   "label": "MB Multp. Factor Mixer 11",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=12;",
    "fieldname": "masterbatch_mult_factor_mixer_12",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 12"
+   "label": "MB Multp. Factor Mixer 12",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=13;",
    "fieldname": "masterbatch_mult_factor_mixer_13",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 13"
+   "label": "MB Multp. Factor Mixer 13",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=14;",
    "fieldname": "masterbatch_mult_factor_mixer_14",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 14"
+   "label": "MB Multp. Factor Mixer 14",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=15;",
    "fieldname": "masterbatch_mult_factor_mixer_15",
    "fieldtype": "Data",
-   "label": "MB Multp. Factor Mixer 15"
+   "label": "MB Multp. Factor Mixer 15",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=2;",
    "fieldname": "density_masterbatch_mixer_2",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 2"
+   "label": "Density MB Mixer 2",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=3;",
    "fieldname": "density_masterbatch_mixer_3",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 3"
+   "label": "Density MB Mixer 3",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=4;",
    "fieldname": "density_masterbatch_mixer_4",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 4"
+   "label": "Density MB Mixer 4",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=5;",
    "fieldname": "density_masterbatch_mixer_5",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 5"
+   "label": "Density MB Mixer 5",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=6;",
    "fieldname": "density_masterbatch_mixer_6",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 6"
+   "label": "Density MB Mixer 6",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=7;",
    "fieldname": "density_masterbatch_mixer_7",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 7"
+   "label": "Density MB Mixer 7",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=8;",
    "fieldname": "density_masterbatch_mixer_8",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 8"
+   "label": "Density MB Mixer 8",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=9;",
    "fieldname": "density_masterbatch_mixer_9",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 9"
+   "label": "Density MB Mixer 9",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=10;",
    "fieldname": "density_masterbatch_mixer_10",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 10"
+   "label": "Density MB Mixer 10",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=11;",
    "fieldname": "density_masterbatch_mixer_11",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 11"
+   "label": "Density MB Mixer 11",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=12;",
    "fieldname": "density_masterbatch_mixer_12",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 12"
+   "label": "Density MB Mixer 12",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=13;",
    "fieldname": "density_masterbatch_mixer_13",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 13"
+   "label": "Density MB Mixer 13",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=14;",
    "fieldname": "density_masterbatch_mixer_14",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 14"
+   "label": "Density MB Mixer 14",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=15;",
    "fieldname": "density_masterbatch_mixer_15",
    "fieldtype": "Data",
-   "label": "Density MB Mixer 15"
+   "label": "Density MB Mixer 15",
+   "precision": "2"
   },
   {
    "fieldname": "formulation_mixer_1",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Formulation Parts per Hundred Mixer 1",
+   "precision": "2",
    "reqd": 1
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=2;",
    "fieldname": "formulation_mixer_2",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 2"
+   "label": "Formulation Parts per Hundred Mixer 2",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=3;",
    "fieldname": "formulation_mixer_3",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 3"
+   "label": "Formulation Parts per Hundred Mixer 3",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=4;",
    "fieldname": "formulation_mixer_4",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 4"
+   "label": "Formulation Parts per Hundred Mixer 4",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=5;",
    "fieldname": "formulation_mixer_5",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 5"
+   "label": "Formulation Parts per Hundred Mixer 5",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=6;",
    "fieldname": "formulation_mixer_6",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 6"
+   "label": "Formulation Parts per Hundred Mixer 6",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=7;",
    "fieldname": "formulation_mixer_7",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 7"
+   "label": "Formulation Parts per Hundred Mixer 7",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=8;",
    "fieldname": "formulation_mixer_8",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 8"
+   "label": "Formulation Parts per Hundred Mixer 8",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=9;",
    "fieldname": "formulation_mixer_9",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 9"
+   "label": "Formulation Parts per Hundred Mixer 9",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=10;",
    "fieldname": "formulation_mixer_10",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 10"
+   "label": "Formulation Parts per Hundred Mixer 10",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=11;",
    "fieldname": "formulation_mixer_11",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 11"
+   "label": "Formulation Parts per Hundred Mixer 11",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=12;",
    "fieldname": "formulation_mixer_12",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 12"
+   "label": "Formulation Parts per Hundred Mixer 12",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=13;",
    "fieldname": "formulation_mixer_13",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 13"
+   "label": "Formulation Parts per Hundred Mixer 13",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=14;",
    "fieldname": "formulation_mixer_14",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 14"
+   "label": "Formulation Parts per Hundred Mixer 14",
+   "precision": "2"
   },
   {
    "depends_on": "eval:doc.select_mixer_no>=15;",
    "fieldname": "formulation_mixer_15",
    "fieldtype": "Data",
-   "label": "Formulation Parts per Hundred Mixer 15"
+   "label": "Formulation Parts per Hundred Mixer 15",
+   "precision": "2"
   },
   {
    "fieldname": "col_break_4",
@@ -349,7 +394,7 @@
   }
  ],
  "istable": 1,
- "modified": "2024-01-18 15:20:09.813626",
+ "modified": "2024-01-22 14:43:36.847116",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Total Weight Table LGM",
