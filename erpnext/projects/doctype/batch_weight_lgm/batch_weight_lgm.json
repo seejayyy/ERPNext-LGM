@@ -1,0 +1,33 @@
+{
+ "creation": "2024-01-23 10:41:15.010297",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ingredient",
+  "ingredient_weight"
+ ],
+ "fields": [
+  {
+   "fieldname": "ingredient",
+   "fieldtype": "Data",
+   "label": "Ingredient"
+  },
+  {
+   "fieldname": "ingredient_weight",
+   "fieldtype": "Data",
+   "label": "Ingredient Weight"
+  }
+ ],
+ "istable": 1,
+ "modified": "2024-01-23 10:41:15.010297",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Batch Weight LGM",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
