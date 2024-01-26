@@ -1,32 +1,42 @@
 {
- "creation": "2024-01-23 10:41:15.010297",
+ "creation": "2024-01-24 10:39:22.243323",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "mixer_no",
   "ingredient",
   "ingredient_weight"
  ],
  "fields": [
   {
    "fieldname": "ingredient",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Ingredient",
+   "options": "Item"
+  },
+  {
+   "fieldname": "mixer_no",
    "fieldtype": "Data",
-   "label": "Ingredient"
+   "in_list_view": 1,
+   "label": "Recipe No"
   },
   {
    "fieldname": "ingredient_weight",
    "fieldtype": "Data",
-   "label": "Ingredient Weight"
+   "in_list_view": 1,
+   "label": "Ingredient Weight 1",
+   "precision": "2"
   }
  ],
  "istable": 1,
- "modified": "2024-01-23 10:41:15.010297",
+ "modified": "2024-01-26 14:44:11.909233",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Batch Weight LGM",
  "owner": "Administrator",
  "permissions": [],
- "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

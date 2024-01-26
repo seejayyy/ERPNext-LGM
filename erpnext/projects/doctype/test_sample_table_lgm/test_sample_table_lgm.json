@@ -1,0 +1,36 @@
+{
+ "creation": "2024-01-26 10:57:56.777068",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "test_sample",
+  "no_required"
+ ],
+ "fields": [
+  {
+   "fieldname": "test_sample",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Test Sample",
+   "options": "Test Sample Type LGM"
+  },
+  {
+   "fieldname": "no_required",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "No. Required"
+  }
+ ],
+ "istable": 1,
+ "modified": "2024-01-26 11:00:32.003944",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Test Sample Table LGM",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

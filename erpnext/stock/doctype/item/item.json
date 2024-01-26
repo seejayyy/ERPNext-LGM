@@ -1065,7 +1065,7 @@
    "fieldname": "item_density",
    "fieldtype": "Float",
    "label": "Item Density",
-   "precision": "2"
+   "precision": "4"
   }
  ],
  "has_web_view": 1,
@@ -1073,7 +1073,7 @@
  "idx": 2,
  "image_field": "image",
  "max_attachments": 1,
- "modified": "2024-01-22 10:43:35.043428",
+ "modified": "2024-01-26 15:04:48.239994",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Item",

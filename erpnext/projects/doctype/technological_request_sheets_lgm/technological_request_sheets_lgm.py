@@ -10,91 +10,25 @@ from frappe import _
 class TechnologicalRequestSheetsLGM(Document):
 	pass
 
-"""Calculates the total waste of ingredients before production"""
-@frappe.whitelist()
-def calculate_waste(doc):
-	doc = json.loads(doc)
+# """Calculates the total waste of ingredients before production"""
+# @frappe.whitelist()
+# def calculate_waste(doc):
+# 	doc = json.loads(doc)
 		
-	mb = doc["compounding_ingredients"][len(doc["compounding_ingredients"]) -1]
-	curing = doc["curing_ingredients"][0]
+# 	mb = doc["compounding_ingredients"][len(doc["compounding_ingredients"]) -1]
+# 	curing = doc["curing_ingredients"][0]
 
-	mb_mixer_count = int(mb["select_mixer_no"])
-	mb_waste = 0
+# 	mb_mixer_count = int(mb["select_mixer_no"])
+# 	mb_waste = 0
 
-	for i in range(1, mb_mixer_count+1):
-		waste_name = "mixer_" + str(i)
-		mixer_name = "mixer_" + str(i)
-		mb_waste += float(mb[waste_name]) - float(curing[mixer_name])
+# 	for i in range(1, mb_mixer_count+1):
+# 		waste_name = "mixer_" + str(i)
+# 		mixer_name = "mixer_" + str(i)
+# 		mb_waste += float(mb[waste_name]) - float(curing[mixer_name])
 
-	mb_waste = round(mb_waste, 2)
-	return mb_waste
-	# return True
-
-@frappe.whitelist()
-def calculate_total_weight(doc):
-	doc = json.loads(doc)
-	output = []
-	# each stage
-	for i in range (1,4):
-		if len(doc["formulation_parts_" + str(i)]) > 0 and len(doc["ingredient_table_" + str(i)]) > 0:
-			if doc["mixer_internal_mixer_" + str(i)] == 1:
-				calculated_total_mixer_table = []
-				calculate_total_weight_table = []
-				mixer_volume_used = int(doc["mixer_volume_used_" + str(i)])
-				formulation_list = doc["formulation_parts_" + str(i)]
-				ingredient_list = doc["ingredient_table_" + str(i)]
-
-				if len(formulation_list) == len(ingredient_list):
-					no_of_mixer = formulation_list[0]["select_mixer_no"]
-					# each recipe, calculate the density mb and mb mult factor
-					for j in range (1, int(no_of_mixer) + 1):
-						density_denominator = 0
-						total_formulation = 0
-						density_mb = 0
-						mb_mult_factor = 0
-						for k in range (len(formulation_list)):
-							ingredient_name = ingredient_list[k]["ingredient"]
-							ingredient_density = float(ingredient_list[k]["ingredient_density"])
-							formulation_part = float(formulation_list[k]["formulation_mixer_"+str(j)])
-							density_denominator += (formulation_part/ingredient_density)
-							total_formulation += formulation_part
-
-						density_mb = total_formulation / density_denominator
-						mb_mult_factor = mixer_volume_used / total_formulation * density_mb
-						calculated_total_mixer_table.append([i, j, total_formulation, density_mb, mb_mult_factor])
-
-					# print(calculated_total_mixer_table)
-					# each recipe, calculate ingredient weight
-					for j in range (1, int(no_of_mixer) + 1):
-						mb_mult_factor = calculated_total_mixer_table[j-1][len(calculated_total_mixer_table[j-1])-1]
-						for k in range (len(formulation_list)):
-							ingredient_name = ingredient_list[k]["ingredient"]
-							formulation_part = float(formulation_list[k]["formulation_mixer_"+str(j)])
-							ingredient_weight = mb_mult_factor * formulation_part
-							calculate_total_weight_table.append([i, j, ingredient_name, ingredient_weight])
-
-					# print(calculate_total_weight_table)
-					output.append((calculated_total_mixer_table, calculate_total_weight_table))
-				else:
-					continue
-						
-			# elif doc["mixer_two_roll_mill_" + str(i)] == "1":
-			# 	calculated_total_mill_weight = []
-			# 	formulation_list = doc["formulation_parts_" + str(i)]
-			# 	if len(formulation_list) != ingredient_list:
-			# 		return False
-			# 	else:
-			# 		for i in range (len(formulation_list)):
-			# 			ingredient = ingredient_list[i]
-			# 			formulation = formulation_list[i]
-			# 		output.append((i, calculated_weight))
-
-			# else:
-			# 	continue
-			
-	return output
-
-
+# 	mb_waste = round(mb_waste, 2)
+# 	return mb_waste
+# 	# return True
 
 @frappe.whitelist()
 def create_work_order_lgm(doc):

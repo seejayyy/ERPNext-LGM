@@ -14,73 +14,12 @@
   "reference_no",
   "officer_name",
   "sheet_date",
-  "section_stage_1",
-  "col_break_curative_1",
-  "mixer_internal_mixer_1",
-  "mixer_two_roll_mill_1",
-  "col_break_1_1",
-  "mixer_type_1",
-  "mixer_fill_factor_1",
-  "mixer_starting_temp_1",
-  "col_break_1_2",
-  "mixer_volume_1",
-  "mixer_volume_used_1",
-  "mixer_rpm_1",
-  "section_break_stage_1_mixer",
-  "formulation_parts_1",
-  "col_break_1_3",
-  "ingredient_table_1",
-  "section_total_weight_1",
-  "batch_weight_lgm_1",
-  "total_weight_table_1",
-  "total_weight_table_two_roll_mill_1",
-  "mixing_cycle_1",
-  "section_stage_2",
-  "col_break_curative_2",
-  "mixer_internal_mixer_2",
-  "mixer_two_roll_mill_2",
-  "col_break_2_1",
-  "mixer_type_2",
-  "mixer_fill_factor_2",
-  "mixer_starting_temp_2",
-  "col_break_2_2",
-  "mixer_volume_2",
-  "mixer_volume_used_2",
-  "mixer_rpm_2",
-  "section_break_stage_2_mixer",
-  "formulation_parts_2",
-  "col_break_2_3",
-  "ingredient_table_2",
-  "section_total_weight_2",
-  "batch_weight_lgm_2",
-  "total_weight_table_2",
-  "total_weight_table_two_roll_mill_2",
-  "mixing_cycle_2",
-  "section_stage_3",
-  "col_break_curative_3",
-  "mixer_internal_mixer_3",
-  "mixer_two_roll_mill_3",
-  "col_break_3_1",
-  "mixer_type_3",
-  "mixer_fill_factor_3",
-  "mixer_starting_temp_3",
-  "col_break_3_2",
-  "mixer_volume_3",
-  "mixer_volume_used_3",
-  "mixer_rpm_3",
-  "section_break_stage_3_mixer",
-  "formulation_parts_3",
-  "col_break_3_3",
-  "ingredient_table_3",
-  "section_total_weight_3",
-  "batch_weight_lgm_3",
-  "total_weight_table_3",
-  "total_weight_table_two_roll_mill_3",
-  "mixing_cycle_3",
-  "section_break_waste",
-  "mb_waste",
-  "col_break_waste",
-  "production_waste",
+  "section_stages",
+  "stage_1",
+  "stage_2",
+  "stage_3",
+  "stage_4",
+  "stage_5",
   "section_curing",
   "col_break_rheometer",
   "curing_machine",
@@ -95,16 +34,7 @@
   "mooney_scorch_temperature",
   "section_cure_condition",
   "col_break_test_sample",
-  "sample_sdbs",
-  "sample_hardness",
-  "sample_akron",
-  "sample_comp_set",
-  "sample_large_comp_set",
-  "sample_din",
-  "sample_ozone",
-  "sample_hbu",
-  "sample_flex",
-  "sample_resilience",
+  "test_sample_table",
   "col_break_cure_text",
   "cure_time_conditions",
   "section_comments",
@@ -230,66 +160,6 @@
    "label": "Test Samples Required"
   },
   {
-   "default": "0",
-   "fieldname": "sample_sdbs",
-   "fieldtype": "Check",
-   "label": "SDBS"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_hardness",
-   "fieldtype": "Check",
-   "label": "Hardness"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_akron",
-   "fieldtype": "Check",
-   "label": "Akron Abrasion"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_comp_set",
-   "fieldtype": "Check",
-   "label": "Comp. Set"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_large_comp_set",
-   "fieldtype": "Check",
-   "label": "Large Comp. Set"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_din",
-   "fieldtype": "Check",
-   "label": "Din Abrasion"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_ozone",
-   "fieldtype": "Check",
-   "label": "Ozone"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_hbu",
-   "fieldtype": "Check",
-   "label": "HBU"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_flex",
-   "fieldtype": "Check",
-   "label": "Flex"
-  },
-  {
-   "default": "0",
-   "fieldname": "sample_resilience",
-   "fieldtype": "Check",
-   "label": "Resilience"
-  },
-  {
    "fieldname": "col_break_cure_text",
    "fieldtype": "Column Break"
   },
@@ -325,388 +195,53 @@
    "label": "Scorch "
   },
   {
-   "fieldname": "section_break_waste",
+   "fieldname": "test_sample_table",
+   "fieldtype": "Table",
+   "options": "Test Sample Table LGM"
+  },
+  {
+   "fieldname": "section_stages",
    "fieldtype": "Section Break",
-   "label": "Waste"
+   "label": "Stages"
   },
   {
-   "fieldname": "mb_waste",
-   "fieldtype": "Read Only",
-   "label": "Total Masterbatch Waste"
-  },
-  {
-   "fieldname": "col_break_waste",
-   "fieldtype": "Column Break"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "production_waste",
-   "fieldtype": "Data",
-   "label": "Total Production Waste"
-  },
-  {
-   "fieldname": "section_stage_1",
-   "fieldtype": "Section Break",
-   "label": "Stage 1"
-  },
-  {
-   "fieldname": "section_stage_2",
-   "fieldtype": "Section Break",
-   "label": "Stage 2"
-  },
-  {
-   "fieldname": "section_stage_3",
-   "fieldtype": "Section Break",
-   "label": "Stage 3"
-  },
-  {
-   "fieldname": "section_break_stage_1_mixer",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "col_break_curative_1",
-   "fieldtype": "Column Break",
-   "label": "Mixer Details"
-  },
-  {
-   "default": "0",
-   "fieldname": "mixer_internal_mixer_1",
-   "fieldtype": "Check",
-   "label": "Internal Mixer"
-  },
-  {
-   "default": "0",
-   "fieldname": "mixer_two_roll_mill_1",
-   "fieldtype": "Check",
-   "label": "Two Roll Mill"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_1",
-   "fieldname": "mixer_type_1",
+   "fieldname": "stage_1",
    "fieldtype": "Link",
-   "label": "Mixer Type",
-   "options": "Mixer Type LGM"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_1",
-   "fieldname": "mixer_fill_factor_1",
-   "fieldtype": "Float",
-   "label": "Fill Factor",
-   "length": 2
-  },
-  {
-   "depends_on": "mixer_internal_mixer_1",
-   "fieldname": "mixer_starting_temp_1",
-   "fieldtype": "Data",
-   "label": "Starting Temperature (\u00b0C)"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_1",
-   "fetch_from": "mixer_type_1.mixer_volume",
-   "fieldname": "mixer_volume_1",
-   "fieldtype": "Data",
-   "label": "Volume Internal Mixer (ml)"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_1",
-   "fieldname": "mixer_volume_used_1",
-   "fieldtype": "Data",
-   "label": "Volume Used (ml)",
+   "label": "Stage 1",
+   "options": "Stages LGM",
    "read_only": 1
   },
   {
-   "depends_on": "mixer_internal_mixer_1",
-   "fieldname": "mixer_rpm_1",
-   "fieldtype": "Data",
-   "label": "Rotor Speed (RPM)"
-  },
-  {
-   "fieldname": "col_break_1_1",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "col_break_1_2",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "col_break_1_3",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "ingredient_table_1",
-   "fieldtype": "Table",
-   "label": "Ingredient Table",
-   "options": "Ingredient Table LGM"
-  },
-  {
-   "fieldname": "section_total_weight_1",
-   "fieldtype": "Section Break"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_1",
-   "fieldname": "total_weight_table_1",
-   "fieldtype": "Table",
-   "label": "Internal Mixer Total Weight",
-   "options": "Total Weight Table LGM"
-  },
-  {
-   "depends_on": "mixer_two_roll_mill_1",
-   "fieldname": "total_weight_table_two_roll_mill_1",
-   "fieldtype": "Table",
-   "label": "Two Roll Mill Total Weight",
-   "options": "Total Weight Table Two Roll Mill LGM"
-  },
-  {
-   "fieldname": "mixing_cycle_1",
-   "fieldtype": "Table",
-   "label": "Mixing Instructions",
-   "options": "Mixing Cycle LGM"
-  },
-  {
-   "fieldname": "col_break_curative_2",
-   "fieldtype": "Column Break",
-   "label": "Mixer Details"
-  },
-  {
-   "default": "0",
-   "fieldname": "mixer_internal_mixer_2",
-   "fieldtype": "Check",
-   "label": "Internal Mixer"
-  },
-  {
-   "default": "0",
-   "fieldname": "mixer_two_roll_mill_2",
-   "fieldtype": "Check",
-   "label": "Two Roll Mill"
-  },
-  {
-   "fieldname": "col_break_2_1",
-   "fieldtype": "Column Break"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_2",
-   "fieldname": "mixer_type_2",
+   "fieldname": "stage_2",
    "fieldtype": "Link",
-   "label": "Mixer Type",
-   "options": "Mixer Type LGM"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_2",
-   "fieldname": "mixer_fill_factor_2",
-   "fieldtype": "Data",
-   "label": "Fill Factor",
-   "length": 2
-  },
-  {
-   "depends_on": "mixer_internal_mixer_2",
-   "fieldname": "mixer_starting_temp_2",
-   "fieldtype": "Data",
-   "label": "Starting Temperature (\u00b0C)"
-  },
-  {
-   "fieldname": "col_break_2_2",
-   "fieldtype": "Column Break"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_2",
-   "fetch_from": "mixer_type_2.mixer_volume",
-   "fieldname": "mixer_volume_2",
-   "fieldtype": "Data",
-   "label": "Volume Internal Mixer (ml)"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_2",
-   "fieldname": "mixer_volume_used_2",
-   "fieldtype": "Data",
-   "label": "Volume Used (ml)",
+   "label": "Stage 2",
+   "options": "Stages LGM",
    "read_only": 1
   },
   {
-   "depends_on": "mixer_internal_mixer_2",
-   "fieldname": "mixer_rpm_2",
-   "fieldtype": "Data",
-   "label": "Rotor Speed (RPM)"
-  },
-  {
-   "fieldname": "section_break_stage_2_mixer",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "col_break_2_3",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "ingredient_table_2",
-   "fieldtype": "Table",
-   "label": "Ingredient Table",
-   "options": "Ingredient Table LGM"
-  },
-  {
-   "fieldname": "section_total_weight_2",
-   "fieldtype": "Section Break"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_2",
-   "fieldname": "total_weight_table_2",
-   "fieldtype": "Table",
-   "label": "Internal Mixer Total Weight",
-   "options": "Total Weight Table LGM"
-  },
-  {
-   "depends_on": "mixer_two_roll_mill_2",
-   "fieldname": "total_weight_table_two_roll_mill_2",
-   "fieldtype": "Table",
-   "label": "Two Roll Mill Total Weight",
-   "options": "Total Weight Table Two Roll Mill LGM"
-  },
-  {
-   "fieldname": "mixing_cycle_2",
-   "fieldtype": "Table",
-   "label": "Mixing Instructions",
-   "options": "Mixing Cycle LGM"
-  },
-  {
-   "fieldname": "col_break_curative_3",
-   "fieldtype": "Column Break",
-   "label": "Mixer Details"
-  },
-  {
-   "default": "0",
-   "fieldname": "mixer_internal_mixer_3",
-   "fieldtype": "Check",
-   "label": "Internal Mixer"
-  },
-  {
-   "default": "0",
-   "fieldname": "mixer_two_roll_mill_3",
-   "fieldtype": "Check",
-   "label": "Two Roll Mill"
-  },
-  {
-   "fieldname": "col_break_3_1",
-   "fieldtype": "Column Break"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_3",
-   "fieldname": "mixer_type_3",
+   "fieldname": "stage_3",
    "fieldtype": "Link",
-   "label": "Mixer Type",
-   "options": "Mixer Type LGM"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_3",
-   "fieldname": "mixer_fill_factor_3",
-   "fieldtype": "Data",
-   "label": "Fill Factor",
-   "length": 2
-  },
-  {
-   "depends_on": "mixer_internal_mixer_3",
-   "fieldname": "mixer_starting_temp_3",
-   "fieldtype": "Data",
-   "label": "Starting Temperature (\u00b0C)"
-  },
-  {
-   "fieldname": "col_break_3_2",
-   "fieldtype": "Column Break"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_3",
-   "fetch_from": "mixer_type_3.mixer_volume",
-   "fieldname": "mixer_volume_3",
-   "fieldtype": "Data",
-   "label": "Volume Internal Mixer (ml)"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_3",
-   "fieldname": "mixer_volume_used_3",
-   "fieldtype": "Data",
-   "label": "Volume Used (ml)",
+   "label": "Stage 3",
+   "options": "Stages LGM",
    "read_only": 1
   },
   {
-   "depends_on": "mixer_internal_mixer_3",
-   "fieldname": "mixer_rpm_3",
-   "fieldtype": "Data",
-   "label": "Rotor Speed (RPM)"
+   "fieldname": "stage_4",
+   "fieldtype": "Link",
+   "label": "Stage 4",
+   "options": "Stages LGM",
+   "read_only": 1
   },
   {
-   "fieldname": "section_break_stage_3_mixer",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "col_break_3_3",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "ingredient_table_3",
-   "fieldtype": "Table",
-   "label": "Ingredient Table",
-   "options": "Ingredient Table LGM"
-  },
-  {
-   "fieldname": "section_total_weight_3",
-   "fieldtype": "Section Break"
-  },
-  {
-   "depends_on": "mixer_internal_mixer_3",
-   "fieldname": "total_weight_table_3",
-   "fieldtype": "Table",
-   "label": "Internal Mixer Total Weight",
-   "options": "Total Weight Table LGM"
-  },
-  {
-   "depends_on": "mixer_two_roll_mill_3",
-   "fieldname": "total_weight_table_two_roll_mill_3",
-   "fieldtype": "Table",
-   "label": "Two Roll Mill Total Weight",
-   "options": "Total Weight Table Two Roll Mill LGM"
-  },
-  {
-   "fieldname": "mixing_cycle_3",
-   "fieldtype": "Table",
-   "label": "Mixing Instructions",
-   "options": "Mixing Cycle LGM"
-  },
-  {
-   "fieldname": "batch_weight_lgm_1",
-   "fieldtype": "Table",
-   "label": "Batch Weight Table",
-   "options": "Batch Weight LGM"
-  },
-  {
-   "fieldname": "batch_weight_lgm_2",
-   "fieldtype": "Table",
-   "label": "Batch Weight Table",
-   "options": "Batch Weight LGM"
-  },
-  {
-   "fieldname": "batch_weight_lgm_3",
-   "fieldtype": "Table",
-   "label": "Batch Weight Table ",
-   "options": "Batch Weight LGM"
-  },
-  {
-   "fieldname": "formulation_parts_1",
-   "fieldtype": "Table",
-   "label": "Formulation Parts Table",
-   "options": "Compounding Ingredients LGM"
-  },
-  {
-   "fieldname": "formulation_parts_2",
-   "fieldtype": "Table",
-   "label": "Compounding Ingredients",
-   "options": "Compounding Ingredients LGM"
-  },
-  {
-   "fieldname": "formulation_parts_3",
-   "fieldtype": "Table",
-   "label": "Compounding Ingredients",
-   "options": "Compounding Ingredients LGM"
+   "fieldname": "stage_5",
+   "fieldtype": "Link",
+   "label": "Stage 5",
+   "options": "Stages LGM",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-23 11:23:12.420166",
+ "modified": "2024-01-26 16:10:42.291929",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",

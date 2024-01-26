@@ -1,0 +1,208 @@
+{
+ "autoname": "format:{request_sheet_link}-STAGE-{#####}",
+ "creation": "2024-01-26 10:20:43.569785",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "request_sheet_link",
+  "amended_from",
+  "is_first_stage",
+  "previous_stage_link",
+  "section_break",
+  "col_break_curative",
+  "mixer_internal_mixer",
+  "mixer_two_roll_mill",
+  "col_break_1",
+  "mixer_type",
+  "mixer_fill_factor",
+  "mixer_starting_temp",
+  "col_break_2",
+  "mixer_volume",
+  "mixer_volume_used",
+  "mixer_rpm",
+  "section_break_mixer",
+  "formulation_parts",
+  "col_break_3",
+  "ingredient_table",
+  "section_total_weight",
+  "total_weight_table_mixer",
+  "batch_weight_lgm",
+  "total_weight_table_two_roll_mill",
+  "mixing_cycle"
+ ],
+ "fields": [
+  {
+   "fieldname": "request_sheet_link",
+   "fieldtype": "Link",
+   "label": "Request Sheet Link",
+   "options": "Technological Request Sheets LGM"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_first_stage",
+   "fieldtype": "Check",
+   "label": "Is First Stage"
+  },
+  {
+   "fieldname": "previous_stage_link",
+   "fieldtype": "Link",
+   "label": "Previous Stage Link",
+   "options": "Stages LGM"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Stages LGM",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_break_curative",
+   "fieldtype": "Column Break",
+   "label": "Mixer Details"
+  },
+  {
+   "default": "0",
+   "fieldname": "mixer_internal_mixer",
+   "fieldtype": "Check",
+   "label": "Internal Mixer"
+  },
+  {
+   "default": "0",
+   "fieldname": "mixer_two_roll_mill",
+   "fieldtype": "Check",
+   "label": "Two Roll Mill"
+  },
+  {
+   "fieldname": "col_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "mixer_internal_mixer",
+   "fieldname": "mixer_type",
+   "fieldtype": "Link",
+   "label": "Mixer Type",
+   "options": "Mixer Type LGM"
+  },
+  {
+   "depends_on": "mixer_internal_mixer",
+   "fieldname": "mixer_fill_factor",
+   "fieldtype": "Float",
+   "label": "Fill Factor",
+   "precision": "1"
+  },
+  {
+   "depends_on": "mixer_internal_mixer",
+   "fieldname": "mixer_starting_temp",
+   "fieldtype": "Data",
+   "label": "Starting Temperature (\u00b0C)"
+  },
+  {
+   "fieldname": "col_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "mixer_internal_mixer",
+   "fetch_from": "mixer_type.mixer_volume",
+   "fieldname": "mixer_volume",
+   "fieldtype": "Data",
+   "label": "Volume Internal Mixer (ml)",
+   "read_only": 1
+  },
+  {
+   "depends_on": "mixer_internal_mixer",
+   "fieldname": "mixer_volume_used",
+   "fieldtype": "Data",
+   "label": "Volume Used (ml)",
+   "read_only": 1
+  },
+  {
+   "depends_on": "mixer_internal_mixer",
+   "fieldname": "mixer_rpm",
+   "fieldtype": "Data",
+   "label": "Rotor Speed (RPM)"
+  },
+  {
+   "fieldname": "section_break_mixer",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "formulation_parts",
+   "fieldtype": "Table",
+   "label": "Formulation Parts Table",
+   "options": "Compounding Ingredients LGM"
+  },
+  {
+   "fieldname": "col_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ingredient_table",
+   "fieldtype": "Table",
+   "label": "Ingredient Table",
+   "options": "Ingredient Table LGM"
+  },
+  {
+   "fieldname": "section_total_weight",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "batch_weight_lgm",
+   "fieldtype": "Table",
+   "label": "Batch Weight Table",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "depends_on": "mixer_two_roll_mill",
+   "fieldname": "total_weight_table_two_roll_mill",
+   "fieldtype": "Table",
+   "label": "Two Roll Mill Total Weight",
+   "options": "Total Weight Table Two Roll Mill LGM"
+  },
+  {
+   "fieldname": "mixing_cycle",
+   "fieldtype": "Table",
+   "label": "Mixing Instructions",
+   "options": "Mixing Cycle LGM"
+  },
+  {
+   "depends_on": "mixer_internal_mixer",
+   "fieldname": "total_weight_table_mixer",
+   "fieldtype": "Table",
+   "label": "Internal Mixer Total Weight",
+   "options": "Total Weight Table LGM"
+  }
+ ],
+ "is_submittable": 1,
+ "modified": "2024-01-26 11:57:50.209486",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "Stages LGM",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
