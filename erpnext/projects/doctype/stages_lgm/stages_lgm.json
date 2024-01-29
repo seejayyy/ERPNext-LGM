@@ -1,5 +1,5 @@
 {
- "autoname": "format:{request_sheet_link}-STAGE-{#####}",
+ "autoname": "format:{request_sheet_link}-STAGE-{##}",
  "creation": "2024-01-26 10:20:43.569785",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -17,10 +17,12 @@
   "mixer_type",
   "mixer_fill_factor",
   "mixer_starting_temp",
+  "mill_name",
   "col_break_2",
   "mixer_volume",
   "mixer_volume_used",
   "mixer_rpm",
+  "mill_capacity",
   "section_break_mixer",
   "formulation_parts",
   "col_break_3",
@@ -35,8 +37,11 @@
   {
    "fieldname": "request_sheet_link",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Request Sheet Link",
-   "options": "Technological Request Sheets LGM"
+   "options": "Technological Request Sheets LGM",
+   "reqd": 1,
+   "set_only_once": 1
   },
   {
    "default": "0",
@@ -96,7 +101,7 @@
    "fieldname": "mixer_fill_factor",
    "fieldtype": "Float",
    "label": "Fill Factor",
-   "precision": "1"
+   "precision": "2"
   },
   {
    "depends_on": "mixer_internal_mixer",
@@ -178,10 +183,25 @@
    "fieldtype": "Table",
    "label": "Internal Mixer Total Weight",
    "options": "Total Weight Table LGM"
+  },
+  {
+   "depends_on": "mixer_two_roll_mill",
+   "fieldname": "mill_name",
+   "fieldtype": "Link",
+   "label": "Two Roll Mill Type",
+   "options": "Two Roll Mill Type LGM"
+  },
+  {
+   "depends_on": "mixer_two_roll_mill",
+   "fetch_from": "mill_name.mill_capacity",
+   "fieldname": "mill_capacity",
+   "fieldtype": "Data",
+   "label": "Two Roll Mill Capacity (ml)",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-26 11:57:50.209486",
+ "modified": "2024-01-29 15:58:53.874950",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Stages LGM",

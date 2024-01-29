@@ -21,11 +21,12 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Ingredient Density",
-   "precision": "2"
+   "precision": "2",
+   "read_only": 1
   }
  ],
  "istable": 1,
- "modified": "2024-01-22 11:55:39.841781",
+ "modified": "2024-01-29 10:15:38.383281",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Ingredient Table LGM",

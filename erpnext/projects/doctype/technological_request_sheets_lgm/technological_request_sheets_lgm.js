@@ -11,6 +11,18 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 	refresh: function(frm) {
 		// console.log(frm.doc.docstatus);
 		if (frm.doc.docstatus === 1) {
+			frm.add_custom_button(__('Create Stages LGM'), function() {
+				frm.call({
+					method:"create_stages_lgm",
+					args:{
+						doc:frm.doc
+					},
+					callback:function(r){
+						frappe.set_route("Form", "Stages LGM", r.message.name);
+					},
+				});
+			});
+
 			// adds the button to create work order
 			frm.add_custom_button(__('Create Work Order LGM'), function() {
 				frm.call({
@@ -31,10 +43,35 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 
 		// make the dashboard
 		if (frm.doc.docstatus===1) {
-			frm.trigger('show_dashboard');
+			// frm.trigger('show_dashboard');
+		}
+	},
+
+	onload: function(frm){
+		if (frm.doc.docstatus === 1){
+			frm.trigger('query_stages');
 		}
 	},
 	
+	query_stages: function(frm){
+		frm.call({
+			method: "query_stages",
+			args:{
+				doc:frm.doc
+			},
+			callback: function(r){
+				console.log(frm);
+				console.log(r.message)
+				if (r.message.length > 0){
+					for (var i = 0; i < r.message.length; i++){
+						frm.doc[r.message[i][0]] = r.message[i][1];
+						frm.refresh_field(r.message[i][0]);
+					}
+				}
+			}
+		});
+	},
+
 
 	show_dashboard: function(frm) {
 		frm.call({

@@ -28,6 +28,7 @@ frappe.ui.form.on('Stages LGM', {
 				doc:frm.doc
 			},
 			callback:function(r){
+				if (r.message != false){
 					var output = r.message;
 
 					var total_weight_list = output[0]
@@ -39,7 +40,27 @@ frappe.ui.form.on('Stages LGM', {
 					var total_weight_name = "total_weight_table_mixer";
 
 					if (frm.doc[mixer_selection] != 1){
+						console.log("HI")
 						var total_weight_name = "total_weight_table_two_roll_mill";
+						var mixer_no = total_weight_list.length;
+						frm.doc.total_weight_table_two_roll_mill = []
+						for (var i = 0; i < mixer_no; i++){
+							let row = frm.add_child(total_weight_name, {
+								'formulation':total_weight_list[i][1],
+								'comp_mult_factor':total_weight_list[i][3]
+							})
+						}
+						frm.refresh_field('total_weight_table_two_roll_mill');
+
+						frm.doc.batch_weight_lgm= []
+						for (var i = 0; i < batch_weight_list.length; i++){
+							frm.add_child("batch_weight_lgm", {
+								'mixer_no':batch_weight_list[i][1],
+								'ingredient':batch_weight_list[i][3],
+								'ingredient_weight':batch_weight_list[i][5]
+							})
+						}
+						frm.refresh_field('batch_weight_lgm');
 					}
 					else{
 						var mixer_no = total_weight_list.length;
@@ -63,11 +84,7 @@ frappe.ui.form.on('Stages LGM', {
 						}
 						frm.refresh_field('batch_weight_lgm');
 					}
-					
-					
-					// frm.doc.
-					// frm.set_value("mb_waste", r.message);
-				
+				}
 			},
 		});
 	},

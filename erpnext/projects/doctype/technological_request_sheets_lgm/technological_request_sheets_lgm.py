@@ -31,6 +31,25 @@ class TechnologicalRequestSheetsLGM(Document):
 # 	# return True
 
 @frappe.whitelist()
+def create_stages_lgm(doc):
+	# parse to json object
+	doc = json.loads(doc)
+
+	# check if work order that is linked to the current request sheet already exists
+	if len(frappe.db.get_all('Stages LGM', fields="request_sheet_link", filters={"request_sheet_link": doc["name"]})) > 0:
+		frappe.throw(_("Stages for current technological request sheet already exists."))
+	else:
+		request_sheet_name = doc["name"]
+		stage_doc = frappe.get_doc(dict(
+			doctype="Stages LGM",
+			request_sheet_link = request_sheet_name
+		)).insert()
+
+		stage_doc.save()
+
+	return stage_doc
+
+@frappe.whitelist()
 def create_work_order_lgm(doc):
 	# parse to json object
 	doc = json.loads(doc)
@@ -102,3 +121,20 @@ def query_dashboard_info(doc):
 	work_order = frappe.db.get_list('Work Order LGM', fields="*", filters={'request_sheet_link': doc["name"]})
 	job_card = frappe.db.get_list('Job Card LGM', fields="*", filters={'request_sheet': doc["name"]})
 	return [work_order] + [job_card]
+
+@frappe.whitelist()
+def query_stages(doc):
+	doc = json.loads(doc)
+	stages = []
+	for i in range (0,5):
+		if len(stages) == 0:
+			first_stage = frappe.get_list("Stages LGM", filters={'request_sheet_link': doc["name"], 'is_first_stage': 1})
+			stages.append(("stage_"+str(i+1),first_stage[0]["name"]))
+		else:
+			next_stage = frappe.get_list("Stages LGM", filters={'previous_stage_link': stages[i-1][1]})
+			if len(next_stage) > 0:
+				stages.append(("stage_"+str(i+1), next_stage[0]["name"]))
+			else:
+				break
+	print(stages)
+	return stages
