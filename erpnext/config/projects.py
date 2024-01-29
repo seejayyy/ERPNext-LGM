@@ -109,6 +109,12 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Stages LGM",
+					"description": _("Stages LGM."),
+					"onboard": 1,
+				},
+				{
+					"type": "doctype",
 					"name": "Work Order LGM",
 					"description": _("Work Order LGM."),
 					"onboard": 1,
@@ -123,6 +129,12 @@ def get_data():
 					"type": "doctype",
 					"name": "Mixer Type LGM",
 					"description": _("Mixer Type LGM."),
+					"onboard": 1,
+				},
+				{
+					"type": "doctype",
+					"name": "Two Roll Mill Type LGM",
+					"description": _("Two Roll Mill Type LGM."),
 					"onboard": 1,
 				},
 				{
