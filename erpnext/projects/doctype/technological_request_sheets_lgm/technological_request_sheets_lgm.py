@@ -64,14 +64,13 @@ def create_work_order_lgm(doc):
 		# populate child table 
 		table_list = []
 		for ingredient in ingredients_lists:
-			for ingredient_details in ingredient:
-				table_list.append(
-					{
-						"ingredient": ingredient_details[0],
-						"ingredient_weight": ingredient_details[1],
-						"mixer_no": ingredient_details[2]
-					}
-				)
+			table_list.append(
+				{
+					"mixer_no": ingredient[0],
+					"ingredient": ingredient[1],
+					"ingredient_weight": ingredient[2],
+				}
+			)
 
 		# insert record
 		work_order_lgm = frappe.get_doc(dict(
@@ -82,36 +81,26 @@ def create_work_order_lgm(doc):
 
 		work_order_lgm.save()
 
-	return work_order_lgm.name
+	return work_order_lgm
 
 def get_ingredients(doc):
 	# get ingredients from commpounding ingredients child table
 	ingredient_list = []
-	compounding_list_object = doc["compounding_ingredients"]
-	for list_object in compounding_list_object:
-		mixer_no = int(list_object["select_mixer_no"])
-		ingredient_name = list_object["ingredient"]
-		if ingredient_name != "Masterbatch":
-			ingredient = []
-			for i in range (1, mixer_no+1):
-				if "mixer_" + str(i) in list_object:
-					ingredient_weight = list_object["mixer_" + str(i)]
-					ingredient.append((ingredient_name, ingredient_weight, i))
-			ingredient_list.append(ingredient)
+	stages = []
+	for i in range (1,6):
+		if doc.get("stage_"+str(i), None) is not None:
+			stages.append(doc.get("stage_"+str(i)))
 
-	# get ingredients from curing ingredients child table
-	curing_list_object = doc["curing_ingredients"]
-	for list_object in curing_list_object:
-		mixer_no = int(list_object["select_mixer_no"])
-		ingredient_name = list_object["ingredient"]
-		if ingredient_name != "Masterbatch":
-			ingredient = []
-			for i in range (1, mixer_no+1):
-				if "mixer_" + str(i) in list_object:
-					ingredient_weight = list_object["mixer_" + str(i)]
-					ingredient.append((ingredient_name, ingredient_weight, i))
-			ingredient_list.append(ingredient)
-	print(ingredient_list)
+	for stage in stages:
+		stage_object = frappe.get_doc("Stages LGM", stage)
+		batch_weight_lgm = stage_object.get("batch_weight_lgm")
+		for row in batch_weight_lgm:
+			recipe_no = row.get("mixer_no")
+			ingredient_name = row.get("ingredient")
+			ingredient_weight = row.get("ingredient_weight")
+			if "RS-" not in ingredient_name:
+				ingredient_list.append((recipe_no, ingredient_name, ingredient_weight))
+		# print(ingredient_list)
 	return ingredient_list
 
 # simple gets the available doctypes
@@ -136,5 +125,4 @@ def query_stages(doc):
 				stages.append(("stage_"+str(i+1), next_stage[0]["name"]))
 			else:
 				break
-	print(stages)
 	return stages

@@ -6,29 +6,48 @@ from __future__ import unicode_literals
 import frappe, json
 from frappe.model.document import Document
 from frappe import _
+import urllib3
 
 class WorkOrderLGM(Document):
 	pass
 
+@frappe.whitelist()
+def trigger_nodered():
+	http = urllib3.PoolManager()
+	resp = http.request("GET", "http://192.168.0.69:1880/listen")
+	return resp
+
 @frappe.whitelist(allow_guest=True)
-def get_weight_from_nodered():
+def get_data_from_nodered():
 	data = json.loads(frappe.request.data)
-	order_no = data["work"]
-	weight = data["weight"]
-	mixer_no = data["mixer"]
-	ingredient_name = data["name"]
-	try:
-		doc = frappe.get_doc("Work Order LGM", "Work-Order-" + str(order_no))
-	except:
-		frappe.throw("Work Order does not exist")
-	ingredient_list = doc.weighing_table_lgm
-	for ingredient in ingredient_list:
-		if ingredient.ingredient == ingredient_name and ingredient.mixer_no == mixer_no:
-			ingredient.weighed = weight
-			doc.save()
-			doc.reload()
-			return "found"
-	return "not found"
+	print(data)
+	return "Data Received."
+
+@frappe.whitelist()
+def set_weight(doc, cdt, cdn, data):
+	# print(doc, cdt, cdn)
+	print("HI")
+	print(data)
+	
+	return "found"
+	# print(weight)
+	# data = json.loads(frappe.request.data)
+	# order_no = data["work"]
+	# weight = data["weight"]
+	# mixer_no = data["mixer"]
+	# ingredient_name = data["name"]
+	# try:
+	# 	doc = frappe.get_doc("Work Order LGM", "Work-Order-" + str(order_no))
+	# except:
+	# 	frappe.throw("Work Order does not exist")
+	# ingredient_list = doc.weighing_table_lgm
+	# for ingredient in ingredient_list:
+	# 	if ingredient.ingredient == ingredient_name and ingredient.mixer_no == mixer_no:
+	# 		ingredient.weighed = weight
+	# 		doc.save()
+	# 		doc.reload()
+	# 		return "found"
+	# return "not found"
 
 
 @frappe.whitelist()

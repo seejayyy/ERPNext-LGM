@@ -9,7 +9,6 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 	},
 
 	refresh: function(frm) {
-		// console.log(frm.doc.docstatus);
 		if (frm.doc.docstatus === 1) {
 			frm.add_custom_button(__('Create Stages LGM'), function() {
 				frm.call({
@@ -35,7 +34,7 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 							message: __('Work Order LGM is created'),
 							indicator: 'green'
 						})
-						return;
+						return frappe.set_route("Form", "Work Order LGM", r.message.name);;
 					},
 				});
 			});
@@ -60,8 +59,6 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 				doc:frm.doc
 			},
 			callback: function(r){
-				console.log(frm);
-				console.log(r.message)
 				if (r.message.length > 0){
 					for (var i = 0; i < r.message.length; i++){
 						frm.doc[r.message[i][0]] = r.message[i][1];
@@ -140,7 +137,6 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 					}
 				}
 				
-				// console.log(frm);
 				return frm.dashboard.add_progress(__('Status'), bars, message);
 			}
 		});

@@ -47,7 +47,6 @@ frappe.ui.form.on('Work Order LGM', {
 							message: __('Job Card is created'),
 							indicator: 'green'
 						})
-						return;
 					},
 				});
 			});
@@ -75,4 +74,13 @@ frappe.ui.form.on('Work Order LGM', {
 frappe.ui.form.on('Ingredients Weighing Table LGM', {
     // cdt is Child DocType name i.e Quotation Item
     // cdn is the row name for e.g bbfcb8da6a
+	get_weight(frm, cdt, cdn){
+		frm.call({
+			method:"trigger_nodered",
+			callback:function(r){
+				console.log(r.message);
+				return;
+			},
+		});
+	},
 })
