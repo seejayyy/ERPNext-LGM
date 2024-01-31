@@ -155,6 +155,11 @@ def get_data():
 					"description": _("Where manufacturing operations are carried."),
 					"onboard": 1,
 				},
+				{
+					"type": "doctype",
+					"name": "LGM Settings",
+					"description": _("LGM Settings."),
+				},
 			]
 		},
 	]

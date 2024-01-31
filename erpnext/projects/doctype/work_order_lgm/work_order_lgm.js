@@ -77,8 +77,16 @@ frappe.ui.form.on('Ingredients Weighing Table LGM', {
 	get_weight(frm, cdt, cdn){
 		frm.call({
 			method:"trigger_nodered",
+			args:{
+				doc: frm.doc,
+				cdt: cdt,
+				cdn: cdn
+			},
 			callback:function(r){
-				console.log(r.message);
+				if (r.message == true){
+					frm.refresh_field(cdn);
+					frm.reload_doc();
+				}
 				return;
 			},
 		});

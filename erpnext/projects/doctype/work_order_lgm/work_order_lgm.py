@@ -6,49 +6,45 @@ from __future__ import unicode_literals
 import frappe, json
 from frappe.model.document import Document
 from frappe import _
-import urllib3
+from frappe.integrations.utils import make_post_request
 
 class WorkOrderLGM(Document):
 	pass
 
 @frappe.whitelist()
-def trigger_nodered():
-	http = urllib3.PoolManager()
-	resp = http.request("GET", "http://192.168.0.69:1880/listen")
+def trigger_nodered(doc, cdt, cdn):
+	doc = json.loads(doc)
+	raw_url = frappe.get_doc("LGM Settings").lgm_url 
+	raw_port = frappe.get_doc("LGM Settings").lgm_port
+	url = raw_url + ":" + raw_port + "/listen"
+	headers = {
+		'Content-type': 'application/json',
+	}
+	data = json.dumps({
+		"url": raw_url,
+		"doc": doc,
+		"cdt": cdt,
+		"cdn": cdn
+	})
+	resp = make_post_request(url, headers=headers, data=data)
 	return resp
 
 @frappe.whitelist(allow_guest=True)
 def get_data_from_nodered():
 	data = json.loads(frappe.request.data)
-	print(data)
-	return "Data Received."
-
-@frappe.whitelist()
-def set_weight(doc, cdt, cdn, data):
-	# print(doc, cdt, cdn)
-	print("HI")
-	print(data)
-	
-	return "found"
-	# print(weight)
-	# data = json.loads(frappe.request.data)
-	# order_no = data["work"]
-	# weight = data["weight"]
-	# mixer_no = data["mixer"]
-	# ingredient_name = data["name"]
-	# try:
-	# 	doc = frappe.get_doc("Work Order LGM", "Work-Order-" + str(order_no))
-	# except:
-	# 	frappe.throw("Work Order does not exist")
-	# ingredient_list = doc.weighing_table_lgm
-	# for ingredient in ingredient_list:
-	# 	if ingredient.ingredient == ingredient_name and ingredient.mixer_no == mixer_no:
-	# 		ingredient.weighed = weight
-	# 		doc.save()
-	# 		doc.reload()
-	# 		return "found"
-	# return "not found"
-
+	doc_name = data["doc"]["name"]
+	cdt = data["cdt"]
+	cdn = data["cdn"]
+	weight = data["weight"]
+	doc = frappe.get_doc("Work Order LGM", doc_name)
+	ingredient_list = doc.weighing_table_lgm
+	for ingredient in ingredient_list:
+		if ingredient.name == cdn:
+			ingredient.weighed = weight
+			doc.save()
+			doc.reload()
+			return True
+	return False
 
 @frappe.whitelist()
 def create_job_card_lgm(doc):
