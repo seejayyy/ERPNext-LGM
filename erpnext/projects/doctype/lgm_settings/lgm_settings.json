@@ -1,0 +1,45 @@
+{
+ "creation": "2024-01-31 14:58:28.124164",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lgm_url",
+  "lgm_port"
+ ],
+ "fields": [
+  {
+   "fieldname": "lgm_url",
+   "fieldtype": "Data",
+   "label": "URL"
+  },
+  {
+   "description": "Port number for Node-RED. Default: 1880",
+   "fieldname": "lgm_port",
+   "fieldtype": "Data",
+   "label": "Port Number"
+  }
+ ],
+ "issingle": 1,
+ "modified": "2024-01-31 15:07:08.658207",
+ "modified_by": "Administrator",
+ "module": "Projects",
+ "name": "LGM Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
