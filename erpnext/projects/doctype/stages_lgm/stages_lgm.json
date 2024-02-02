@@ -23,6 +23,7 @@
   "mixer_volume_used",
   "mixer_rpm",
   "mill_capacity",
+  "mb_weight",
   "section_break_mixer",
   "formulation_parts",
   "col_break_3",
@@ -198,10 +199,17 @@
    "fieldtype": "Data",
    "label": "Two Roll Mill Capacity (ml)",
    "read_only": 1
+  },
+  {
+   "depends_on": "mixer_two_roll_mill",
+   "description": "Optional. Use to overwrite masterbatch weight ",
+   "fieldname": "mb_weight",
+   "fieldtype": "Data",
+   "label": "Masterbatch Weight"
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-29 15:58:53.874950",
+ "modified": "2024-02-02 10:27:08.638515",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Stages LGM",

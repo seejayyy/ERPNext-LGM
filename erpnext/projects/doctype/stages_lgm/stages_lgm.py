@@ -61,6 +61,12 @@ def calculate_total_weight(doc):
 
 		elif doc["mixer_two_roll_mill"] == 1:
 			total_mill_weight = int(doc["mill_capacity"])
+			mb_mill_weight = None
+			if doc.get("mb_weight") is not None:
+				mb_mill_weight = float(doc["mb_weight"])
+			if mb_mill_weight is None:
+				mb_mill_weight = total_mill_weight
+
 			calculated_total_mill_table = []
 			no_of_mixer = formulation_list[0]["select_mixer_no"]
 
@@ -68,10 +74,15 @@ def calculate_total_weight(doc):
 				total_formulation = 0
 				comp_mult_factor = 0
 				for j in range (len(formulation_list)):
-					formulation_part = float(formulation_list[j]["formulation_mixer_"+str(i)])
-					total_formulation += formulation_part
+					ingredient_name = ingredient_list[j]["ingredient"]
+					if "RS-" in ingredient_name:
+						total_formulation = float(formulation_list[j]["formulation_mixer_"+str(i)])
+						break
+					else:
+						formulation_part = float(formulation_list[j]["formulation_mixer_"+str(i)])
+						total_formulation += formulation_part
 				
-				comp_mult_factor = round(total_mill_weight / total_formulation, 4)
+				comp_mult_factor = round(mb_mill_weight / total_formulation, 4)
 				calculated_total_mill_table.append(["formulation", total_formulation, "comp_mult_factor", comp_mult_factor])
 				mb_items.append(create_masterbatch_item(doc, 0, i))
 
@@ -88,7 +99,6 @@ def calculate_total_weight(doc):
 				calculate_total_weight_table.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mill])
 			output.append(calculated_total_mill_table)
 			output.append(calculate_total_weight_table)
-			print(output)
 		return output
 	else:
 		return False
