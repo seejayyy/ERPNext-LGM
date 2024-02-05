@@ -145,6 +145,12 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "Test Sample Type LGM",
+					"description": _("Test Sample Type LGM."),
+					"onboard": 1,
+				},
+				{
+					"type": "doctype",
 					"name": "Item",
 					"description": _("All Products or Services."),
 					"onboard": 1,
