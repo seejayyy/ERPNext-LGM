@@ -40,7 +40,6 @@ frappe.ui.form.on('Stages LGM', {
 					var total_weight_name = "total_weight_table_mixer";
 
 					if (frm.doc[mixer_selection] != 1){
-						console.log("HI")
 						var total_weight_name = "total_weight_table_two_roll_mill";
 						var mixer_no = total_weight_list.length;
 						frm.doc.total_weight_table_two_roll_mill = []
