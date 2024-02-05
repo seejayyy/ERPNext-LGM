@@ -93,9 +93,17 @@ def get_ingredients_per_stage(doc):
 				if int(ingredient.mixer_no) == i:
 					if "RS-" in ingredient.ingredient:
 						if int(stage_doc.is_first_stage) != 1:
-							stage_recipe_ingredients.append(ingredient)
+							stage_recipe_ingredients.append({
+								"mixer_no": ingredient.mixer_no,
+								"ingredient": ingredient.ingredient,
+								"ingredient_weight": ingredient.ingredient_weight,
+							})
 					else:
-						stage_recipe_ingredients.append(ingredient)
+						stage_recipe_ingredients.append({
+								"mixer_no": ingredient.mixer_no,
+								"ingredient": ingredient.ingredient,
+								"ingredient_weight": ingredient.ingredient_weight,
+							})
 				else:
 					index = j
 					break
