@@ -23,30 +23,10 @@ frappe.ui.form.on('Job Card LGM', {
 		frappe.flags.pause_job = 0;
 		frappe.flags.resume_job = 0;
 
-		if (frm.doc.work_order){
-			frm.trigger("for_quantity");
-			frm.trigger("fetch_instructions");
-		}
-
 		if (frm.doc.docstatus == 0 && (frm.doc.for_quantity > frm.doc.total_completed_qty || !frm.doc.for_quantity)
 			&& (frm.doc.ingredients || !frm.doc.ingredients.length || frm.doc.for_quantity == frm.doc.transferred_qty)) {
 			frm.trigger("prepare_timer_buttons");
 		}
-	},
-
-	onload: function(frm){
-		if (frm.doc.work_order){
-			frm.trigger("for_quantity");
-			frm.trigger("fetch_instructions");
-		}
-	},
-
-	before_save: function(frm){
-		frm.trigger("for_quantity");
-	},
-
-	on_submit: function(frm){
-		frm.trigger("for_quantity");
 	},
 
 	prepare_timer_buttons: function(frm) {
@@ -58,9 +38,10 @@ frappe.ui.form.on('Job Card LGM', {
 						fieldname: 'employee'}, d => {
 						if (d.employee) {
 							frm.set_value("employee", d.employee);
-						} else {
-							frm.events.start_job(frm);
-						}
+						} 
+						// else {
+						// 	frm.events.start_job(frm);
+						// }
 					}, __("Enter Value"), __("Start"));
 				} else {
 					frm.events.start_job(frm);
@@ -105,8 +86,6 @@ frappe.ui.form.on('Job Card LGM', {
 			frm.set_value('current_time' , 0);
 		}
 
-		frm.trigger("for_quantity");
-
 		frm.save();
 	},
 
@@ -139,9 +118,10 @@ frappe.ui.form.on('Job Card LGM', {
 	employee: function(frm) {
 		if (frm.doc.job_started && !frm.doc.current_time) {
 			frm.trigger("reset_timer");
-		} else {
-			frm.events.start_job(frm);
 		}
+		// else {
+		// 	frm.events.start_job(frm);
+		// }
 	},
 
 	reset_timer: function(frm) {
@@ -198,35 +178,6 @@ frappe.ui.form.on('Job Card LGM', {
 				return currentIncrement;
 			}
 		}
-	},
-
-	for_quantity: function(frm) {
-		frm.doc.ingredients = [];
-		frm.call({
-			method: "get_ingredients",
-			args:{
-				doc:frm.doc
-			},
-			callback: function(r) {
-				frm.doc.ingredients = r.message;
-				
-				refresh_field("ingredients");
-			}
-		})
-	},
-
-	fetch_instructions: function(frm) {
-		frm.doc.mixing_cycle = [];
-		frm.call({
-			method: "get_instructions",
-			args:{
-				doc:frm.doc
-			},
-			callback: function(r) {
-				frm.doc.mixing_cycle = r.message;
-				refresh_field("mixing_cycle");
-			}
-		})
 	},
 
 	hide_timer: function(frm) {

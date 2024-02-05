@@ -8,6 +8,7 @@
   "naming_series",
   "work_order",
   "request_sheet",
+  "stage",
   "workstation",
   "operation",
   "operation_row_number",
@@ -59,7 +60,6 @@
   {
    "fieldname": "work_order",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Work Order LGM",
    "options": "Work Order LGM",
@@ -70,7 +70,6 @@
    "fieldname": "workstation",
    "fieldtype": "Link",
    "hidden": 1,
-   "in_list_view": 1,
    "label": "Workstation",
    "options": "Workstation"
   },
@@ -130,7 +129,6 @@
   {
    "fieldname": "for_quantity",
    "fieldtype": "Float",
-   "in_list_view": 1,
    "label": "Qty To Manufacture"
   },
   {
@@ -291,6 +289,7 @@
    "fetch_from": "work_order.request_sheet_link",
    "fieldname": "request_sheet",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Request Sheet",
    "options": "Technological Request Sheets LGM",
    "read_only": 1
@@ -298,7 +297,7 @@
   {
    "fieldname": "ingredients",
    "fieldtype": "Table",
-   "options": "Ingredients Weighing Table LGM",
+   "options": "Batch Weight LGM",
    "read_only": 1
   },
   {
@@ -316,10 +315,17 @@
    "fieldname": "mixer_no_job_card",
    "fieldtype": "Data",
    "label": "Mixer No"
+  },
+  {
+   "fieldname": "stage",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stage",
+   "options": "Stages LGM"
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-16 21:59:43.449565",
+ "modified": "2024-02-05 15:34:57.169259",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Job Card LGM",
