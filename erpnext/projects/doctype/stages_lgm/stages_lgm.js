@@ -92,7 +92,7 @@ frappe.ui.form.on('Stages LGM', {
 		frm.set_value("mixer_volume_used",frm.doc.mixer_fill_factor * frm.doc.mixer_volume);
 	},
 
-	after_save: function(frm){
+	on_submit: function(frm){
 		frm.call({
 			method:"remove_auto_created_item",
 		})
