@@ -63,6 +63,7 @@
    "in_standard_filter": 1,
    "label": "Work Order LGM",
    "options": "Work Order LGM",
+   "read_only": 1,
    "reqd": 1,
    "search_index": 1
   },
@@ -292,7 +293,8 @@
    "in_list_view": 1,
    "label": "Request Sheet",
    "options": "Technological Request Sheets LGM",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "ingredients",
@@ -321,11 +323,13 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Stage",
-   "options": "Stages LGM"
+   "options": "Stages LGM",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2024-02-05 15:34:57.169259",
+ "modified": "2024-02-05 15:46:37.692630",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Job Card LGM",
