@@ -146,15 +146,15 @@
   },
   {
    "fieldname": "employee",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "in_standard_filter": 1,
-   "label": "Employee",
-   "options": "Employee"
+   "label": "Employee"
   },
   {
    "fetch_from": "employee.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "Employee Name"
   },
   {
@@ -332,7 +332,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2024-02-05 17:17:16.111556",
+ "modified": "2024-02-05 22:53:47.007811",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Job Card LGM",
