@@ -125,3 +125,14 @@ def create_masterbatch_item(doc, density_mb, index):
 		"is_stock_item": 0
 	}).insert()
 	return (mb_item.item_name)
+
+@frappe.whitelist()
+def remove_auto_created_item():
+	items = frappe.get_list("Item", fields="name")
+	autocreated_items = []
+	for item in items:
+		if "New Stages" in item.name:
+			autocreated_items.append(item)
+	for item in autocreated_items:
+		frappe.delete_doc("Item", item.name)
+	

@@ -91,13 +91,18 @@ frappe.ui.form.on('Stages LGM', {
 	mixer_fill_factor: function(frm){
 		frm.set_value("mixer_volume_used",frm.doc.mixer_fill_factor * frm.doc.mixer_volume);
 	},
+
+	after_save: function(frm){
+		frm.call({
+			method:"remove_auto_created_item",
+		})
+	}
 });
 
 frappe.ui.form.on('Total Weight Table LGM', {
     // cdt is Child DocType name i.e Quotation Item
     // cdn is the row name for e.g bbfcb8da6a
-    refresh: function(frm, cdt, cdn) {
-        let row = frappe.get_doc(cdt, cdn);
-		console.log("HI");
-    }
+    // refresh: function(frm, cdt, cdn) {
+
+    // }
 })
