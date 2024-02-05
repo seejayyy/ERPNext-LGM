@@ -130,7 +130,8 @@
   {
    "fieldname": "for_quantity",
    "fieldtype": "Float",
-   "label": "Qty To Manufacture"
+   "label": "Qty To Manufacture",
+   "read_only": 1
   },
   {
    "fieldname": "wip_warehouse",
@@ -316,7 +317,8 @@
   {
    "fieldname": "mixer_no_job_card",
    "fieldtype": "Data",
-   "label": "Mixer No"
+   "label": "Mixer No",
+   "read_only": 1
   },
   {
    "fieldname": "stage",
@@ -329,7 +331,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2024-02-05 15:46:37.692630",
+ "modified": "2024-02-05 15:47:36.896648",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Job Card LGM",
