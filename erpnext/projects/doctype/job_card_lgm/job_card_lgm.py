@@ -88,43 +88,6 @@ class JobCardLGM(Document):
 		if update_status:
 			self.db_set('status', self.status)
 
-# @frappe.whitelist()
-# def get_ingredients(doc):
-# 	doc = json.loads(doc)
-# 	if not doc['work_order']:
-# 		return
-# 	work_order_doc = frappe.get_doc('Work Order LGM', doc['work_order'])
-
-# 	if doc['for_quantity'] == 0:
-# 		return
-# 	ingredient_list = []
-# 	for d in work_order_doc.weighing_table_lgm:
-# 		print(d.mixer_no)
-# 		if doc['mixer_no_job_card'] == d.mixer_no:
-# 			ingredient_list.append({
-# 				'ingredient': d.ingredient,
-# 				'ingredient_weight': d.weighed,
-# 				'mixer_no': d.mixer_no,
-# 				'weighed': d.weighed
-# 				})
-# 		print(ingredient_list)
-# 	return ingredient_list
-
-# @frappe.whitelist()
-# def get_instructions(doc):
-# 	doc = json.loads(doc)
-# 	if not doc['work_order']:
-# 		return
-	
-# 	instruction_list = frappe.get_doc('Technological Request Sheets LGM', doc['request_sheet']).mixing_cycle
-# 	output = []
-# 	for instruction in instruction_list:
-# 		output.append({
-# 			"mixing_time": instruction.mixing_time,
-# 			"mixing_process": instruction.mixing_process
-# 		})
-# 	return output
-
 @frappe.whitelist()
 def get_all_job_card():
 	data = frappe.get_all("Job Card LGM", fields="work_order")
