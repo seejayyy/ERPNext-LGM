@@ -21,6 +21,17 @@ frappe.ui.form.on('Stages LGM', {
 		}
 	},
 
+	refresh: function(frm){
+		for (var i = 1; i < 16; i++){
+			if (frm.doc["batch_weight_lgm_" + i].length > 0){
+				frm.toggle_display("batch_weight_lgm_" + i, true);
+			}
+			else {
+				frm.toggle_display("batch_weight_lgm_" + i, false);
+			}
+		}
+	},
+
 	before_save: function(frm){
 		frm.call({
 			method:"calculate_total_weight",
@@ -29,9 +40,7 @@ frappe.ui.form.on('Stages LGM', {
 			},
 			callback:function(r){
 				if (r.message != false){
-					console.log(frm.doc)
 					var output = r.message;
-					console.log(output)
 
 					var total_weight_list = output[0]
 
