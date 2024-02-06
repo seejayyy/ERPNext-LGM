@@ -148,6 +148,7 @@ def check_stock_entry(doc):
 	doc = json.loads(doc)
 	ingredient_list = doc["weighing_table_lgm"]
 	weights = {}
+	# add all the weights
 	for i in range (len(ingredient_list)):
 		ingredient_name = ingredient_list[i]["ingredient"]
 		ingredient_weight = float(ingredient_list[i]["weighed"])
@@ -157,6 +158,7 @@ def check_stock_entry(doc):
 			ori_weight = weights[ingredient_name]
 			weights[ingredient_name] = ori_weight + ingredient_weight
 
+	# create stock entry
 	stock_entry_details = []
 	warehouses = frappe.get_all("Warehouse", fields="name")
 	stores = None
