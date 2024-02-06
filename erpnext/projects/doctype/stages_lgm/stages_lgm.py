@@ -55,7 +55,7 @@ def calculate_total_weight(doc):
 					ingredient_weight = round(mb_mult_factor * formulation_part, 2)
 					total_weight_mb += ingredient_weight
 					per_recipe_weight.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
-				per_recipe_weight.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mb])
+				per_recipe_weight.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight", round(total_weight_mb, 2)])
 				calculate_total_weight_table.append(per_recipe_weight)
 
 			output.append(calculated_total_mixer_table)
@@ -99,7 +99,7 @@ def calculate_total_weight(doc):
 					ingredient_weight = round(comp_mult_factor * formulation_part, 2)
 					total_weight_mill += ingredient_weight
 					per_recipe_weight.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
-				per_recipe_weight.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mill])
+				per_recipe_weight.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight", round(total_weight_mill, 2)])
 				calculate_total_weight_table.append(per_recipe_weight)
 			output.append(calculated_total_mill_table)
 			output.append(calculate_total_weight_table)
