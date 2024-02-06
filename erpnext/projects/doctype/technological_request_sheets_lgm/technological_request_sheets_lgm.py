@@ -70,7 +70,6 @@ def get_ingredients(doc):
 	for i in range (1,6):
 		if doc.get("stage_"+str(i), None) is not None:
 			stages.append(doc.get("stage_"+str(i)))
-
 	for stage in stages:
 		stage_object = frappe.get_doc("Stages LGM", stage)
 		for i in range (1,16):
@@ -81,7 +80,6 @@ def get_ingredients(doc):
 				ingredient_weight = row.get("ingredient_weight")
 				if "RS-" not in ingredient_name:
 					ingredient_list.append((recipe_no, ingredient_name, ingredient_weight))
-			# print(ingredient_list)
 	return ingredient_list
 
 @frappe.whitelist()
