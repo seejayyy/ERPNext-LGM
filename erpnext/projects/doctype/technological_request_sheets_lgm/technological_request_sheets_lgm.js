@@ -39,11 +39,6 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 				});
 			});
 		}
-
-		// make the dashboard
-		if (frm.doc.docstatus===1) {
-			// frm.trigger('show_dashboard');
-		}
 	},
 
 	onload: function(frm){
@@ -65,79 +60,6 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 						frm.refresh_field(r.message[i][0]);
 					}
 				}
-			}
-		});
-	},
-
-
-	show_dashboard: function(frm) {
-		frm.call({
-			method: "query_dashboard_info",
-			args: {
-				doc:frm.doc
-			},
-			callback: function (r){
-				var dashboard_info = r.message;
-				var bars = [];
-				var message = '';
-				var no_of_job_card = frm.doc.compounding_ingredients[0].select_mixer_no;
-				var total_work = 1 + parseInt(no_of_job_card) + 2;
-
-				// work order
-				var title = __('Completed: Created Technological Request Sheet.\n Pending: Create Work Order.');
-				bars.push({
-					'title': title,
-					'width': (1 / total_work * 100 ) + '%',
-					'progress_class': 'progress-bar-success'
-				});
-				message = title;
-
-				if (dashboard_info[0].length > 0){
-					if (dashboard_info[0][0].docstatus === 1){
-						title = __("Completed: Created Work Order. Pending: Create Job Cards.");
-						bars.push({
-							'title': title,
-							'width': (1 / total_work * 100 ) + '%',
-							'progress_class': 'progress-bar-success'
-						});
-						message = title;
-					}
-	
-					if (dashboard_info[1].length > 0){
-	
-						title = __("Completed: Created Job Cards.\n Pending: Submit Job Cards.");
-						bars.push({
-							'title': title,
-							'width': (1 / total_work * 100 ) + '%',
-							'progress_class': 'progress-bar-success'
-						});
-						message = title;
-	
-						var completed_job = 0;
-						for (var i = 0; i < dashboard_info[1].length; i++){
-							if (dashboard_info[1][i].docstatus === 1){
-								completed_job += 1;
-								// not all jobs are completed
-								title = __("Completed: Submitted Job {0}. Pending: Job {1}.", [completed_job, completed_job+1]);
-								bars.push({
-									'title': title,
-									'width': (1 / total_work * 100 ) + '%',
-									'progress_class': 'progress-bar-success'
-								});
-								message = title;
-							}
-						}
-						if (completed_job == dashboard_info[1].length){
-							// all jobs are completed
-							title = __("Completed: Submitted Job {0}. Pending: None.", [completed_job]);
-							bars[bars.length - 1]. title = title;
-							message = title;
-						}
-						
-					}
-				}
-				
-				return frm.dashboard.add_progress(__('Status'), bars, message);
 			}
 		});
 	},

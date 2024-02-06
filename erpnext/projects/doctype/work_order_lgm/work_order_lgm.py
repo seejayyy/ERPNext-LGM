@@ -216,3 +216,19 @@ def query_stages(doc):
 			else:
 				break
 	return stages
+
+# simple gets the available doctypes
+@frappe.whitelist()
+def query_dashboard_info(doc):
+	doc = json.loads(doc)
+	job_card = frappe.get_list('Job Card LGM', fields="*", filters={'request_sheet_link': doc["request_sheet_link"]})
+
+	weights = doc["weighing_table_lgm"]
+	max = 0
+	for row in weights:
+		if int(row["mixer_no"]) > max:
+			max = int(row["mixer_no"]) 
+
+	all_stages = frappe.get_list("Stages LGM", fields="name", filters={'request_sheet_link': doc["request_sheet_link"]})
+	no_of_card = len(all_stages) * max
+	return [no_of_card] + [job_card]
