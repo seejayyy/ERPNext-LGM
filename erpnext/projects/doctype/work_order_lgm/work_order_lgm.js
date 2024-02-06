@@ -57,7 +57,6 @@ frappe.ui.form.on('Work Order LGM', {
 		var ingredients_list = frm.doc["weighing_table_lgm"];
 		var no_of_ingredients = frm.doc["weighing_table_lgm"].length;
 		for (var i = 0; i < no_of_ingredients; i++){
-			console.log(ingredients_list[i]["weighed"])
 			if (ingredients_list[i]["weighed"] == undefined){
 				frm.reload_doc();
 				frappe.throw({
@@ -66,6 +65,22 @@ frappe.ui.form.on('Work Order LGM', {
 				});
 			}
 		}
+
+		// stock entry check
+		frm.call({
+			method:"check_stock_entry",
+			args:{
+				doc: frm.doc,
+			},
+			callback:function(r){
+				if (r.message != true){
+					frappe.throw({
+						message: __(`Ingredient ${r.message} does not have enough stock`),
+						indicator: 'red'
+					});
+				}
+			},
+		});
 	},
 });
 

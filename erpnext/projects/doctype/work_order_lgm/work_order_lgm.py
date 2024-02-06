@@ -144,6 +144,54 @@ def get_ingredients_from_stages(doc):
 	return ingredient_list
 
 @frappe.whitelist()
+def check_stock_entry(doc):
+	doc = json.loads(doc)
+	ingredient_list = doc["weighing_table_lgm"]
+	weights = {}
+	for i in range (len(ingredient_list)):
+		ingredient_name = ingredient_list[i]["ingredient"]
+		ingredient_weight = float(ingredient_list[i]["weighed"])
+		if weights.get(ingredient_name) is None:
+			weights[ingredient_name] = ingredient_weight
+		else:
+			ori_weight = weights[ingredient_name]
+			weights[ingredient_name] = ori_weight + ingredient_weight
+
+	stock_entry_details = []
+	warehouses = frappe.get_all("Warehouse", fields="name")
+	stores = None
+	wip = None
+	for warehouse in warehouses:
+		if "Stores" in warehouse["name"]:
+			stores = warehouse["name"]
+		elif "Work In" in warehouse["name"]:
+			wip = warehouse["name"]
+
+	for keys in weights.items():
+		ingredient_name = keys[0]
+		ingredient_weight = keys[1]
+		stock_entry_detail = dict(
+			s_warehosue = stores,
+			t_warehouse = wip,
+			item_code = ingredient_name,
+			qty = ingredient_weight
+		)
+		stock_entry_details.append(stock_entry_detail)
+
+	stock_entry = frappe.get_doc(dict(
+		doctype = "Stock Entry",
+		stock_entry_type = "Material Transfer",
+		from_warehouse = stores,
+		to_warehouse = wip,
+		items = stock_entry_details
+	)).insert()
+	stock_entry.save()
+	stock_entry.submit()
+	return True
+		
+	# return output
+
+@frappe.whitelist()
 def get_all_work_order():
 	data = frappe.get_all("Work Order LGM", fields="request_sheet_link")
 	output = []
