@@ -82,17 +82,20 @@
   {
    "fieldname": "section_curing",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Curing Sections"
   },
   {
    "fieldname": "col_break_rheometer",
    "fieldtype": "Column Break",
+   "hidden": 1,
    "label": "Rheometer Lab"
   },
   {
    "bold": 1,
    "fieldname": "curing_machine",
    "fieldtype": "Link",
+   "hidden": 1,
    "in_global_search": 1,
    "in_standard_filter": 1,
    "label": "Machine",
@@ -103,65 +106,77 @@
   {
    "fieldname": "curing_temperature",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Temperature (\u00b0C)"
   },
   {
    "fieldname": "curing_time",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Time"
   },
   {
    "fieldname": "curing_range",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Range"
   },
   {
    "fieldname": "col_break_mooney",
    "fieldtype": "Column Break",
+   "hidden": 1,
    "label": "Mooney Viscosity"
   },
   {
    "default": "0",
    "fieldname": "mooney_vr",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Vr"
   },
   {
    "default": "0",
    "fieldname": "mooney_vb",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Vb"
   },
   {
    "default": "0",
    "fieldname": "mooney_vc",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Vc"
   },
   {
    "depends_on": "check_scorch",
    "fieldname": "mooney_scorch_temperature",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Scorch Temperature (\u00b0C)"
   },
   {
    "fieldname": "cure_time_conditions",
    "fieldtype": "Text",
+   "hidden": 1,
    "label": "Cure Time and Conditions"
   },
   {
    "fieldname": "section_cure_condition",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Cure Condition"
   },
   {
    "fieldname": "col_break_test_sample",
    "fieldtype": "Column Break",
+   "hidden": 1,
    "label": "Test Samples Required"
   },
   {
    "fieldname": "col_break_cure_text",
-   "fieldtype": "Column Break"
+   "fieldtype": "Column Break",
+   "hidden": 1
   },
   {
    "fieldname": "reference_no",
@@ -192,11 +207,13 @@
    "default": "0",
    "fieldname": "check_scorch",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Scorch "
   },
   {
    "fieldname": "test_sample_table",
    "fieldtype": "Table",
+   "hidden": 1,
    "options": "Test Sample Table LGM"
   },
   {
@@ -241,7 +258,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2024-01-26 16:10:42.291929",
+ "modified": "2024-02-06 13:08:49.808082",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Technological Request Sheets LGM",
