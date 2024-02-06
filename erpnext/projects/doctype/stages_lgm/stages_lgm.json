@@ -314,13 +314,13 @@
   {
    "default": "1",
    "fieldname": "stage_no",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Select Stage Number",
    "options": "1\n2\n3\n4\n5"
   }
  ],
  "is_submittable": 1,
- "modified": "2024-02-06 14:00:41.988601",
+ "modified": "2024-02-06 14:23:56.431257",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Stages LGM",
