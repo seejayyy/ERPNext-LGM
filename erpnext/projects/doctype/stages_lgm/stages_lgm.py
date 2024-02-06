@@ -38,8 +38,8 @@ def calculate_total_weight(doc):
 					density_denominator += (formulation_part/ingredient_density)
 					total_formulation += formulation_part
 				
-				density_mb = round(total_formulation / density_denominator, 4)
-				mb_mult_factor = round(mixer_volume_used / total_formulation * density_mb, 4)
+				density_mb = round(total_formulation / density_denominator, 2)
+				mb_mult_factor = round(mixer_volume_used / total_formulation * density_mb, 2)
 				calculated_total_mixer_table.append(["formulation", total_formulation, "masterbatch_mult_factor", mb_mult_factor, "density_masterbatch", density_mb])
 				mb_items.append(create_masterbatch_item(doc,density_mb, i))
 
@@ -51,7 +51,7 @@ def calculate_total_weight(doc):
 				for j in range (len(formulation_list)):
 					ingredient_name = ingredient_list[j]["ingredient"]
 					formulation_part = float(formulation_list[j]["formulation_mixer_"+str(i)])
-					ingredient_weight = mb_mult_factor * formulation_part
+					ingredient_weight = round(mb_mult_factor * formulation_part, 2)
 					total_weight_mb += ingredient_weight
 					calculate_total_weight_table.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
 				calculate_total_weight_table.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mb])
@@ -82,7 +82,7 @@ def calculate_total_weight(doc):
 						formulation_part = float(formulation_list[j]["formulation_mixer_"+str(i)])
 						total_formulation += formulation_part
 				
-				comp_mult_factor = round(mb_mill_weight / total_formulation, 4)
+				comp_mult_factor = round(mb_mill_weight / total_formulation, 2)
 				calculated_total_mill_table.append(["formulation", total_formulation, "comp_mult_factor", comp_mult_factor])
 				mb_items.append(create_masterbatch_item(doc, 0, i))
 
@@ -93,7 +93,7 @@ def calculate_total_weight(doc):
 				for j in range (len(formulation_list)):
 					ingredient_name = ingredient_list[j]["ingredient"]
 					formulation_part = float(formulation_list[j]["formulation_mixer_"+str(i)])
-					ingredient_weight = comp_mult_factor * formulation_part
+					ingredient_weight = round(comp_mult_factor * formulation_part, 2)
 					total_weight_mill += ingredient_weight
 					calculate_total_weight_table.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
 				calculate_total_weight_table.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mill])
