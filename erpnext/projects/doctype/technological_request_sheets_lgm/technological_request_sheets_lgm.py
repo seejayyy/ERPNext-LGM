@@ -10,26 +10,6 @@ from frappe import _
 class TechnologicalRequestSheetsLGM(Document):
 	pass
 
-# """Calculates the total waste of ingredients before production"""
-# @frappe.whitelist()
-# def calculate_waste(doc):
-# 	doc = json.loads(doc)
-		
-# 	mb = doc["compounding_ingredients"][len(doc["compounding_ingredients"]) -1]
-# 	curing = doc["curing_ingredients"][0]
-
-# 	mb_mixer_count = int(mb["select_mixer_no"])
-# 	mb_waste = 0
-
-# 	for i in range(1, mb_mixer_count+1):
-# 		waste_name = "mixer_" + str(i)
-# 		mixer_name = "mixer_" + str(i)
-# 		mb_waste += float(mb[waste_name]) - float(curing[mixer_name])
-
-# 	mb_waste = round(mb_waste, 2)
-# 	return mb_waste
-# 	# return True
-
 @frappe.whitelist()
 def create_stages_lgm(doc):
 	# parse to json object
@@ -93,14 +73,15 @@ def get_ingredients(doc):
 
 	for stage in stages:
 		stage_object = frappe.get_doc("Stages LGM", stage)
-		batch_weight_lgm = stage_object.get("batch_weight_lgm")
-		for row in batch_weight_lgm:
-			recipe_no = row.get("mixer_no")
-			ingredient_name = row.get("ingredient")
-			ingredient_weight = row.get("ingredient_weight")
-			if "RS-" not in ingredient_name:
-				ingredient_list.append((recipe_no, ingredient_name, ingredient_weight))
-		# print(ingredient_list)
+		for i in range (1,16):
+			batch_weight_lgm = stage_object.get("batch_weight_lgm_" + str (i))
+			for row in batch_weight_lgm:
+				recipe_no = row.get("mixer_no")
+				ingredient_name = row.get("ingredient")
+				ingredient_weight = row.get("ingredient_weight")
+				if "RS-" not in ingredient_name:
+					ingredient_list.append((recipe_no, ingredient_name, ingredient_weight))
+			# print(ingredient_list)
 	return ingredient_list
 
 # simple gets the available doctypes
@@ -118,7 +99,8 @@ def query_stages(doc):
 	for i in range (0,5):
 		if len(stages) == 0:
 			first_stage = frappe.get_list("Stages LGM", filters={'request_sheet_link': doc["name"], 'is_first_stage': 1})
-			stages.append(("stage_"+str(i+1),first_stage[0]["name"]))
+			if len(first_stage) > 0:
+				stages.append(("stage_"+str(i+1),first_stage[0]["name"]))
 		else:
 			next_stage = frappe.get_list("Stages LGM", filters={'previous_stage_link': stages[i-1][1]})
 			if len(next_stage) > 0:
