@@ -29,7 +29,9 @@ frappe.ui.form.on('Stages LGM', {
 			},
 			callback:function(r){
 				if (r.message != false){
+					console.log(frm.doc)
 					var output = r.message;
+					console.log(output)
 
 					var total_weight_list = output[0]
 
@@ -42,46 +44,43 @@ frappe.ui.form.on('Stages LGM', {
 					if (frm.doc[mixer_selection] != 1){
 						var total_weight_name = "total_weight_table_two_roll_mill";
 						var mixer_no = total_weight_list.length;
-						frm.doc.total_weight_table_two_roll_mill = []
+						frm.doc.total_weight_table_two_roll_mill = [];
 						for (var i = 0; i < mixer_no; i++){
 							let row = frm.add_child(total_weight_name, {
 								'formulation':total_weight_list[i][1],
 								'comp_mult_factor':total_weight_list[i][3]
-							})
+							});
 						}
 						frm.refresh_field('total_weight_table_two_roll_mill');
-
-						frm.doc.batch_weight_lgm= []
-						for (var i = 0; i < batch_weight_list.length; i++){
-							frm.add_child("batch_weight_lgm", {
-								'mixer_no':batch_weight_list[i][1],
-								'ingredient':batch_weight_list[i][3],
-								'ingredient_weight':batch_weight_list[i][5]
-							})
-						}
-						frm.refresh_field('batch_weight_lgm');
 					}
 					else{
 						var mixer_no = total_weight_list.length;
-						frm.doc.total_weight_table_mixer = []
+						frm.doc.total_weight_table_mixer = [];
+						
 						for (var i = 0; i < mixer_no; i++){
 							let row = frm.add_child(total_weight_name, {
 								'formulation':total_weight_list[i][1],
 								'mb_mult_factor':total_weight_list[i][3],
 								'density_mb':total_weight_list[i][5]
-							})
+							});
 						}
 						frm.refresh_field('total_weight_table_mixer');
-
-						frm.doc.batch_weight_lgm= []
-						for (var i = 0; i < batch_weight_list.length; i++){
-							frm.add_child("batch_weight_lgm", {
-								'mixer_no':batch_weight_list[i][1],
-								'ingredient':batch_weight_list[i][3],
-								'ingredient_weight':batch_weight_list[i][5]
-							})
+					}
+					for (var j = 1; j < batch_weight_list.length + 1; j++){
+						var batch_weight_table_name = "batch_weight_lgm_" + j;
+						frm.doc[batch_weight_table_name]= [];
+						var per_weight_table = batch_weight_list[j-1];
+						for (var i = 0; i < per_weight_table.length; i++){
+							var ingredient_weight = per_weight_table[i][5];
+							if (ingredient_weight > 0){
+								frm.add_child("batch_weight_lgm_" + j, {
+									'mixer_no':per_weight_table[i][1],
+									'ingredient':per_weight_table[i][3],
+									'ingredient_weight':ingredient_weight
+								});
+							}
 						}
-						frm.refresh_field('batch_weight_lgm');
+						frm.refresh_field('batch_weight_lgm_' + j);
 					}
 				}
 			},

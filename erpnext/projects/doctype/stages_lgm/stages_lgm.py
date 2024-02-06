@@ -46,6 +46,7 @@ def calculate_total_weight(doc):
 			# print(mb_items)
 			# each recipe, calculate ingredient weight and the masterbatch weight of the recipe
 			for i in range (1, int(no_of_mixer) + 1):
+				per_recipe_weight = []
 				mb_mult_factor = calculated_total_mixer_table[i-1][3]
 				total_weight_mb = 0
 				for j in range (len(formulation_list)):
@@ -53,8 +54,9 @@ def calculate_total_weight(doc):
 					formulation_part = float(formulation_list[j]["formulation_mixer_"+str(i)])
 					ingredient_weight = round(mb_mult_factor * formulation_part, 2)
 					total_weight_mb += ingredient_weight
-					calculate_total_weight_table.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
-				calculate_total_weight_table.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mb])
+					per_recipe_weight.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
+				per_recipe_weight.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mb])
+				calculate_total_weight_table.append(per_recipe_weight)
 
 			output.append(calculated_total_mixer_table)
 			output.append(calculate_total_weight_table)
@@ -88,6 +90,7 @@ def calculate_total_weight(doc):
 
 			# each recipe, calculate ingredient weight and the masterbatch weight of the recipe
 			for i in range (1, int(no_of_mixer) + 1):
+				per_recipe_weight = []
 				comp_mult_factor = calculated_total_mill_table[i-1][3]
 				total_weight_mill = 0
 				for j in range (len(formulation_list)):
@@ -95,8 +98,9 @@ def calculate_total_weight(doc):
 					formulation_part = float(formulation_list[j]["formulation_mixer_"+str(i)])
 					ingredient_weight = round(comp_mult_factor * formulation_part, 2)
 					total_weight_mill += ingredient_weight
-					calculate_total_weight_table.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
-				calculate_total_weight_table.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mill])
+					per_recipe_weight.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
+				per_recipe_weight.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight",total_weight_mill])
+				calculate_total_weight_table.append(per_recipe_weight)
 			output.append(calculated_total_mill_table)
 			output.append(calculate_total_weight_table)
 		return output

@@ -30,8 +30,22 @@
   "ingredient_table",
   "section_total_weight",
   "total_weight_table_mixer",
-  "batch_weight_lgm",
   "total_weight_table_two_roll_mill",
+  "batch_weight_lgm_1",
+  "batch_weight_lgm_2",
+  "batch_weight_lgm_3",
+  "batch_weight_lgm_4",
+  "batch_weight_lgm_5",
+  "batch_weight_lgm_6",
+  "batch_weight_lgm_7",
+  "batch_weight_lgm_8",
+  "batch_weight_lgm_9",
+  "batch_weight_lgm_10",
+  "batch_weight_lgm_11",
+  "batch_weight_lgm_12",
+  "batch_weight_lgm_13",
+  "batch_weight_lgm_14",
+  "batch_weight_lgm_15",
   "mixing_cycle"
  ],
  "fields": [
@@ -160,12 +174,6 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "batch_weight_lgm",
-   "fieldtype": "Table",
-   "label": "Batch Weight Table",
-   "options": "Batch Weight LGM"
-  },
-  {
    "depends_on": "mixer_two_roll_mill",
    "fieldname": "total_weight_table_two_roll_mill",
    "fieldtype": "Table",
@@ -206,10 +214,100 @@
    "fieldname": "mb_weight",
    "fieldtype": "Data",
    "label": "Masterbatch Weight"
+  },
+  {
+   "fieldname": "batch_weight_lgm_1",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 1",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_2",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 2",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_3",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 3",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_4",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 4",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_5",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 5",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_6",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 6",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_7",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 7",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_8",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 8",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_9",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 9",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_10",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 10",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_11",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 11",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_12",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 12",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_13",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 13",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_14",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 14",
+   "options": "Batch Weight LGM"
+  },
+  {
+   "fieldname": "batch_weight_lgm_15",
+   "fieldtype": "Table",
+   "label": "Batch Weight Recipe 15",
+   "options": "Batch Weight LGM"
   }
  ],
  "is_submittable": 1,
- "modified": "2024-02-02 10:27:08.638515",
+ "modified": "2024-02-06 13:20:05.162439",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Stages LGM",
