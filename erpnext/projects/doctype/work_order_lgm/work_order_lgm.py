@@ -82,15 +82,12 @@ def get_ingredients_per_stage(doc):
 	output = []
 	for stage in stages:
 		stage_doc = frappe.get_doc("Stages LGM", stage[1])
-		no_of_mixer = int(stage_doc.formulation_parts[0].select_mixer_no)	
-		ingredient_list_per_stage = stage_doc.batch_weight_lgm
-		index = 0 
-		for i in range (1, no_of_mixer + 1):
-			stage_recipe_ingredients = []
-			for j in range(0 + index, len(ingredient_list_per_stage)):
-				
-				ingredient = ingredient_list_per_stage[j]
-				if int(ingredient.mixer_no) == i:
+		for k in range (1, 16):
+			# per table
+			ingredient_list_per_stage = stage_doc.get("batch_weight_lgm_" + str(k))
+			if len(ingredient_list_per_stage) > 0:
+				stage_recipe_ingredients = []
+				for ingredient in ingredient_list_per_stage:
 					if "RS-" in ingredient.ingredient:
 						if int(stage_doc.is_first_stage) != 1:
 							stage_recipe_ingredients.append({
@@ -104,10 +101,7 @@ def get_ingredients_per_stage(doc):
 								"ingredient": ingredient.ingredient,
 								"ingredient_weight": ingredient.ingredient_weight,
 							})
-				else:
-					index = j
-					break
-			output.append((stage[1], i, stage_recipe_ingredients))
+				output.append((stage[1], k, stage_recipe_ingredients))
 	return output
 
 @frappe.whitelist()
@@ -115,53 +109,38 @@ def create_work_order_lgm(doc):
 	# parse to json object
 	doc = json.loads(doc)
 
-	request_sheet_doc = frappe.get_doc("Technological Request Sheets LGM", doc["request_sheet_link"])
 	# get ingredients
-	ingredients_lists = get_ingredients_from_request_sheet(request_sheet_doc)
+	ingredients_lists = get_ingredients_from_stages(doc)
 
 	# populate child table 
 	table_list = []
 	for ingredient in ingredients_lists:
-		for ingredient_details in ingredient:
-			table_list.append(
-				{
-					"ingredient": ingredient_details[0],
-					"ingredient_weight": ingredient_details[1],
-					"mixer_no": ingredient_details[2]
-				}
-			)
+		table_list.append(
+			{
+				"mixer_no": ingredient[0],
+				"ingredient": ingredient[1],
+				"ingredient_weight": ingredient[2],
+			}
+		)
 
 	# insert record
 	doc["weighing_table_lgm"] = table_list
 	return doc
 
-def get_ingredients_from_request_sheet(doc):
+def get_ingredients_from_stages(doc):
 	# get ingredients from commpounding ingredients child table
 	ingredient_list = []
-	compounding_list_object = doc.compounding_ingredients
-	for list_object in compounding_list_object:
-		mixer_no = int(list_object.select_mixer_no)
-		ingredient_name = list_object.ingredient
-		if ingredient_name != "Masterbatch":
-			ingredient = []
-			for i in range (1, mixer_no+1):
-				if getattr(list_object,"mixer_" + str(i)) is not None:
-					ingredient_weight = getattr(list_object,"mixer_" + str(i))
-					ingredient.append((ingredient_name, ingredient_weight, i))
-			ingredient_list.append(ingredient)
-
-	# get ingredients from curing ingredients child table
-	curing_list_object = doc.curing_ingredients
-	for list_object in curing_list_object:
-		mixer_no = int(list_object.select_mixer_no)
-		ingredient_name = list_object.ingredient
-		if ingredient_name != "Masterbatch":
-			ingredient = []
-			for i in range (1, mixer_no+1):
-				if getattr(list_object,"mixer_" + str(i)) is not None:
-					ingredient_weight = getattr(list_object,"mixer_" + str(i))
-					ingredient.append((ingredient_name, ingredient_weight, i))
-			ingredient_list.append(ingredient)
+	stages = query_stages(doc)
+	for stage in stages:
+		stage_object = frappe.get_doc("Stages LGM", stage[1])
+		for i in range (1,16):
+			batch_weight_lgm = stage_object.get("batch_weight_lgm_" + str(i))
+			for row in batch_weight_lgm:
+				recipe_no = row.get("mixer_no")
+				ingredient_name = row.get("ingredient")
+				ingredient_weight = row.get("ingredient_weight")
+				if "RS-" not in ingredient_name:
+					ingredient_list.append((recipe_no, ingredient_name, ingredient_weight))
 	return ingredient_list
 
 @frappe.whitelist()
