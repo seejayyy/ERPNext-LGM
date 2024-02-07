@@ -47,7 +47,7 @@ frappe.ui.form.on('Job Card LGM', {
 									}
 								}
 							});
-						}).addClass("btn-primary");
+						});
 					}
 				}
 			});
