@@ -187,15 +187,14 @@ def check_stock_entry(doc):
 	stock_entry = frappe.get_doc(dict(
 		doctype = "Stock Entry",
 		stock_entry_type = "Material Transfer",
+		work_order_lgm = doc["name"],
 		from_warehouse = stores,
 		to_warehouse = wip,
-		items = stock_entry_details
+		items = stock_entry_details,
 	)).insert()
 	stock_entry.save()
 	stock_entry.submit()
 	return True
-		
-	# return output
 
 @frappe.whitelist()
 def get_all_work_order():

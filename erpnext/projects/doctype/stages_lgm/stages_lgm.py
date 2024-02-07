@@ -126,7 +126,7 @@ def create_masterbatch_item(doc, density_mb, index):
 		"item_density": density_mb,
 		"item_group": "Produce",
 		"stock_uom": "Gram",
-		"is_stock_item": 0
+		"is_stock_item": 1
 	}).insert()
 	return (mb_item.item_name)
 

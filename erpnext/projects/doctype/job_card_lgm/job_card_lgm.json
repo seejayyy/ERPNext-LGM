@@ -215,7 +215,6 @@
    "collapsible": 1,
    "fieldname": "more_information",
    "fieldtype": "Section Break",
-   "hidden": 1,
    "label": "More Information"
   },
   {
@@ -229,7 +228,6 @@
    "default": "0",
    "fieldname": "transferred_qty",
    "fieldtype": "Float",
-   "hidden": 1,
    "label": "Transferred Qty",
    "read_only": 1
   },
@@ -333,7 +331,7 @@
   }
  ],
  "is_submittable": 1,
- "modified": "2024-02-06 16:55:37.646707",
+ "modified": "2024-02-07 14:15:57.205357",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Job Card LGM",

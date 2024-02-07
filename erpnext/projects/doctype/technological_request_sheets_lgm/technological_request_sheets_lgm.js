@@ -20,7 +20,7 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 						frappe.set_route("Form", "Stages LGM", r.message.name);
 					},
 				});
-			});
+			}).addClass("btn-primary");;
 
 			// adds the button to create work order
 			frm.add_custom_button(__('Create Work Order LGM'), function() {
@@ -37,7 +37,7 @@ frappe.ui.form.on('Technological Request Sheets LGM', {
 						return frappe.set_route("Form", "Work Order LGM", r.message.name);;
 					},
 				});
-			});
+			}).addClass("btn-primary");;
 		}
 	},
 

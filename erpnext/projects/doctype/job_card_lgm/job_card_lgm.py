@@ -99,3 +99,56 @@ def get_all_job_card():
 		if forms.work_order not in output:
 			output.append(forms.work_order)
 	return output
+
+@frappe.whitelist()
+def make_stock_entry(doc):
+	doc = json.loads(doc)
+	# get warehouse
+	warehouses = frappe.get_all("Warehouse", fields="name")
+	fg = None
+	wip = None
+	for warehouse in warehouses:
+		if "Finished" in warehouse["name"]:
+			fg = warehouse["name"]
+		elif "Work In" in warehouse["name"]:
+			wip = warehouse["name"]
+
+	# calculate masterbatch weight
+	ingredient_list = doc["ingredients"]
+	weight = 0
+	for row in ingredient_list:
+		weight += float(row["ingredient_weight"])
+
+	weight = round(weight, 2)
+
+	# get masterbatch item
+	mb_item = frappe.get_list("Item", fields="name", filters={"name": doc["stage"] + "-MB-" + doc["mixer_no_job_card"]})[0]
+
+	stock_entry_details = [dict(
+		t_warehouse = fg,
+		item_code = mb_item.name,
+		qty = 1,
+		allow_zero_valuation_rate = 1,
+	)]
+
+	#create stock entry
+	stock_entry = frappe.get_doc(dict(
+		doctype = "Stock Entry",
+		stock_entry_type = "Manufacture",
+		work_order_lgm = doc["work_order"],
+		job_card_lgm = doc["name"],
+		from_warehouse = wip,
+		to_warehouse = fg,
+		items = stock_entry_details,
+	)).insert()
+	stock_entry.save()
+	stock_entry.submit()
+	return True
+
+@frappe.whitelist()
+def check_stock_entry(doc):
+	doc = json.loads(doc)
+	stock_entry = frappe.get_list("Stock Entry", fields="name", filters={"work_order_lgm": doc["work_order"], "job_card_lgm": doc["name"]})
+	if len(stock_entry) > 0:
+		return False
+	return True

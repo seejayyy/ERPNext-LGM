@@ -49,7 +49,7 @@ frappe.ui.form.on('Work Order LGM', {
 						})
 					},
 				});
-			});
+			}).addClass("btn-primary");;
 			
 			frm.trigger('show_dashboard');
 		}

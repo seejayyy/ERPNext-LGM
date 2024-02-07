@@ -23,6 +23,36 @@ frappe.ui.form.on('Job Card LGM', {
 		frappe.flags.pause_job = 0;
 		frappe.flags.resume_job = 0;
 
+		if(frm.doc.docstatus === 1) {
+			frm.call({
+				method: "check_stock_entry",
+				args: {
+					doc: frm.doc
+				},
+				callback:function(r){
+					if (r.message == true){
+						frm.add_custom_button(__("Create Material Transfer"), () => {
+							frm.call({
+								method: "make_stock_entry",
+								args: {
+									doc: frm.doc
+								},
+								callback:function(r){
+									if (r.message == true){
+										frappe.msgprint({
+											message: __('Material Transfer is created.'),
+											indicator: 'green'
+										})
+										frm.reload_doc();
+									}
+								}
+							});
+						}).addClass("btn-primary");
+					}
+				}
+			});
+		}
+
 		if (frm.doc.docstatus == 0 && (frm.doc.for_quantity > frm.doc.total_completed_qty || !frm.doc.for_quantity)
 			&& (frm.doc.ingredients || !frm.doc.ingredients.length || frm.doc.for_quantity == frm.doc.transferred_qty)) {
 			frm.trigger("prepare_timer_buttons");

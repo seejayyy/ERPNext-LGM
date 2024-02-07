@@ -14,6 +14,7 @@
   "purpose",
   "company",
   "work_order",
+  "work_order_lgm",
   "purchase_order",
   "delivery_note_no",
   "sales_invoice_no",
@@ -73,6 +74,7 @@
   "per_transferred",
   "total_amount",
   "job_card",
+  "job_card_lgm",
   "amended_from",
   "credit_note"
  ],
@@ -622,12 +624,25 @@
    "label": "Pick List",
    "options": "Pick List",
    "read_only": 1
+  },
+  {
+   "fieldname": "work_order_lgm",
+   "fieldtype": "Link",
+   "label": "Work Order LGM",
+   "options": "Work Order LGM"
+  },
+  {
+   "fieldname": "job_card_lgm",
+   "fieldtype": "Link",
+   "label": "Job Card LGM",
+   "options": "Job Card LGM",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-file-text",
  "idx": 1,
  "is_submittable": 1,
- "modified": "2019-09-27 14:38:20.801420",
+ "modified": "2024-02-07 13:19:36.482779",
  "modified_by": "Administrator",
  "module": "Stock",
  "name": "Stock Entry",
