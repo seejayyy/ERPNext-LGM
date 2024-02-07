@@ -129,7 +129,7 @@
    "default": "1",
    "fieldname": "select_mixer_no",
    "fieldtype": "Select",
-   "label": "Number of Mixer",
+   "label": "Recipe Number",
    "options": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15"
   },
   {
@@ -141,7 +141,7 @@
   }
  ],
  "istable": 1,
- "modified": "2024-02-06 13:44:42.664172",
+ "modified": "2024-02-07 14:59:29.157416",
  "modified_by": "Administrator",
  "module": "Projects",
  "name": "Compounding Ingredients LGM",
