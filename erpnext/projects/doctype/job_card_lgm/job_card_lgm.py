@@ -85,6 +85,9 @@ class JobCardLGM(Document):
 		if self.time_logs:
 			self.status = 'Work In Progress'
 
+		if self.docstatus == 1:
+			self.status = 'Completed'
+
 		if update_status:
 			self.db_set('status', self.status)
 
