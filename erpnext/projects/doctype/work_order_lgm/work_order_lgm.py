@@ -16,6 +16,8 @@ def trigger_nodered(doc, cdt, cdn):
 	doc = json.loads(doc)
 	raw_url = frappe.get_doc("LGM Settings").lgm_url 
 	raw_port = frappe.get_doc("LGM Settings").lgm_port
+	token_key = frappe.get_doc("LGM Settings").token_key
+	secret_key = frappe.get_doc("LGM Settings").secret_key
 	url = raw_url + ":" + raw_port + "/listen"
 	headers = {
 		'Content-type': 'application/json',
@@ -24,7 +26,9 @@ def trigger_nodered(doc, cdt, cdn):
 		"url": raw_url,
 		"doc": doc,
 		"cdt": cdt,
-		"cdn": cdn
+		"cdn": cdn,
+		"token": token_key,
+		"secret": secret_key
 	})
 	resp = make_post_request(url, headers=headers, data=data)
 	return resp
