@@ -6,5 +6,6 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
+# a table for the mixing instructions per stage
 class MixingCycleLGM(Document):
 	pass

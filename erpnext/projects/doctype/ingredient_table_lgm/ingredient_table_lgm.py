@@ -6,5 +6,6 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
+# a table for specifying the ingredients used in a stage
 class IngredientTableLGM(Document):
 	pass

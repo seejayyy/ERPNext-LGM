@@ -6,5 +6,6 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
+# a table for the masterbatch density and other details if the mixer chosen is internal volume mixer
 class TotalWeightTableLGM(Document):
 	pass

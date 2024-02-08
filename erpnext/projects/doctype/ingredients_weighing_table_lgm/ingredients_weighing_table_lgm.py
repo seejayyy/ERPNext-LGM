@@ -6,5 +6,6 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
+# a table to put all the ingredients from a work order
 class IngredientsWeighingTableLGM(Document):
 	pass

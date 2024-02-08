@@ -6,5 +6,6 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
+# formulation parts table for the stages
 class CompoundingIngredientsLGM(Document):
 	pass

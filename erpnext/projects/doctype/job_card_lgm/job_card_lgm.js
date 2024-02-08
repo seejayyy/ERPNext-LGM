@@ -22,7 +22,7 @@ frappe.ui.form.on('Job Card LGM', {
 	refresh: function(frm) {
 		frappe.flags.pause_job = 0;
 		frappe.flags.resume_job = 0;
-
+		// if form is submitted
 		if(frm.doc.docstatus === 1) {
 			frm.call({
 				method: "check_stock_entry",
@@ -30,6 +30,7 @@ frappe.ui.form.on('Job Card LGM', {
 					doc: frm.doc
 				},
 				callback:function(r){
+					// if no stock entry is created
 					if (r.message == true){
 						frm.add_custom_button(__("Create Material Transfer"), () => {
 							frm.call({

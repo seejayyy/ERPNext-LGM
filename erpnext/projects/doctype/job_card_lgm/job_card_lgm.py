@@ -9,11 +9,13 @@ from frappe.utils import flt, time_diff_in_hours, get_datetime, time_diff, get_l
 from frappe.model.mapper import get_mapped_doc
 from frappe.model.document import Document
 
+# a job card to record the time logs for a manufacturing process.
 class JobCardLGM(Document):
 	def validate(self):
 		self.validate_time_logs()
 		self.set_status()
 
+	# check the time log is a valid time or not.
 	def validate_time_logs(self):
 		self.total_completed_qty = 0.0
 		self.total_time_in_mins = 0.0
@@ -58,9 +60,11 @@ class JobCardLGM(Document):
 
 		return existing[0] if existing else None
 
+	# function to call when the job card is submitted
 	def on_submit(self):
 		self.validate_job_card()
 
+	# function to call to check the validity of the job card
 	def validate_job_card(self):
 		if not self.time_logs:
 			frappe.throw(_("Time logs are required for {0} {1}")
@@ -73,6 +77,7 @@ class JobCardLGM(Document):
 			frappe.throw(_("The {0} ({1}) must be equal to {2} ({3})"
 				.format(total_completed_qty, frappe.bold(self.total_completed_qty), qty_to_manufacture,frappe.bold(self.for_quantity))))
 			
+	# function to set the status of the job card
 	def set_status(self, update_status=False):
 		if self.status == "On Hold": return
 
@@ -91,6 +96,7 @@ class JobCardLGM(Document):
 		if update_status:
 			self.db_set('status', self.status)
 
+# a query function to get all the job cards that has the same work order
 @frappe.whitelist()
 def get_all_job_card():
 	data = frappe.get_all("Job Card LGM", fields="work_order")
@@ -100,10 +106,11 @@ def get_all_job_card():
 			output.append(forms.work_order)
 	return output
 
+# function to create stock entry
 @frappe.whitelist()
 def make_stock_entry(doc):
 	doc = json.loads(doc)
-	# get warehouse
+	# get finished good and wip warehouse
 	warehouses = frappe.get_all("Warehouse", fields="name")
 	fg = None
 	wip = None
@@ -113,17 +120,17 @@ def make_stock_entry(doc):
 		elif "Work In" in warehouse["name"]:
 			wip = warehouse["name"]
 
-	# calculate masterbatch weight
+	# calculate masterbatch weight by summing up all the ingredients weight in the table
 	ingredient_list = doc["ingredients"]
 	weight = 0
 	for row in ingredient_list:
 		weight += float(row["ingredient_weight"])
-
 	weight = round(weight, 2)
 
-	# get masterbatch item
+	# query masterbatch item
 	mb_item = frappe.get_list("Item", fields="name", filters={"name": doc["stage"] + "-MB-" + doc["mixer_no_job_card"]})[0]
 
+	# put the masterbatch item in a dictionary 
 	stock_entry_details = [dict(
 		t_warehouse = fg,
 		item_code = mb_item.name,
@@ -131,7 +138,7 @@ def make_stock_entry(doc):
 		allow_zero_valuation_rate = 1,
 	)]
 
-	#create stock entry
+	# create stock entry
 	stock_entry = frappe.get_doc(dict(
 		doctype = "Stock Entry",
 		stock_entry_type = "Manufacture",
@@ -145,6 +152,7 @@ def make_stock_entry(doc):
 	stock_entry.submit()
 	return True
 
+# check if stock entry for this job card already exists
 @frappe.whitelist()
 def check_stock_entry(doc):
 	doc = json.loads(doc)

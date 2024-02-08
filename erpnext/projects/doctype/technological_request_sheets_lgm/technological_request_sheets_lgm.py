@@ -10,6 +10,7 @@ from frappe import _
 class TechnologicalRequestSheetsLGM(Document):
 	pass
 
+# function to automatically create the stage for the request sheet 
 @frappe.whitelist()
 def create_stages_lgm(doc):
 	# parse to json object
@@ -29,6 +30,7 @@ def create_stages_lgm(doc):
 
 	return stage_doc
 
+# function to create work order for current request sheet
 @frappe.whitelist()
 def create_work_order_lgm(doc):
 	# parse to json object
@@ -63,17 +65,22 @@ def create_work_order_lgm(doc):
 
 	return work_order_lgm
 
+# function to get all the ingredients in all the stages related to the current request sheet
 def get_ingredients(doc):
 	# get ingredients from commpounding ingredients child table
 	ingredient_list = []
 	stages = []
+	# get all stages 
 	for i in range (1,6):
 		if doc.get("stage_"+str(i), None) is not None:
 			stages.append(doc.get("stage_"+str(i)))
+	# for each stage
 	for stage in stages:
 		stage_object = frappe.get_doc("Stages LGM", stage)
+		# get all recipes in each stage
 		for i in range (1,16):
 			batch_weight_lgm = stage_object.get("batch_weight_lgm_" + str (i))
+			# get all ingredients in each row of each reipce
 			for row in batch_weight_lgm:
 				recipe_no = row.get("mixer_no")
 				ingredient_name = row.get("ingredient")
@@ -82,10 +89,12 @@ def get_ingredients(doc):
 					ingredient_list.append((recipe_no, ingredient_name, ingredient_weight))
 	return ingredient_list
 
+# function to query the stages related to the current request sheet
 @frappe.whitelist()
 def query_stages(doc):
 	doc = json.loads(doc)
 	stages = []
+	# sort the stages in correct order
 	for i in range (0,5):
 		if len(stages) == 0:
 			first_stage = frappe.get_list("Stages LGM", filters={'request_sheet_link': doc["name"], 'is_first_stage': 1})

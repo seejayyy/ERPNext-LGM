@@ -6,5 +6,6 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
+# a form for different types of test samples
 class TestSampleTypeLGM(Document):
 	pass

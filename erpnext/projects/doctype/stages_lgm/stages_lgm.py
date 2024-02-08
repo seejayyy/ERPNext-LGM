@@ -10,23 +10,25 @@ from frappe import _
 class StagesLGM(Document):
 	pass
 
-
+# function to calculate all the weights based on the inputs in compounding ingredient table and ingredient table
 @frappe.whitelist()
 def calculate_total_weight(doc):
 	doc = json.loads(doc)
 	output = []
 	# each stage
+	# if both tables have the same number of rows
 	if (len(doc["formulation_parts"]) > 0 and len(doc["ingredient_table"]) > 0) and (len(doc["formulation_parts"]) == len(doc["ingredient_table"])):
 		formulation_list = doc["formulation_parts"]
 		ingredient_list = doc["ingredient_table"]
 		mb_items = []
 		calculate_total_weight_table = []
+		# if internal mixer is selected
 		if doc["mixer_internal_mixer"] == 1:
 			calculated_total_mixer_table = []
 			mixer_volume_used = int(doc["mixer_volume_used"])
 
 			no_of_mixer = formulation_list[0]["select_mixer_no"]
-			# each recipe, calculate the density mb and mb mult factor
+			# each recipe, calculate the density masterbatch and masterbatch mult factor
 			for i in range (1, int(no_of_mixer) + 1):
 				density_denominator = 0
 				total_formulation = 0
@@ -55,12 +57,14 @@ def calculate_total_weight(doc):
 					ingredient_weight = round(mb_mult_factor * formulation_part, 2)
 					total_weight_mb += ingredient_weight
 					per_recipe_weight.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
+				# append masterbatch at the end of the recipe 
 				per_recipe_weight.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight", round(total_weight_mb, 2)])
 				calculate_total_weight_table.append(per_recipe_weight)
 
 			output.append(calculated_total_mixer_table)
 			output.append(calculate_total_weight_table)
 
+		# if two roll mill is selected
 		elif doc["mixer_two_roll_mill"] == 1:
 			total_mill_weight = int(doc["mill_capacity"])
 			mb_mill_weight = None
@@ -71,7 +75,7 @@ def calculate_total_weight(doc):
 
 			calculated_total_mill_table = []
 			no_of_mixer = formulation_list[0]["select_mixer_no"]
-
+			# each recipe, calculate the compounded mult factor masterbatch 
 			for i in range (1, int(no_of_mixer) + 1):
 				total_formulation = 0
 				comp_mult_factor = 0
@@ -99,6 +103,7 @@ def calculate_total_weight(doc):
 					ingredient_weight = round(comp_mult_factor * formulation_part, 2)
 					total_weight_mill += ingredient_weight
 					per_recipe_weight.append(["mixer_no", i, "ingredient_name", ingredient_name, "ingredient_weight",ingredient_weight])
+				# append masterbatch at the end of the recipe 
 				per_recipe_weight.append(["mixer_no",i, "ingredient_name", mb_items[i-1], "ingredient_weight", round(total_weight_mill, 2)])
 				calculate_total_weight_table.append(per_recipe_weight)
 			output.append(calculated_total_mill_table)
@@ -109,7 +114,7 @@ def calculate_total_weight(doc):
 
 			
 	
-
+# function to create masterbatch item and insert into database
 def create_masterbatch_item(doc, density_mb, index):
 	rs_name = doc["name"]
 	mb_name = rs_name + "-MB-" + str(index)
@@ -130,6 +135,7 @@ def create_masterbatch_item(doc, density_mb, index):
 	}).insert()
 	return (mb_item.item_name)
 
+# function to auto remove the dummy items created 
 @frappe.whitelist()
 def remove_auto_created_item():
 	items = frappe.get_list("Item", fields="name")

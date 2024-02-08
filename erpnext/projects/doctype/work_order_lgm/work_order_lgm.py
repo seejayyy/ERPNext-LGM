@@ -11,6 +11,7 @@ from frappe.integrations.utils import make_post_request
 class WorkOrderLGM(Document):
 	pass
 
+# a function to send a signal to node red to get the current weight on the weighing scale
 @frappe.whitelist()
 def trigger_nodered(doc, cdt, cdn):
 	doc = json.loads(doc)
@@ -33,6 +34,7 @@ def trigger_nodered(doc, cdt, cdn):
 	resp = make_post_request(url, headers=headers, data=data)
 	return resp
 
+# function to receive the weight from node red and set it to the row that clicked the button
 @frappe.whitelist(allow_guest=True)
 def get_data_from_nodered():
 	data = json.loads(frappe.request.data)
@@ -50,6 +52,7 @@ def get_data_from_nodered():
 			return True
 	return False
 
+# function to automatically create the job cards for current work order
 @frappe.whitelist()
 def create_job_card_lgm(doc):
 	# parse to json object
@@ -60,6 +63,7 @@ def create_job_card_lgm(doc):
 	else:
 		# get ingredients
 		stages_ingredient_list = get_ingredients_per_stage(doc)
+		# for each stage and eaceh recipe, create a job card
 		for stage_doc in stages_ingredient_list:
 			stage = stage_doc[0]
 			mixer_no = stage_doc[1]
@@ -81,16 +85,19 @@ def create_job_card_lgm(doc):
 
 	return True
 
+# function to get all ingredients and sort it in a stage and a recipe
 def get_ingredients_per_stage(doc):
 	stages = query_stages(doc)
 	output = []
+	# for each stage
 	for stage in stages:
 		stage_doc = frappe.get_doc("Stages LGM", stage[1])
+		# for each recipe
 		for k in range (1, 16):
-			# per table
 			ingredient_list_per_stage = stage_doc.get("batch_weight_lgm_" + str(k))
 			if len(ingredient_list_per_stage) > 0:
 				stage_recipe_ingredients = []
+				# for each row in a recipe
 				for ingredient in ingredient_list_per_stage:
 					if "RS-" in ingredient.ingredient:
 						if int(stage_doc.is_first_stage) != 1:
@@ -108,6 +115,9 @@ def get_ingredients_per_stage(doc):
 				output.append((stage[1], k, stage_recipe_ingredients))
 	return output
 
+# function to get the ingredients from the request sheet 
+# function is only called if the work order is not created from request sheet,
+# rather it is created from the work order list
 @frappe.whitelist()
 def create_work_order_lgm(doc):
 	# parse to json object
@@ -131,14 +141,18 @@ def create_work_order_lgm(doc):
 	doc["weighing_table_lgm"] = table_list
 	return doc
 
+# function to get all ingredients from all the stages in a request sheet
 def get_ingredients_from_stages(doc):
 	# get ingredients from commpounding ingredients child table
 	ingredient_list = []
 	stages = query_stages(doc)
+	# for each stage
 	for stage in stages:
 		stage_object = frappe.get_doc("Stages LGM", stage[1])
+		# for each recipe
 		for i in range (1,16):
 			batch_weight_lgm = stage_object.get("batch_weight_lgm_" + str(i))
+			# for each row in a recipe
 			for row in batch_weight_lgm:
 				recipe_no = row.get("mixer_no")
 				ingredient_name = row.get("ingredient")
@@ -147,12 +161,14 @@ def get_ingredients_from_stages(doc):
 					ingredient_list.append((recipe_no, ingredient_name, ingredient_weight))
 	return ingredient_list
 
+# function to check if stock entry already exist for current work order
 @frappe.whitelist()
 def check_stock_entry(doc):
 	doc = json.loads(doc)
 	ingredient_list = doc["weighing_table_lgm"]
 	weights = {}
-	# add all the weights
+	# summing up the weights based on the ingredients
+	# get total weight of the ingredients in a work order 
 	for i in range (len(ingredient_list)):
 		ingredient_name = ingredient_list[i]["ingredient"]
 		ingredient_weight = float(ingredient_list[i]["weighed"])
@@ -167,12 +183,14 @@ def check_stock_entry(doc):
 	warehouses = frappe.get_all("Warehouse", fields="name")
 	stores = None
 	wip = None
+	# get wip and stores warehouses
 	for warehouse in warehouses:
 		if "Stores" in warehouse["name"]:
 			stores = warehouse["name"]
 		elif "Work In" in warehouse["name"]:
 			wip = warehouse["name"]
 
+	# put all ingredients and ingredient weights into a list
 	for keys in weights.items():
 		ingredient_name = keys[0]
 		ingredient_weight = keys[1]
@@ -184,6 +202,7 @@ def check_stock_entry(doc):
 		)
 		stock_entry_details.append(stock_entry_detail)
 
+	# isnert stock entry record here
 	stock_entry = frappe.get_doc(dict(
 		doctype = "Stock Entry",
 		stock_entry_type = "Material Transfer",
@@ -196,6 +215,7 @@ def check_stock_entry(doc):
 	stock_entry.submit()
 	return True
 
+# function to query all the request sheet that has no work order
 @frappe.whitelist()
 def get_all_work_order():
 	data = frappe.get_all("Work Order LGM", fields="request_sheet_link")
@@ -205,6 +225,7 @@ def get_all_work_order():
 			output.append(forms.request_sheet_link)
 	return output
 
+# function to query and sort all stages in correct order
 def query_stages(doc):
 	stages = []
 	request_sheet = doc["request_sheet_link"]
@@ -220,7 +241,7 @@ def query_stages(doc):
 				break
 	return stages
 
-# simple gets the available doctypes
+# function to get all job cards related to current work order, and maximum number of job cards possible for current work order
 @frappe.whitelist()
 def query_dashboard_info(doc):
 	doc = json.loads(doc)

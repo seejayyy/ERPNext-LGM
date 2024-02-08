@@ -6,5 +6,6 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
+# a form for different types of rheometer machines
 class RheometerMachinesLGM(Document):
 	pass

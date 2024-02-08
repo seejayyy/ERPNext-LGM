@@ -6,5 +6,6 @@ from __future__ import unicode_literals
 # import frappe
 from frappe.model.document import Document
 
+# A table to summarise all the calculated weights for a recipe in a table.
 class BatchWeightLGM(Document):
 	pass
